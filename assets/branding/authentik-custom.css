@@ -1,0 +1,15 @@
+/* Wipe out the default background image container completely */
+.ak-login-container, 
+div[style*="background-image"], 
+.pf-c-login,
+body {
+    background-image: none !important;
+    background: #0A2540 !important; /* Forces your flawless corporate dark blue */
+}
+
+/* Fix any modern layout wrapper masks trying to render the fallback */
+.ak-login-background,
+::before,
+::after {
+    background-image: none !important;
+}
