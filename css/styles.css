@@ -125,7 +125,7 @@ h3 {
 }
 
 .header-inner {
-    min-height: 92px;
+    min-height: 86px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -138,9 +138,8 @@ h3 {
     text-decoration: none;
 }
 
-.brand img,
-.header-logo {
-    height: 74px;
+.brand img {
+    height: 82px;
     width: auto;
     object-fit: contain;
     filter: none;
@@ -293,24 +292,22 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 520px;
-    padding: 1.5rem;
+    min-height: 460px;
+    padding: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.09);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(12px);
-    overflow: hidden;
 }
 
 .hero-visual img {
-    width: 118%;
-    max-width: none;
+    width: 100%;
+    max-width: 900px;
     height: auto;
     max-height: none;
     object-fit: contain;
     filter: none;
-    transform: scale(1.12);
 }
 
 .proof-strip {
@@ -540,7 +537,8 @@ h3 {
 }
 
 .cta-block img.cta-logo {
-    width: min(100%, 620px);
+    width: 420px;
+    max-width: 100%;
     height: auto;
     margin: 0 auto 2rem;
     object-fit: contain;
@@ -578,7 +576,7 @@ h3 {
 }
 
 .footer-logo {
-    width: 360px;
+    width: 280px;
     max-width: 100%;
     height: auto;
     margin-bottom: 1rem;
@@ -625,9 +623,8 @@ h3 {
         padding: 1rem 0;
     }
 
-    .brand img,
-    .header-logo {
-        height: 64px;
+    .brand img {
+        height: 72px;
     }
 
     .nav-toggle {
@@ -670,22 +667,16 @@ h3 {
     }
 
     .hero-visual {
-        min-height: 390px;
-        padding: 1.25rem;
+        min-height: 340px;
+        padding: 2rem;
     }
 
     .hero-visual img {
-        width: 112%;
-        max-width: none;
-        transform: scale(1.08);
+        max-width: 720px;
     }
 
     .cta-block img.cta-logo {
-        width: min(100%, 440px);
-    }
-
-    .footer-logo {
-        width: 300px;
+        width: 340px;
     }
 
     .card-grid,
@@ -715,19 +706,13 @@ h3 {
         width: 100%;
     }
 
-    .brand img,
-    .header-logo {
-        height: 52px;
+    .brand img {
+        height: 54px;
     }
 
     .hero-visual {
-        min-height: 280px;
-        padding: 1rem;
-    }
-
-    .hero-visual img {
-        width: 122%;
-        transform: scale(1.1);
+        min-height: 260px;
+        padding: 1.25rem;
     }
 
     .section {
@@ -740,10 +725,148 @@ h3 {
     }
 
     .cta-block img.cta-logo {
-        width: min(100%, 320px);
+        width: 260px;
     }
 
     .footer-logo {
-        width: 240px;
+        width: 220px;
+    }
+}
+
+/* =========================================================
+   MIDWEST24 FINAL BRANDING LAYOUT OVERRIDES
+   These rules intentionally override earlier logo sizing.
+   ========================================================= */
+
+/* 1. Header / navigation logo: shield icon only. */
+.header-inner {
+    min-height: 92px;
+}
+
+.brand {
+    min-width: 90px;
+}
+
+.brand img,
+.brand img.header-logo,
+.header-logo {
+    height: 72px;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+}
+
+/* 2. Hero logo card: full Midwest24 Core logo, larger and centered. */
+.hero-visual {
+    min-height: 520px;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.hero-visual img {
+    width: min(92%, 560px);
+    max-width: 560px;
+    height: auto;
+    max-height: 430px;
+    object-fit: contain;
+    transform: scale(1.18);
+    transform-origin: center center;
+}
+
+/* 3. Contact CTA logo: full logo, not favicon. */
+.cta-block img.cta-logo {
+    width: min(92%, 560px);
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto 2rem;
+    object-fit: contain;
+}
+
+/* 4. Footer logo: footer-specific full logo. */
+.footer-logo {
+    width: min(100%, 430px);
+    max-width: 430px;
+    height: auto;
+    margin-bottom: 1.25rem;
+    object-fit: contain;
+}
+
+/* 5. Keep footer brand column wide enough for the larger logo. */
+.footer-grid {
+    grid-template-columns: 1.9fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 940px) {
+    .header-inner {
+        min-height: 82px;
+        padding: 0.75rem 0;
+    }
+
+    .brand img,
+    .brand img.header-logo,
+    .header-logo {
+        height: 62px;
+    }
+
+    .main-nav {
+        top: 82px;
+    }
+
+    .hero-visual {
+        min-height: 390px;
+        padding: 1rem;
+    }
+
+    .hero-visual img {
+        width: min(94%, 480px);
+        max-width: 480px;
+        transform: scale(1.12);
+    }
+
+    .cta-block img.cta-logo {
+        width: min(94%, 460px);
+    }
+
+    .footer-logo {
+        width: min(100%, 340px);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .header-inner {
+        min-height: 68px;
+    }
+
+    .brand img,
+    .brand img.header-logo,
+    .header-logo {
+        height: 52px;
+    }
+
+    .main-nav {
+        top: 68px;
+    }
+
+    .hero-visual {
+        min-height: 300px;
+        padding: 0.75rem;
+    }
+
+    .hero-visual img {
+        width: 100%;
+        max-width: 360px;
+        transform: scale(1.08);
+    }
+
+    .cta-block img.cta-logo {
+        width: min(100%, 330px);
+    }
+
+    .footer-logo {
+        width: min(100%, 300px);
     }
 }
