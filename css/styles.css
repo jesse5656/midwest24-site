@@ -125,7 +125,7 @@ h3 {
 }
 
 .header-inner {
-    min-height: 86px;
+    min-height: 92px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -138,8 +138,9 @@ h3 {
     text-decoration: none;
 }
 
-.brand img {
-    height: 82px;
+.brand img,
+.header-logo {
+    height: 74px;
     width: auto;
     object-fit: contain;
     filter: none;
@@ -292,22 +293,24 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 460px;
-    padding: 3rem;
+    min-height: 520px;
+    padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.09);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(12px);
+    overflow: hidden;
 }
 
 .hero-visual img {
-    width: 100%;
-    max-width: 900px;
+    width: 118%;
+    max-width: none;
     height: auto;
     max-height: none;
     object-fit: contain;
     filter: none;
+    transform: scale(1.12);
 }
 
 .proof-strip {
@@ -537,8 +540,7 @@ h3 {
 }
 
 .cta-block img.cta-logo {
-    width: 420px;
-    max-width: 100%;
+    width: min(100%, 620px);
     height: auto;
     margin: 0 auto 2rem;
     object-fit: contain;
@@ -576,7 +578,7 @@ h3 {
 }
 
 .footer-logo {
-    width: 280px;
+    width: 360px;
     max-width: 100%;
     height: auto;
     margin-bottom: 1rem;
@@ -623,8 +625,9 @@ h3 {
         padding: 1rem 0;
     }
 
-    .brand img {
-        height: 72px;
+    .brand img,
+    .header-logo {
+        height: 64px;
     }
 
     .nav-toggle {
@@ -667,16 +670,22 @@ h3 {
     }
 
     .hero-visual {
-        min-height: 340px;
-        padding: 2rem;
+        min-height: 390px;
+        padding: 1.25rem;
     }
 
     .hero-visual img {
-        max-width: 720px;
+        width: 112%;
+        max-width: none;
+        transform: scale(1.08);
     }
 
     .cta-block img.cta-logo {
-        width: 340px;
+        width: min(100%, 440px);
+    }
+
+    .footer-logo {
+        width: 300px;
     }
 
     .card-grid,
@@ -706,13 +715,19 @@ h3 {
         width: 100%;
     }
 
-    .brand img {
-        height: 54px;
+    .brand img,
+    .header-logo {
+        height: 52px;
     }
 
     .hero-visual {
-        min-height: 260px;
-        padding: 1.25rem;
+        min-height: 280px;
+        padding: 1rem;
+    }
+
+    .hero-visual img {
+        width: 122%;
+        transform: scale(1.1);
     }
 
     .section {
@@ -725,10 +740,10 @@ h3 {
     }
 
     .cta-block img.cta-logo {
-        width: 260px;
+        width: min(100%, 320px);
     }
 
     .footer-logo {
-        width: 220px;
+        width: 240px;
     }
 }
