@@ -870,3 +870,67 @@ h3 {
         width: min(100%, 300px);
     }
 }
+
+/* FINAL LOGO SIZING OVERRIDES */
+.header-logo,
+.brand img {
+    height: 64px;
+    width: auto;
+    max-width: 260px;
+    object-fit: contain;
+}
+
+.hero-visual img {
+    width: 92%;
+    max-width: 760px;
+    height: auto;
+    object-fit: contain;
+}
+
+.cta-block img.cta-logo {
+    width: 420px;
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-logo {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+@media (max-width: 940px) {
+
+    .header-logo,
+    .brand img {
+        height: 54px;
+        max-width: 220px;
+    }
+
+    .hero-visual img {
+        width: 96%;
+    }
+
+    .footer-logo {
+        width: 160px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .header-logo,
+    .brand img {
+        height: 46px;
+        max-width: 180px;
+    }
+
+    .cta-block img.cta-logo {
+        width: 300px;
+    }
+
+    .footer-logo {
+        width: 140px;
+    }
+}
