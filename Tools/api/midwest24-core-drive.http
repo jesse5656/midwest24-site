@@ -1,0 +1,80 @@
+Create or update `midwest24-core-drive.http` as the command/reference page for Midwest24 Core Drive, our Nextcloud-based file platform.
+
+Document the operational configuration for the Nextcloud migration and Google Drive import workflow.
+
+Include:
+
+1. Purpose
+- Midwest24 Core Drive is the branded Nextcloud file platform.
+- Nextcloud app/config stays on FastPool.
+- User data lives on IronWolfPool.
+- Google Drive is still temporarily used as an upstream source until migration is complete.
+
+2. Final storage architecture
+- FastPool/AppData/nextcloud-config = Nextcloud application/configuration.
+- IronWolfPool/nextcloud-data = live Nextcloud user data.
+- IronWolfPool/google-import = staging import from Google Drive.
+
+3. Verified live data path
+Commands:
+php occ config:system:get datadirectory
+df -h /var/www/html/data
+
+Expected:
+datadirectory = /var/www/html/data
+filesystem = IronWolfPool/nextcloud-data
+
+4. rclone role
+- rclone handles Google Drive → google-import.
+- It is not the same as rsync.
+- It uses the Google Drive API.
+- Current source:
+gdrive-backup:/
+- Current destination:
+/mnt/IronWolfPool/google-import/
+
+5. rsync role
+- rsync handles local filesystem copy from google-import → Nextcloud native data.
+- Source:
+/google-import/Master File/
+- Destination:
+/var/www/html/data/greasy42/files/Master File/
+
+6. Standard workflow
+Google Drive
+→ rclone
+→ IronWolfPool/google-import
+→ rsync
+→ IronWolfPool/nextcloud-data
+→ php occ files:scan
+→ Nextcloud web/desktop clients
+
+7. Monitoring commands
+Include:
+ps aux | grep -E "rclone|rsync" | grep -v grep
+pgrep -a rclone
+pgrep -a rsync
+tail -f /home/truenas_admin/logs/migration.log
+sudo du -sh /mnt/IronWolfPool/google-import
+
+8. Nextcloud scan commands
+Include:
+php occ files:scan --path="greasy42/files/Master File" -vvv
+php occ files:scan --all
+
+9. FastPool cleanup note
+Document that obsolete dataset was removed:
+FastPool/AppData/nextcloud-config/userdata
+
+Keep:
+FastPool/AppData/nextcloud-config
+
+10. Safety rules
+- Do not delete google-import yet.
+- Do not delete Google Drive yet.
+- Do not delete FastPool/AppData/nextcloud-config.
+- Do not run multiple rclone jobs against the same destination.
+- Use copy for future migration-safe imports unless intentionally mirroring.
+- Always scan Nextcloud after direct filesystem changes.
+
+Format it as a practical `.http` / command notebook page for use in VSCodium, with comment headings and copy/paste-ready shell command blocks.
