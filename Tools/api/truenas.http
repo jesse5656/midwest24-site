@@ -1,0 +1,121 @@
+###
+# Midwest24 Core — TrueNAS Operations
+#
+# Application:
+# TrueNAS SCALE
+#
+# Purpose:
+# Storage, datasets, ZFS snapshots, apps, and private cloud infrastructure.
+#
+# Primary Pools:
+# FastPool      = NVMe app/config storage
+# IronWolfPool  = bulk data, Nextcloud user data, imports, media, backups
+#
+
+###
+# Check pool status
+# TrueNAS Shell
+
+zpool status
+
+###
+# Check specific pool status
+
+zpool status FastPool
+zpool status IronWolfPool
+
+###
+# Check pool capacity
+
+zpool list
+
+###
+# Check verbose pool capacity
+
+zpool list -v
+
+###
+# List datasets
+
+zfs list
+
+###
+# List FastPool datasets
+
+zfs list -o name,used,avail,mountpoint -r FastPool
+
+###
+# List IronWolfPool datasets
+
+zfs list -o name,used,avail,mountpoint -r IronWolfPool
+
+###
+# List snapshots
+
+zfs list -t snapshot
+
+###
+# List FastPool snapshots
+
+zfs list -t snapshot -r FastPool
+
+###
+# List IronWolfPool snapshots
+
+zfs list -t snapshot -r IronWolfPool
+
+###
+# Create snapshot before major change
+
+sudo zfs snapshot -r IronWolfPool/nextcloud-data@before-change
+
+###
+# Verify Nextcloud live data dataset
+
+df -h /mnt/IronWolfPool/nextcloud-data
+
+###
+# Verify mounted Nextcloud data from App Shell
+
+# php occ config:system:get datadirectory
+# df -h /var/www/html/data
+
+###
+# Check app storage usage
+
+sudo du -h -d 2 /mnt/.ix-apps 2>/dev/null | sort -h | tail -50
+
+###
+# Check FastPool usage
+
+sudo du -xh -d 2 /mnt/FastPool 2>/dev/null | sort -h | tail -50
+
+###
+# Check IronWolfPool usage
+
+sudo du -xh -d 2 /mnt/IronWolfPool 2>/dev/null | sort -h | tail -50
+
+###
+# Find Nextcloud-related paths
+
+sudo find /mnt -maxdepth 6 -iname "*nextcloud*" -print
+
+###
+# Find database-related paths
+
+sudo find /mnt -maxdepth 6 \( -iname "*postgres*" -o -iname "*mariadb*" -o -iname "*mysql*" \) -print
+
+###
+# Check running rclone or rsync jobs
+
+ps aux | grep -E "rclone|rsync" | grep -v grep
+
+###
+# Check active rclone process
+
+pgrep -a rclone
+
+###
+# Check active rsync process
+
+pgrep -a rsync
