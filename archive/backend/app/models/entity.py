@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import uuid4
 
 from sqlalchemy import DateTime, String, Text
@@ -6,6 +6,10 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class Entity(Base):
@@ -17,10 +21,10 @@ class Entity(Base):
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     status: Mapped[str] = mapped_column(String(50), nullable=False, default="active", index=True)
 
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utc_now)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
+        default=utc_now,
+        onupdate=utc_now,
     )
