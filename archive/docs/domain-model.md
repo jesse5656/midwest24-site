@@ -1,77 +1,181 @@
-# Midwest24 Archive — Domain Model
+# Midwest24 Archive Domain Model
 
-## Design Philosophy
+Version: 0.1.0
 
-Archive organizes organizational knowledge through entities and relationships.
+Status:
+Foundational Draft
 
-Files support entities.
-Metadata describes entities.
-Relationships connect entities.
+------------------------------------------------------------------------------
 
-## Core Entity
+## Purpose
 
-Every object in Archive is an Entity.
+This document defines the core domain model for Midwest24 Archive.
 
-Minimum fields:
+The domain model represents the business concepts that Archive manages.
 
-- id (UUID)
-- entity_type
-- title
-- description
-- status
-- created_at
-- updated_at
-- created_by
-- owner_id
+Database design, APIs, UI, AI services, and automation should derive from this model.
 
-## Supporting Objects
+------------------------------------------------------------------------------
 
-### File
+## Design Principle
 
-Stores immutable file references.
+Archive is object-centric.
 
-Fields:
+Files are supporting artifacts.
 
-- id
-- entity_id
-- filename
-- mime_type
-- storage_key
-- checksum_sha256
-- size_bytes
+Knowledge Objects are the primary entities.
 
-### Metadata
+------------------------------------------------------------------------------
 
-Typed metadata attached to entities.
+## Core Entity Types
 
-Examples:
+### Observation
 
-- category
-- tag
-- department
-- project
-- customer
-- property
-- priority
+A captured fact, event, insight, or experience.
 
-### Relationship
+------------------------------------------------------------------------------
 
-Defines directional relationships between entities.
+### Question
 
-Fields:
+A problem requiring investigation.
 
-- source_entity_id
-- relationship_type
-- target_entity_id
+------------------------------------------------------------------------------
 
-### Version
+### Hypothesis
 
-Tracks changes over time.
+A proposed explanation.
 
-### Activity
+------------------------------------------------------------------------------
 
-Append-only audit history.
+### Evidence
 
-### AI Artifact
+Information supporting or challenging a hypothesis.
 
-Stores OCR, summaries, extracted entities, and future embeddings separately from authoritative data.
+------------------------------------------------------------------------------
+
+### Decision
+
+A recorded decision together with its reasoning.
+
+------------------------------------------------------------------------------
+
+### Person
+
+An individual connected to knowledge.
+
+------------------------------------------------------------------------------
+
+### Organization
+
+A company, customer, department, or institution.
+
+------------------------------------------------------------------------------
+
+### Project
+
+A bounded initiative.
+
+------------------------------------------------------------------------------
+
+### System
+
+A business system or technical system.
+
+------------------------------------------------------------------------------
+
+### Process
+
+A repeatable workflow.
+
+------------------------------------------------------------------------------
+
+### Framework
+
+A reusable methodology.
+
+------------------------------------------------------------------------------
+
+### Paper
+
+A structured research publication.
+
+------------------------------------------------------------------------------
+
+### Document
+
+Supporting material.
+
+------------------------------------------------------------------------------
+
+### Task
+
+Work requiring completion.
+
+------------------------------------------------------------------------------
+
+## Relationship Principles
+
+Every entity may have relationships.
+
+Examples include:
+
+Observation -> Project
+
+Observation -> Person
+
+Observation -> Question
+
+Question -> Evidence
+
+Evidence -> Decision
+
+Decision -> Process
+
+Process -> Organization
+
+Paper -> Framework
+
+Framework -> System
+
+System -> Project
+
+Document -> Evidence
+
+------------------------------------------------------------------------------
+
+## Future Domain Objects
+
+The following entities are intentionally deferred.
+
+Meeting
+
+Policy
+
+Risk
+
+Incident
+
+Asset
+
+Product
+
+API
+
+Prompt
+
+Conversation
+
+Training
+
+Customer
+
+Vendor
+
+------------------------------------------------------------------------------
+
+## Guiding Principle
+
+Relationships create value.
+
+Objects preserve knowledge.
+
