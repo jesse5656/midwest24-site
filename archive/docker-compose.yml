@@ -1,0 +1,26 @@
+services:
+  archive-api:
+    build:
+      context: ./backend
+    container_name: midwest24-archive-api
+    ports:
+      - "8080:8000"
+    env_file:
+      - .env.example
+    depends_on:
+      - archive-db
+
+  archive-db:
+    image: postgres:16
+    container_name: midwest24-archive-db
+    environment:
+      POSTGRES_DB: archive
+      POSTGRES_USER: archive
+      POSTGRES_PASSWORD: archive_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - archive-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  archive-postgres-data:
