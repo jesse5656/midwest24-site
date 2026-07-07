@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -23,3 +25,7 @@ class TagRepository:
     def get_by_name(self, name: str) -> Tag | None:
         result = self.db.execute(select(Tag).where(Tag.name == name.strip().lower()))
         return result.scalar_one_or_none()
+
+
+    def get(self, tag_id: UUID) -> Tag | None:
+        return self.db.get(Tag, tag_id)

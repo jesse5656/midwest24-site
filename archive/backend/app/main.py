@@ -5,6 +5,7 @@ from app.db.session import engine
 from app.api.entities import router as entities_router
 from app.api.relationships import router as relationships_router
 from app.api.tags import router as tags_router
+from app.api.entity_tags import router as entity_tags_router
 
 app = FastAPI(
     title="Midwest24 Archive API",
@@ -15,6 +16,7 @@ app = FastAPI(
 app.include_router(entities_router)
 app.include_router(relationships_router)
 app.include_router(tags_router)
+app.include_router(entity_tags_router)
 
 
 @app.get("/health", tags=["Health"])
