@@ -3,6 +3,7 @@ from sqlalchemy import text
 
 from app.db.session import engine
 from app.api.entities import router as entities_router
+from app.api.relationships import router as relationships_router
 
 app = FastAPI(
     title="Midwest24 Archive API",
@@ -11,6 +12,7 @@ app = FastAPI(
 )
 
 app.include_router(entities_router)
+app.include_router(relationships_router)
 
 
 @app.get("/health", tags=["Health"])
