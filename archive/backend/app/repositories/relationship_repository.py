@@ -18,7 +18,7 @@ class RelationshipRepository:
         self.db.refresh(relationship)
         return relationship
 
-    def list(self) -> list[Relationship]:
+    def list_all(self) -> list[Relationship]:
         result = self.db.execute(select(Relationship).order_by(Relationship.created_at.desc()))
         return list(result.scalars().all())
 

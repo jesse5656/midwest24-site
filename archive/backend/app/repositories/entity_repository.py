@@ -18,7 +18,7 @@ class EntityRepository:
         self.db.refresh(entity)
         return entity
 
-    def list(self) -> list[Entity]:
+    def list_all(self) -> list[Entity]:
         result = self.db.execute(select(Entity).order_by(Entity.created_at.desc()))
         return list(result.scalars().all())
 

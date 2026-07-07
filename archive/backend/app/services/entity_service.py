@@ -15,7 +15,7 @@ class EntityService:
         return self.repository.create(data)
 
     def list_entities(self):
-        return self.repository.list()
+        return self.repository.list_all()
 
     def get_entity(self, entity_id: UUID):
         entity = self.repository.get(entity_id)

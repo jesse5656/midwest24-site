@@ -29,7 +29,7 @@ class RelationshipService:
         return self.relationship_repository.create(data)
 
     def list_relationships(self):
-        return self.relationship_repository.list()
+        return self.relationship_repository.list_all()
 
     def list_entity_relationships(self, entity_id: UUID):
         if self.entity_repository.get(entity_id) is None:
