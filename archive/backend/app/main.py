@@ -9,6 +9,7 @@ from app.api.entity_tags import router as entity_tags_router
 from app.api.search import router as search_router
 from app.api.context import router as context_router
 from app.api.documents import router as documents_router
+from app.api.processing_jobs import router as processing_jobs_router
 
 app = FastAPI(
     title="Midwest24 Archive API",
@@ -23,6 +24,7 @@ app.include_router(entity_tags_router)
 app.include_router(search_router)
 app.include_router(context_router)
 app.include_router(documents_router)
+app.include_router(processing_jobs_router)
 
 
 @app.get("/health", tags=["Health"])

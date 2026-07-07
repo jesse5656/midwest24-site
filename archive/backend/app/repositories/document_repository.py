@@ -29,3 +29,7 @@ class DocumentRepository:
             .order_by(Document.created_at.desc())
         )
         return list(result.scalars().all())
+
+
+    def get(self, document_id: UUID) -> Document | None:
+        return self.db.get(Document, document_id)
