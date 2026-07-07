@@ -5,3 +5,6 @@ __pycache__/
 
 # Archive local document storage
 archive/backend/storage/
+
+# Archive local document storage
+archive/backend/storage/
