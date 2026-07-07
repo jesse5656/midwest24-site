@@ -1,24 +1,20 @@
 # Midwest24 Archive
 
-## Purpose
-
 Midwest24 Archive is the institutional knowledge subsystem of Midwest24 Core.
 
-Its responsibility is to ingest, organize, preserve, and retrieve organizational knowledge.
+## Purpose
 
----
+Archive ingests, organizes, preserves, searches, and retrieves organizational knowledge.
 
 ## Current Architecture
 
-- PostgreSQL
-- FastAPI
-- SQLAlchemy
-- Alembic
-- Docker
+- FastAPI backend
+- PostgreSQL database
+- SQLAlchemy ORM
+- Alembic migrations
+- Docker Compose development environment
 
----
-
-## Domain Objects
+## Current Domain Objects
 
 - Entity
 - Relationship
@@ -26,8 +22,6 @@ Its responsibility is to ingest, organize, preserve, and retrieve organizational
 - EntityTag
 - Document
 - ProcessingJob
-
----
 
 ## Current Capabilities
 
@@ -39,16 +33,14 @@ Its responsibility is to ingest, organize, preserve, and retrieve organizational
 - Document upload
 - Processing job queue
 
----
-
 ## Planned Pipeline
 
-Upload
-→ Processing Job
-→ Text Extraction
-→ OCR
-→ Chunking
-→ Embeddings
-→ Semantic Search
-→ Knowledge Graph
+Upload  
+→ Processing Job  
+→ Text Extraction  
+→ OCR  
+→ Chunking  
+→ Embeddings  
+→ Semantic Search  
+→ Knowledge Graph  
 → AI Retrieval
