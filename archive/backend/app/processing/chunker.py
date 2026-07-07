@@ -1,13 +1,4 @@
 class Chunker:
-    """
-    Simple paragraph chunker.
-
-    Later versions will support:
-    - token-aware chunking
-    - overlap
-    - semantic boundaries
-    """
-
     def chunk(self, text: str, max_chars: int = 1000):
         text = text.strip()
 

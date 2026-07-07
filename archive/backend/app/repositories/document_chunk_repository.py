@@ -8,12 +8,7 @@ class DocumentChunkRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def create(
-        self,
-        document_text_id,
-        chunk_index: int,
-        text: str,
-    ):
+    def create(self, document_text_id, chunk_index: int, text: str):
         chunk = DocumentChunk(
             document_text_id=document_text_id,
             chunk_index=chunk_index,
