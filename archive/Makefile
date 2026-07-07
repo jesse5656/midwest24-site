@@ -40,3 +40,6 @@ revision:
 
 health:
 	curl http://localhost:8080/health
+
+worker:
+	docker compose exec -e PYTHONPATH=/app archive-api python scripts/run_worker.py
