@@ -2,3 +2,6 @@
 # Python cache
 __pycache__/
 *.py[cod]
+
+# Archive local document storage
+archive/backend/storage/
