@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+import logging
 import shutil
-from dataclasses import dataclass
+import time
 from pathlib import Path
 from uuid import UUID, uuid4
 
@@ -9,9 +10,16 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.connectors.repository.path_validator import RepositoryPathValidator
+from app.connectors.repository.allowlist import RepositoryAllowlist
+from app.connectors.repository.config import get_repository_allowed_roots
+from app.connectors.repository.path_validator import RepositoryPathValidator
 from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
+)
+from app.connectors.repository.ingestion_report import (
+    RepositoryIngestionFailure,
+    RepositoryIngestionReport,
 )
 from app.core.config import settings
 from app.repositories.document_repository import DocumentRepository
@@ -21,13 +29,6 @@ from app.services.processing_job_service import ProcessingJobService
 
 
 REPOSITORY_DOCUMENT_JOB_TYPE = "repository_document_ingestion"
-
-
-@dataclass(frozen=True)
-class ArchiveRepositoryIngestionResult:
-    discovered_count: int
-    document_count: int
-    processing_job_count: int
 
 
 class ArchiveRepositoryIngestor:
@@ -54,11 +55,18 @@ class ArchiveRepositoryIngestor:
         self.document_repository = DocumentRepository(db)
         self.processing_job_service = ProcessingJobService(db)
 
-    def ingest_repository(self, entity_id: UUID, repository_path: str | Path) -> ArchiveRepositoryIngestionResult:
+    def ingest_repository(self, entity_id: UUID, repository_path: str | Path) -> RepositoryIngestionReport:
         if self.entity_repository.get(entity_id) is None:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Entity not found")
 
         repository_path = RepositoryPathValidator.validate(repository_path)
+        repository_path = RepositoryPathValidator.validate(repository_path)
+        repository_path = RepositoryAllowlist(get_repository_allowed_roots()).validate(repository_path)
+        logger = logging.getLogger(__name__)
+        started_at = time.perf_counter()
+
+        logger.info("Repository ingestion started", extra={"repository_path": str(repository_path)})
+
         connector = RepositoryFilesystemConnector(repository_path)
         discovered_files = connector.discover()
 
@@ -67,28 +75,63 @@ class ArchiveRepositoryIngestor:
 
         document_count = 0
         processing_job_count = 0
+        bytes_ingested = 0
+        failures: list[RepositoryIngestionFailure] = []
 
         for repository_file in discovered_files:
-            document = self._create_document_from_repository_file(
-                entity_id=entity_id,
-                repository_file=repository_file,
-                storage_root=storage_root,
-            )
-            document_count += 1
-
-            self.processing_job_service.create_job(
-                ProcessingJobCreate(
-                    document_id=document.id,
-                    job_type=REPOSITORY_DOCUMENT_JOB_TYPE,
-                    priority=100,
+            try:
+                document = self._create_document_from_repository_file(
+                    entity_id=entity_id,
+                    repository_file=repository_file,
+                    storage_root=storage_root,
                 )
-            )
-            processing_job_count += 1
+                document_count += 1
+                bytes_ingested += repository_file.size_bytes
 
-        return ArchiveRepositoryIngestionResult(
+                self.processing_job_service.create_job(
+                    ProcessingJobCreate(
+                        document_id=document.id,
+                        job_type=REPOSITORY_DOCUMENT_JOB_TYPE,
+                        priority=100,
+                    )
+                )
+                processing_job_count += 1
+            except Exception as exc:
+                failures.append(
+                    RepositoryIngestionFailure(
+                        path=repository_file.relative_path,
+                        reason=str(exc),
+                    )
+                )
+                logger.exception(
+                    "Repository file ingestion failed",
+                    extra={"repository_file": repository_file.relative_path},
+                )
+
+        elapsed_ms = int((time.perf_counter() - started_at) * 1000)
+
+        logger.info(
+            "Repository ingestion finished",
+            extra={
+                "repository_path": str(repository_path),
+                "discovered_count": len(discovered_files),
+                "document_count": document_count,
+                "processing_job_count": processing_job_count,
+                "bytes_ingested": bytes_ingested,
+                "elapsed_ms": elapsed_ms,
+                "failure_count": len(failures),
+            },
+        )
+
+        return RepositoryIngestionReport(
             discovered_count=len(discovered_files),
             document_count=document_count,
             processing_job_count=processing_job_count,
+            bytes_ingested=bytes_ingested,
+            elapsed_ms=elapsed_ms,
+            skipped_count=0,
+            unsupported_count=0,
+            failures=failures,
         )
 
     def _create_document_from_repository_file(

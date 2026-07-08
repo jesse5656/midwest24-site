@@ -62,3 +62,23 @@ A repository ingestion milestone is complete only when:
 - semantic search can discover repository-ingested content
 - Operating Plan is updated
 - changes are committed
+
+
+------------------------------------------------------------------------------
+
+## Repository Ingestion Observability
+
+Repository ingestion now returns observable execution metadata.
+
+Current response fields:
+
+- discovered_count
+- document_count
+- processing_job_count
+- bytes_ingested
+- elapsed_ms
+- skipped_count
+- unsupported_count
+- failures
+
+Repository ingestion also logs start, file-level failures, and completion.
