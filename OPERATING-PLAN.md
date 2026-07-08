@@ -342,3 +342,31 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Incremental repository ingestion API serialization fixed.
+- Nested ingestion reports are now converted into RepositoryIngestionResponse.
+- Incremental API tests restored from debug instrumentation.
+- Incremental API now exposes nested document count and processing-job status metadata.
+
+Completed:
+- Incremental repository ingestion API serialization.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Finalize operator-facing summary fields and close Repository Ingestion Observability objective.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

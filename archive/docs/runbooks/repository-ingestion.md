@@ -204,3 +204,12 @@ Failure behavior:
 - Failed file bytes are not counted in `bytes_ingested`.
 - The database session is rolled back after a failed file so the next file can continue.
 - Repository ingestion logs start, file failure, and finish events.
+
+
+------------------------------------------------------------------------------
+
+## Incremental Ingestion API Serialization
+
+The incremental ingestion API serializes nested repository ingestion reports into the public response schema.
+
+This keeps internal dataclass reports separate from API response models while preserving operator-facing metadata.
