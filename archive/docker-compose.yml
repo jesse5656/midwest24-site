@@ -13,7 +13,7 @@ services:
       - archive-db
 
   archive-db:
-    image: postgres:16
+    image: pgvector/pgvector:pg16
     container_name: midwest24-archive-db
     environment:
       POSTGRES_DB: archive

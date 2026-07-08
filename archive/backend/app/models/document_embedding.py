@@ -1,6 +1,7 @@
 from datetime import UTC, datetime
 from uuid import uuid4
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -25,6 +26,9 @@ class DocumentEmbedding(Base):
     )
 
     embedding_model: Mapped[str] = mapped_column(String(100), nullable=False)
+
+    embedding_vector: Mapped[list[float] | None] = mapped_column(Vector(16), nullable=True)
     embedding_json: Mapped[str] = mapped_column(Text, nullable=False)
+    metadata_json: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=utc_now)
