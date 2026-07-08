@@ -13,6 +13,14 @@ class RepositoryIngestionFailureResponse(BaseModel):
     reason: str
 
 
+class ProcessingJobStatusCountsResponse(BaseModel):
+    pending: int
+    running: int
+    completed: int
+    failed: int
+    total: int
+
+
 class RepositoryIngestionResponse(BaseModel):
     discovered_count: int
     document_count: int
@@ -22,3 +30,4 @@ class RepositoryIngestionResponse(BaseModel):
     skipped_count: int
     unsupported_count: int
     failures: list[RepositoryIngestionFailureResponse]
+    processing_jobs_by_status: ProcessingJobStatusCountsResponse

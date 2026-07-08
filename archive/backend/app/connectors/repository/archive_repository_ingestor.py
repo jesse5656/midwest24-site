@@ -17,6 +17,7 @@ from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
 )
+from app.connectors.repository.job_statistics import RepositoryProcessingJobStatistics
 from app.connectors.repository.ingestion_report import (
     RepositoryIngestionFailure,
     RepositoryIngestionReport,
@@ -75,6 +76,7 @@ class ArchiveRepositoryIngestor:
 
         document_count = 0
         processing_job_count = 0
+        created_document_ids = []
         bytes_ingested = 0
         failures: list[RepositoryIngestionFailure] = []
 
@@ -86,6 +88,7 @@ class ArchiveRepositoryIngestor:
                     storage_root=storage_root,
                 )
                 document_count += 1
+                created_document_ids.append(document.id)
                 bytes_ingested += repository_file.size_bytes
 
                 self.processing_job_service.create_job(
@@ -123,6 +126,8 @@ class ArchiveRepositoryIngestor:
             },
         )
 
+        processing_jobs_by_status = RepositoryProcessingJobStatistics(self.db).count_for_documents(created_document_ids)
+
         return RepositoryIngestionReport(
             discovered_count=len(discovered_files),
             document_count=document_count,
@@ -132,6 +137,7 @@ class ArchiveRepositoryIngestor:
             skipped_count=0,
             unsupported_count=0,
             failures=failures,
+            processing_jobs_by_status=processing_jobs_by_status,
         )
 
     def _create_document_from_repository_file(

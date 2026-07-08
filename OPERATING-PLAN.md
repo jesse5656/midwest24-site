@@ -163,3 +163,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion observability expanded with processing-job status statistics.
+- Repository ingestion response now reports pending, running, completed, failed, and total processing-job counts.
+- Job-statistics tests added.
+- API and observability tests updated.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository ingestion processing-job observability.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Add skipped-file and unsupported-extension observability.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

@@ -16,6 +16,10 @@ from app.connectors.repository.ingestion_report import (
     RepositoryIngestionFailure,
     RepositoryIngestionReport,
 )
+from app.connectors.repository.job_statistics import (
+    ProcessingJobStatusCounts,
+    RepositoryProcessingJobStatistics,
+)
 from app.connectors.repository.path_validator import RepositoryPathValidator
 from app.connectors.repository.repository_ingestion_service import (
     RepositoryDocumentIngestor,
@@ -27,7 +31,9 @@ from app.connectors.repository.repository_ingestion_service import (
 __all__ = [
     "ArchiveRepositoryIngestionResult",
     "ArchiveRepositoryIngestor",
+    "ProcessingJobStatusCounts",
     "REPOSITORY_DOCUMENT_JOB_TYPE",
+    "REPOSITORY_ALLOWED_ROOTS_ENV",
     "RepositoryAllowlist",
     "RepositoryDocumentIngestor",
     "RepositoryFile",
@@ -38,6 +44,6 @@ __all__ = [
     "RepositoryIngestionService",
     "RepositoryPathValidator",
     "RepositoryProcessingJobCreator",
-    "REPOSITORY_ALLOWED_ROOTS_ENV",
+    "RepositoryProcessingJobStatistics",
     "get_repository_allowed_roots",
 ]

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from app.connectors.repository.job_statistics import ProcessingJobStatusCounts
+
 
 @dataclass(frozen=True)
 class RepositoryIngestionFailure:
@@ -19,3 +21,4 @@ class RepositoryIngestionReport:
     skipped_count: int = 0
     unsupported_count: int = 0
     failures: list[RepositoryIngestionFailure] = field(default_factory=list)
+    processing_jobs_by_status: ProcessingJobStatusCounts = field(default_factory=ProcessingJobStatusCounts)

@@ -82,3 +82,20 @@ Current response fields:
 - failures
 
 Repository ingestion also logs start, file-level failures, and completion.
+
+
+------------------------------------------------------------------------------
+
+## Processing Job Status Observability
+
+Repository ingestion responses now include processing job status counts.
+
+The `processing_jobs_by_status` object reports:
+
+- pending
+- running
+- completed
+- failed
+- total
+
+This allows operators to distinguish ingestion success from downstream worker progress.
