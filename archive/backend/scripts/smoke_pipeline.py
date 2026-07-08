@@ -6,12 +6,13 @@ from app.models.document import Document
 from app.models.entity import Entity
 from app.models.processing_job import ProcessingJob
 from app.workers.document_worker import DocumentWorker
+from app.core.config import settings
 
 
 def main():
     db = SessionLocal()
 
-    storage_dir = Path("storage/documents")
+    storage_dir = Path(settings.document_storage_root)
     storage_dir.mkdir(parents=True, exist_ok=True)
 
     test_file = storage_dir / f"{uuid4()}-smoke-test.txt"

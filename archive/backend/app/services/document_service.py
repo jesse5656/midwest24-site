@@ -4,11 +4,13 @@ from uuid import UUID, uuid4
 from fastapi import HTTPException, UploadFile, status
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
+
 from app.repositories.document_repository import DocumentRepository
 from app.repositories.entity_repository import EntityRepository
 
 
-STORAGE_ROOT = Path("storage/documents")
+STORAGE_ROOT = Path(settings.document_storage_root)
 
 
 class DocumentService:
