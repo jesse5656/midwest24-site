@@ -208,3 +208,32 @@ When conversation performance degrades or a milestone is reached:
 □ Archive the chat using the naming standard in START-HERE.md.
 
 □ Begin the next session from START-HERE.md.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository filesystem ingestion connector added.
+- Connector discovers supported files from local knowledge repositories.
+- Connector excludes `.git`, runtime, dependency, cache, and build directories.
+- Repository file metadata is captured for future Archive ingestion.
+- Automated tests added for discovery, exclusions, metadata, missing paths, and invalid paths.
+
+Completed:
+- Repository filesystem ingestion discovery only.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Wire discovered repository files into the existing Archive document ingestion pipeline without bypassing processing jobs, text extraction, chunking, embeddings, or semantic search enrichment.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
