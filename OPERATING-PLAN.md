@@ -439,3 +439,30 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Worker-backed repository ingestion smoke test added.
+- Repository markdown ingestion now verifies the full path from API ingestion to Document, ProcessingJob, DocumentWorker, text extraction, chunk creation, and embedding storage.
+- Test confirms generated processing jobs complete successfully.
+
+Completed:
+- Repository ingestion worker smoke pipeline.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Add semantic-search verification for repository-ingested content so repository knowledge can be discovered through the existing semantic search API.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
