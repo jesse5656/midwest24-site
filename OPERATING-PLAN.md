@@ -157,3 +157,39 @@ Status:
 
 Next Highest-Priority Objective:
 - Enrich semantic search results with document, entity, and source context.
+
+---
+
+## Archive Connector Workflow
+
+Status:
+Active
+
+Purpose:
+Define the standard workflow for adding new knowledge-source connectors to Midwest24 Archive.
+
+Workflow:
+1. Verify repository state.
+2. Read START-HERE.md.
+3. Read OPERATING-PLAN.md.
+4. Identify the next highest-priority connector.
+5. Inspect existing connector interfaces.
+6. Implement the smallest connector capability.
+7. Add tests.
+8. Run the full test suite.
+9. Commit the connector work.
+10. Update OPERATING-PLAN.md with status and next step.
+
+Connector Standard:
+- Every connector must implement discovery.
+- Every connector must support future ingestion into Archive.
+- Every connector must have at least one automated test.
+- Connectors must not bypass the Archive ingestion pipeline.
+
+Current Connector Capability:
+- FilesystemConnector added.
+- Connector framework established.
+- Test suite passing at 28 tests.
+
+Next Highest-Priority Connector:
+- Repository filesystem ingestion for local knowledge repositories.
