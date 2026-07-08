@@ -266,3 +266,31 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion command boundary added.
+- Local repository paths can now be passed into the repository ingestion service from a CLI entrypoint.
+- CLI currently preserves the ingestion boundary and does not bypass the Archive pipeline.
+- Automated CLI coverage added.
+
+Completed:
+- Repository ingestion command boundary.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Replace the CLI test callbacks with concrete Archive document creation and processing-job creation services.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
