@@ -3,7 +3,8 @@ from pathlib import Path
 
 from sqlalchemy.orm import Session
 
-from app.ai.mock_embedding_provider import MockEmbeddingProvider
+from app.ai.provider_registry import get_embedding_provider
+from app.core.config import settings
 from app.models.document import Document
 from app.models.processing_job import ProcessingJob
 from app.processing.chunker import Chunker
@@ -22,7 +23,7 @@ class DocumentWorker:
         self.text_repository = DocumentTextRepository(db)
         self.chunk_repository = DocumentChunkRepository(db)
         self.embedding_repository = DocumentEmbeddingRepository(db)
-        self.embedding_provider = MockEmbeddingProvider()
+        self.embedding_provider = get_embedding_provider()
         self.chunker = Chunker()
 
     def process(self, job: ProcessingJob):
@@ -55,7 +56,7 @@ class DocumentWorker:
 
                 self.embedding_repository.create(
                     document_chunk_id=chunk_row.id,
-                    embedding_model="mock",
+                    embedding_model=settings.embedding_model,
                     vector=vector,
                 )
 
