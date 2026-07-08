@@ -410,3 +410,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion API endpoint added.
+- API accepts an entity ID and local repository path.
+- API invokes ArchiveRepositoryIngestor and creates real Document and ProcessingJob records.
+- API database dependency corrected to use the existing app API context.
+- Automated API coverage added for successful ingestion and unknown entity rejection.
+
+Completed:
+- Repository ingestion API boundary.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Add a worker-backed smoke test that ingests a repository markdown file, processes the generated job, and verifies text, chunks, and embeddings are created.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
