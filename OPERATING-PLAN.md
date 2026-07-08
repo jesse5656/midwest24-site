@@ -143,3 +143,17 @@ Status:
 
 Next Highest-Priority Objective:
 - Add semantic search result enrichment so search results include document, entity, and source context instead of only chunk text and distance.
+
+---
+
+## Session Update
+
+Status:
+- Semantic search pipeline test stabilized.
+- Archive test suite passing at 27 tests.
+- pgvector embedding storage active.
+- Embedding provider registry active.
+- Smoke pipeline operational.
+
+Next Highest-Priority Objective:
+- Enrich semantic search results with document, entity, and source context.
