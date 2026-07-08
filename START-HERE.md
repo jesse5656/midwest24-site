@@ -81,3 +81,22 @@ START-HERE.md explains how to begin work.
 
 OPERATING-PLAN.md explains what Midwest24 Platform is building now.
 
+
+
+------------------------------------------------------------------------------
+
+## Chat Session Archival Standard
+
+Chats are working sessions.
+
+Repositories are institutional memory.
+
+Git commits are historical milestones.
+
+When a chat becomes slow, reaches a natural milestone, or is being replaced, archive it using:
+
+YYYY-MM-DD — Repository — Sprint Name
+
+Example:
+
+2026-07-08 — Midwest24 Archive — Relationship Engine Sprint

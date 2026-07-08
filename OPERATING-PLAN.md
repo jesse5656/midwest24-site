@@ -193,3 +193,18 @@ Current Connector Capability:
 
 Next Highest-Priority Connector:
 - Repository filesystem ingestion for local knowledge repositories.
+
+
+------------------------------------------------------------------------------
+
+# Session Management
+
+When conversation performance degrades or a milestone is reached:
+
+□ Commit completed work.
+
+□ Update this Operating Plan if priorities changed.
+
+□ Archive the chat using the naming standard in START-HERE.md.
+
+□ Begin the next session from START-HERE.md.
