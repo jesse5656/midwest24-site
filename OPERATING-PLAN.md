@@ -466,3 +466,30 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository-ingested markdown semantic search verification added.
+- Test confirms repository ingestion creates searchable chunks through the existing semantic search API.
+- Semantic search response verifies repository entity context, filename, chunk text, chunk ID, document ID, and distance.
+
+Completed:
+- Repository ingestion semantic search verification.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Add repository ingestion documentation and a minimal runbook for ingesting local knowledge repositories safely.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
