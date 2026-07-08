@@ -237,3 +237,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository filesystem ingestion has been wired into the Archive ingestion flow.
+- Repository discovery now feeds a document ingestion callback.
+- Each ingested repository file now triggers a processing-job callback.
+- The connector still does not bypass the Archive pipeline.
+- Automated tests added for repository ingestion wiring and connector filtering before ingestion.
+
+Completed:
+- Repository filesystem ingestion wiring only.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Replace the test callback boundary with the concrete Archive document creation and processing-job creation services already used by normal document ingestion.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
