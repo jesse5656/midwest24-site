@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 
 
@@ -5,28 +7,29 @@ class RepositoryPathValidator:
     """
     Validates repository paths before Archive ingestion.
 
-    Current policy:
-
+    Policy:
     - Path must exist.
     - Path must be a directory.
-    - Symbolic links are rejected.
-    - Hidden directories are rejected.
+    - Path must not be a symbolic link.
+    - Repository directory name must not be hidden.
     """
 
     @staticmethod
     def validate(path: str | Path) -> Path:
-        path = Path(path).expanduser().resolve()
+        raw_path = Path(path).expanduser()
 
-        if not path.exists():
-            raise FileNotFoundError(path)
+        if raw_path.is_symlink():
+            raise ValueError("Repository path symbolic links are not permitted.")
 
-        if not path.is_dir():
-            raise NotADirectoryError(path)
+        resolved_path = raw_path.resolve()
 
-        if path.is_symlink():
-            raise ValueError("Symbolic links are not permitted.")
+        if not resolved_path.exists():
+            raise FileNotFoundError(f"Repository path does not exist: {resolved_path}")
 
-        if path.name.startswith("."):
-            raise ValueError("Hidden repositories are not permitted.")
+        if not resolved_path.is_dir():
+            raise NotADirectoryError(f"Repository path is not a directory: {resolved_path}")
 
-        return path
+        if resolved_path.name.startswith("."):
+            raise ValueError("Hidden repository directories are not permitted.")
+
+        return resolved_path

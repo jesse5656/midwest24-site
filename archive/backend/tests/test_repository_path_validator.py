@@ -2,34 +2,43 @@ from pathlib import Path
 
 import pytest
 
-from app.connectors.repository.path_validator import RepositoryPathValidator
+from app.connectors.repository import RepositoryPathValidator
 
 
-def test_accepts_normal_repository(tmp_path: Path):
-    repo = tmp_path / "repo"
+def test_repository_path_validator_accepts_normal_directory(tmp_path: Path):
+    repo = tmp_path / "knowledge-repo"
     repo.mkdir()
 
-    validated = RepositoryPathValidator.validate(repo)
-
-    assert validated == repo.resolve()
+    assert RepositoryPathValidator.validate(repo) == repo.resolve()
 
 
-def test_rejects_missing_repository(tmp_path: Path):
+def test_repository_path_validator_rejects_missing_path(tmp_path: Path):
     with pytest.raises(FileNotFoundError):
-        RepositoryPathValidator.validate(tmp_path / "missing")
+        RepositoryPathValidator.validate(tmp_path / "missing-repo")
 
 
-def test_rejects_file(tmp_path: Path):
-    f = tmp_path / "README.md"
-    f.write_text("hello")
+def test_repository_path_validator_rejects_file_path(tmp_path: Path):
+    file_path = tmp_path / "README.md"
+    file_path.write_text("# Not a directory\n", encoding="utf-8")
 
     with pytest.raises(NotADirectoryError):
-        RepositoryPathValidator.validate(f)
+        RepositoryPathValidator.validate(file_path)
 
 
-def test_rejects_hidden_directory(tmp_path: Path):
-    repo = tmp_path / ".secret"
+def test_repository_path_validator_rejects_hidden_repository_directory(tmp_path: Path):
+    repo = tmp_path / ".hidden-repo"
     repo.mkdir()
 
     with pytest.raises(ValueError):
         RepositoryPathValidator.validate(repo)
+
+
+def test_repository_path_validator_rejects_symbolic_link(tmp_path: Path):
+    target = tmp_path / "target-repo"
+    target.mkdir()
+
+    symlink = tmp_path / "linked-repo"
+    symlink.symlink_to(target, target_is_directory=True)
+
+    with pytest.raises(ValueError):
+        RepositoryPathValidator.validate(symlink)

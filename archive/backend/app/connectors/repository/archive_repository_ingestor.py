@@ -169,3 +169,10 @@ class ArchiveRepositoryIngestor:
         if repository_file.suffix in {".py", ".js", ".ts", ".tsx", ".jsx"}:
             return "text/plain"
         return "application/octet-stream"
+
+
+# Backward compatibility:
+# Older repository-ingestion code exported ArchiveRepositoryIngestionResult.
+# Observability replaces the implementation with RepositoryIngestionReport,
+# but keeping this alias prevents package import breakage.
+ArchiveRepositoryIngestionResult = RepositoryIngestionReport

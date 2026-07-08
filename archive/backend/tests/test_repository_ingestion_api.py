@@ -96,3 +96,60 @@ def test_create_repository_ingestion_api_rejects_unknown_entity(tmp_path: Path):
     )
 
     assert response.status_code == 404
+
+def test_create_repository_ingestion_api_rejects_missing_repository_path(tmp_path: Path):
+    entity_response = client.post(
+        "/api/v1/entities",
+        json={
+            "entity_type": "repository",
+            "title": "Repository Missing Path Test Entity",
+        },
+    )
+    assert entity_response.status_code == 201
+    entity = entity_response.json()
+
+    response = client.post(
+        "/api/v1/repository-ingestions",
+        json={
+            "entity_id": entity["id"],
+            "repository_path": str(tmp_path / "missing-repo"),
+        },
+    )
+
+    assert response.status_code == 400
+
+
+def test_create_repository_ingestion_api_rejects_disallowed_repository_path(
+    tmp_path: Path,
+    monkeypatch,
+):
+    allowed_root = tmp_path / "allowed"
+    allowed_root.mkdir()
+
+    outside_root = tmp_path / "outside"
+    outside_root.mkdir()
+
+    monkeypatch.setenv(
+        "MIDWEST24_REPOSITORY_ALLOWED_ROOTS",
+        str(allowed_root),
+    )
+
+    entity_response = client.post(
+        "/api/v1/entities",
+        json={
+            "entity_type": "repository",
+            "title": "Repository Allowlist API Test Entity",
+        },
+    )
+    assert entity_response.status_code == 201
+    entity = entity_response.json()
+
+    response = client.post(
+        "/api/v1/repository-ingestions",
+        json={
+            "entity_id": entity["id"],
+            "repository_path": str(outside_root),
+        },
+    )
+
+    assert response.status_code == 403
