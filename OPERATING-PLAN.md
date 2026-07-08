@@ -313,3 +313,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion failure observability stabilized.
+- Failure tests now scope database assertions to the entity under test.
+- Logging tests now explicitly capture INFO-level ingestion start and finish logs.
+- Repository-ingested content verification now checks worker-created text, chunks, and embeddings directly.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository ingestion failure observability stabilization.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Add operator-facing summary fields and finalize Repository Ingestion Observability objective.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

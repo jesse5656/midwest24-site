@@ -188,3 +188,19 @@ Failure behavior:
 - Failed file bytes are not counted in `bytes_ingested`.
 - The database session is rolled back after a failed file so the next file can continue.
 - Repository ingestion logs start, file failure, and finish events.
+
+
+------------------------------------------------------------------------------
+
+## Failure Observability
+
+Repository ingestion reports file-level copy failures without stopping the full ingestion run.
+
+Failure behavior:
+
+- A failed file is reported in `failures`.
+- A failed file does not create a `Document`.
+- A failed file does not create a `ProcessingJob`.
+- Failed file bytes are not counted in `bytes_ingested`.
+- The database session is rolled back after a failed file so the next file can continue.
+- Repository ingestion logs start, file failure, and finish events.
