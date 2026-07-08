@@ -493,3 +493,30 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion runbook added.
+- Runbook documents current filesystem-only scope, API usage, safety rules, and completion criteria.
+- Git history and code intelligence remain explicitly deferred.
+
+Completed:
+- Repository ingestion documentation and minimal runbook.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Add controlled repository ingestion allowlist or path validation before broad local repository ingestion is used outside development.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
