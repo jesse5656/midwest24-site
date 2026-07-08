@@ -8,5 +8,9 @@ class SemanticSearchRequest(BaseModel):
 
 class SemanticSearchResult(BaseModel):
     chunk_id: str
+    document_id: str
+    entity_id: str
+    entity_title: str
+    filename: str
     text: str
     distance: float

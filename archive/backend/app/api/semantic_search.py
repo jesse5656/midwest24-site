@@ -15,8 +15,12 @@ def semantic_search(request: SemanticSearchRequest, db: Session = Depends(get_db
     return [
         SemanticSearchResult(
             chunk_id=str(chunk.id),
+            document_id=str(document.id),
+            entity_id=str(entity.id),
+            entity_title=entity.title,
+            filename=document.filename,
             text=chunk.text,
             distance=float(distance),
         )
-        for chunk, embedding, distance in rows
+        for chunk, embedding, document_text, document, entity, distance in rows
     ]
