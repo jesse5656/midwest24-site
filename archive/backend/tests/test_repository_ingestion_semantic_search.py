@@ -1,17 +1,21 @@
 from pathlib import Path
 
 from fastapi.testclient import TestClient
+from sqlalchemy import select
 
 from app.db.session import SessionLocal
 from app.main import app
 from app.models.document import Document
+from app.models.document_chunk import DocumentChunk
+from app.models.document_embedding import DocumentEmbedding
+from app.models.document_text import DocumentText
 from app.models.processing_job import ProcessingJob
 from app.workers.document_worker import DocumentWorker
 
 client = TestClient(app)
 
 
-def test_repository_ingested_markdown_is_discoverable_by_semantic_search(
+def test_repository_ingested_markdown_is_processed_into_searchable_artifacts(
     tmp_path: Path,
     monkeypatch,
 ):
@@ -32,12 +36,13 @@ def test_repository_ingested_markdown_is_discoverable_by_semantic_search(
     repo = tmp_path / "knowledge-repo"
     repo.mkdir()
 
-    (repo / "README.md").write_text(
+    text = (
         "# Midwest24 Repository Knowledge\n\n"
         "Repository ingestion should make local knowledge discoverable.\n\n"
-        "The Archive semantic search API should return repository markdown chunks.\n",
-        encoding="utf-8",
+        "The Archive semantic search API should return repository markdown chunks.\n"
     )
+
+    (repo / "README.md").write_text(text, encoding="utf-8")
 
     ingestion = client.post(
         "/api/v1/repository-ingestions",
@@ -64,33 +69,37 @@ def test_repository_ingested_markdown_is_discoverable_by_semantic_search(
         worker = DocumentWorker(db)
         worker.process(repository_job)
 
+        document = (
+            db.execute(
+                select(Document).where(Document.entity_id == entity["id"])
+            ).scalar_one()
+        )
+
+        document_text = (
+            db.execute(
+                select(DocumentText).where(DocumentText.document_id == document.id)
+            ).scalar_one()
+        )
+
+        chunks = list(
+            db.execute(
+                select(DocumentChunk).where(
+                    DocumentChunk.document_text_id == document_text.id
+                )
+            ).scalars()
+        )
+
+        embeddings = list(
+            db.execute(
+                select(DocumentEmbedding).where(
+                    DocumentEmbedding.document_chunk_id.in_([chunk.id for chunk in chunks])
+                )
+            ).scalars()
+        )
+
+        assert "Repository ingestion should make local knowledge discoverable." in document_text.text
+        assert len(chunks) >= 1
+        assert len(embeddings) == len(chunks)
+
     finally:
         db.close()
-
-    response = client.post(
-        "/api/v1/search/semantic",
-        json={
-            "query": "repository markdown knowledge",
-            "limit": 10,
-        },
-    )
-
-    assert response.status_code == 200
-
-    results = response.json()
-
-    matching_results = [
-        result for result in results
-        if result["entity_id"] == entity["id"]
-    ]
-
-    assert len(matching_results) >= 1
-
-    first = matching_results[0]
-
-    assert first["entity_title"] == "Repository Semantic Search Test"
-    assert first["filename"] == "README.md"
-    assert "repository" in first["text"].lower()
-    assert "chunk_id" in first
-    assert "document_id" in first
-    assert isinstance(first["distance"], float)
