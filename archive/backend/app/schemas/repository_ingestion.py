@@ -13,6 +13,17 @@ class RepositoryIngestionFailureResponse(BaseModel):
     reason: str
 
 
+class RepositorySkippedPathResponse(BaseModel):
+    path: str
+    reason: str
+
+
+class RepositoryUnsupportedFileResponse(BaseModel):
+    path: str
+    suffix: str
+    reason: str
+
+
 class ProcessingJobStatusCountsResponse(BaseModel):
     pending: int
     running: int
@@ -30,4 +41,6 @@ class RepositoryIngestionResponse(BaseModel):
     skipped_count: int
     unsupported_count: int
     failures: list[RepositoryIngestionFailureResponse]
+    skipped_paths: list[RepositorySkippedPathResponse]
+    unsupported_files: list[RepositoryUnsupportedFileResponse]
     processing_jobs_by_status: ProcessingJobStatusCountsResponse

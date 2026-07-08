@@ -99,3 +99,28 @@ The `processing_jobs_by_status` object reports:
 - total
 
 This allows operators to distinguish ingestion success from downstream worker progress.
+
+
+------------------------------------------------------------------------------
+
+## Skipped and Unsupported File Observability
+
+Repository ingestion now distinguishes between supported files, skipped paths, and unsupported files.
+
+Supported files:
+- Files that match the repository ingestion suffix allowlist and are eligible for Archive document creation.
+
+Skipped paths:
+- Directories skipped because they are excluded runtime, dependency, cache, build, or `.git` paths.
+
+Unsupported files:
+- Files discovered in the repository but not eligible for ingestion because their extension is not currently supported.
+
+The API response includes:
+
+- skipped_count
+- unsupported_count
+- skipped_paths
+- unsupported_files
+
+This lets operators understand what was intentionally ignored during repository ingestion.

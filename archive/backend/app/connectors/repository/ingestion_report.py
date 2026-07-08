@@ -2,6 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from app.connectors.repository.discovery_report import (
+    RepositorySkippedPath,
+    RepositoryUnsupportedFile,
+)
 from app.connectors.repository.job_statistics import ProcessingJobStatusCounts
 
 
@@ -21,4 +25,6 @@ class RepositoryIngestionReport:
     skipped_count: int = 0
     unsupported_count: int = 0
     failures: list[RepositoryIngestionFailure] = field(default_factory=list)
+    skipped_paths: list[RepositorySkippedPath] = field(default_factory=list)
+    unsupported_files: list[RepositoryUnsupportedFile] = field(default_factory=list)
     processing_jobs_by_status: ProcessingJobStatusCounts = field(default_factory=ProcessingJobStatusCounts)

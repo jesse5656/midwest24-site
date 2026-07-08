@@ -192,3 +192,33 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion observability expanded with skipped-path and unsupported-file reporting.
+- Filesystem connector now supports discover_with_report while preserving legacy discover behavior.
+- Discovery report model added.
+- API response now includes skipped_paths and unsupported_files.
+- Tests added for discovery reporting, ingestion reporting, API reporting, and legacy discover compatibility.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository ingestion skipped-file and unsupported-extension observability.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Add duplicate-ingestion detection and observable duplicate reporting.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

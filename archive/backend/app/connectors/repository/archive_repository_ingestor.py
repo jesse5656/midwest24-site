@@ -69,7 +69,8 @@ class ArchiveRepositoryIngestor:
         logger.info("Repository ingestion started", extra={"repository_path": str(repository_path)})
 
         connector = RepositoryFilesystemConnector(repository_path)
-        discovered_files = connector.discover()
+        discovery_report = connector.discover_with_report()
+        discovered_files = discovery_report.supported_files
 
         storage_root = Path(settings.document_storage_root)
         storage_root.mkdir(parents=True, exist_ok=True)
@@ -118,6 +119,8 @@ class ArchiveRepositoryIngestor:
             extra={
                 "repository_path": str(repository_path),
                 "discovered_count": len(discovered_files),
+                "skipped_count": discovery_report.skipped_count,
+                "unsupported_count": discovery_report.unsupported_count,
                 "document_count": document_count,
                 "processing_job_count": processing_job_count,
                 "bytes_ingested": bytes_ingested,
@@ -134,9 +137,11 @@ class ArchiveRepositoryIngestor:
             processing_job_count=processing_job_count,
             bytes_ingested=bytes_ingested,
             elapsed_ms=elapsed_ms,
-            skipped_count=0,
-            unsupported_count=0,
+            skipped_count=discovery_report.skipped_count,
+            unsupported_count=discovery_report.unsupported_count,
             failures=failures,
+            skipped_paths=discovery_report.skipped_paths,
+            unsupported_files=discovery_report.unsupported_files,
             processing_jobs_by_status=processing_jobs_by_status,
         )
 

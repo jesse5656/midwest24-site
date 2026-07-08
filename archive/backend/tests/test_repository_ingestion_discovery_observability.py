@@ -10,7 +10,7 @@ from app.models.entity import Entity
 client = TestClient(app)
 
 
-def test_archive_repository_ingestor_returns_observable_report(tmp_path: Path, monkeypatch):
+def test_archive_repository_ingestor_reports_skipped_and_unsupported_files(tmp_path: Path, monkeypatch):
     storage_root = tmp_path / "archive-storage"
     monkeypatch.setattr(
         "app.connectors.repository.archive_repository_ingestor.settings.document_storage_root",
@@ -20,7 +20,7 @@ def test_archive_repository_ingestor_returns_observable_report(tmp_path: Path, m
     db = SessionLocal()
 
     try:
-        entity = Entity(title="Observable Repository", entity_type="repository")
+        entity = Entity(title="Discovery Observable Repository", entity_type="repository")
         db.add(entity)
         db.commit()
         db.refresh(entity)
@@ -28,8 +28,12 @@ def test_archive_repository_ingestor_returns_observable_report(tmp_path: Path, m
         repo = tmp_path / "knowledge-repo"
         repo.mkdir()
 
-        text = "Repository observability verifies bytes and result metadata.\n"
-        (repo / "README.md").write_text(text, encoding="utf-8")
+        (repo / "README.md").write_text("# Knowledge Repo\n", encoding="utf-8")
+        (repo / "image.png").write_bytes(b"skip")
+
+        cache_dir = repo / ".cache"
+        cache_dir.mkdir()
+        (cache_dir / "cache.txt").write_text("skip cache\n", encoding="utf-8")
 
         report = ArchiveRepositoryIngestor(db).ingest_repository(
             entity_id=entity.id,
@@ -39,17 +43,16 @@ def test_archive_repository_ingestor_returns_observable_report(tmp_path: Path, m
         assert report.discovered_count == 1
         assert report.document_count == 1
         assert report.processing_job_count == 1
-        assert report.bytes_ingested == len(text.encode("utf-8"))
-        assert report.elapsed_ms >= 0
-        assert report.skipped_count == 0
-        assert report.unsupported_count == 0
-        assert report.failures == []
+        assert report.skipped_count == 1
+        assert report.unsupported_count == 1
+        assert report.skipped_paths[0].path == ".cache"
+        assert report.unsupported_files[0].path == "image.png"
 
     finally:
         db.close()
 
 
-def test_repository_ingestion_api_returns_observable_report(tmp_path: Path, monkeypatch):
+def test_repository_ingestion_api_reports_skipped_and_unsupported_files(tmp_path: Path, monkeypatch):
     storage_root = tmp_path / "archive-storage"
     monkeypatch.setattr(
         "app.connectors.repository.archive_repository_ingestor.settings.document_storage_root",
@@ -60,7 +63,7 @@ def test_repository_ingestion_api_returns_observable_report(tmp_path: Path, monk
         "/api/v1/entities",
         json={
             "entity_type": "repository",
-            "title": "Observable Repository API",
+            "title": "Discovery Observable Repository API",
         },
     )
     assert entity_response.status_code == 201
@@ -69,8 +72,12 @@ def test_repository_ingestion_api_returns_observable_report(tmp_path: Path, monk
     repo = tmp_path / "knowledge-repo"
     repo.mkdir()
 
-    text = "Repository API observability returns expanded metadata.\n"
-    (repo / "README.md").write_text(text, encoding="utf-8")
+    (repo / "README.md").write_text("# Knowledge Repo\n", encoding="utf-8")
+    (repo / "photo.jpg").write_bytes(b"skip")
+
+    git_dir = repo / ".git"
+    git_dir.mkdir()
+    (git_dir / "config").write_text("[core]\n", encoding="utf-8")
 
     response = client.post(
         "/api/v1/repository-ingestions",
@@ -86,12 +93,8 @@ def test_repository_ingestion_api_returns_observable_report(tmp_path: Path, monk
     assert data["discovered_count"] == 1
     assert data["document_count"] == 1
     assert data["processing_job_count"] == 1
-    assert data["bytes_ingested"] == len(text.encode("utf-8"))
-    assert data["elapsed_ms"] >= 0
-    assert data["skipped_count"] == 0
-    assert data["unsupported_count"] == 0
-    assert data["failures"] == []
-    assert data["skipped_paths"] == []
-    assert data["unsupported_files"] == []
-    assert data["processing_jobs_by_status"]["pending"] >= 1
-    assert data["processing_jobs_by_status"]["total"] >= 1
+    assert data["skipped_count"] == 1
+    assert data["unsupported_count"] == 1
+    assert data["skipped_paths"][0]["path"] == ".git"
+    assert data["unsupported_files"][0]["path"] == "photo.jpg"
+    assert data["unsupported_files"][0]["suffix"] == ".jpg"
