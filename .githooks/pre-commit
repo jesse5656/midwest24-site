@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Running governance checks..."
+
+scripts/governance/validate-operating-plan.sh
+
+protected_patterns=(
+  "START-HERE.md"
+  "docs/architecture/"
+  "docs/institute/"
+  "docs/workflows/"
+  "docs/operations/"
+  "docs/discipline/CONSTITUTION.md"
+)
+
+changed_files="$(git diff --cached --name-only)"
+
+for pattern in "${protected_patterns[@]}"; do
+  if echo "$changed_files" | grep -q "^$pattern"; then
+    if [ "${ALLOW_ARCHITECTURE_CHANGE:-}" != "1" ]; then
+      echo
+      echo "BLOCKED: Architecture/governance file staged:"
+      echo "$pattern"
+      echo
+      echo "Use an approved ACP/OCP first."
+      echo "To intentionally bypass after approval:"
+      echo "ALLOW_ARCHITECTURE_CHANGE=1 git commit -m \"...\""
+      exit 1
+    fi
+  fi
+done
+
+echo "Governance checks passed."
