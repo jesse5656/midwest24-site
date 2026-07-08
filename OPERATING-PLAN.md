@@ -222,3 +222,34 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository ingestion duplicate detection added.
+- Duplicate repository files are now detected per entity by repository-relative filename.
+- Duplicate files are reported instead of copied again.
+- Duplicate files no longer create extra Document records or ProcessingJob records.
+- API response now includes duplicate_count and duplicate_files.
+- Tests added for duplicate detection, entity scoping, duplicate ingestion behavior, API duplicate reporting, job-status behavior on duplicates, and report shape.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository ingestion duplicate detection and observable duplicate reporting.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Add failure injection and copy-failure observability coverage.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

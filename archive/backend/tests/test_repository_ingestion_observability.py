@@ -90,8 +90,10 @@ def test_repository_ingestion_api_returns_observable_report(tmp_path: Path, monk
     assert data["elapsed_ms"] >= 0
     assert data["skipped_count"] == 0
     assert data["unsupported_count"] == 0
+    assert data["duplicate_count"] == 0
     assert data["failures"] == []
     assert data["skipped_paths"] == []
     assert data["unsupported_files"] == []
+    assert data["duplicate_files"] == []
     assert data["processing_jobs_by_status"]["pending"] >= 1
     assert data["processing_jobs_by_status"]["total"] >= 1

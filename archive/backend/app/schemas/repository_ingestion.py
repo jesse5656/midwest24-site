@@ -24,6 +24,11 @@ class RepositoryUnsupportedFileResponse(BaseModel):
     reason: str
 
 
+class RepositoryDuplicateFileResponse(BaseModel):
+    path: str
+    reason: str
+
+
 class ProcessingJobStatusCountsResponse(BaseModel):
     pending: int
     running: int
@@ -40,7 +45,9 @@ class RepositoryIngestionResponse(BaseModel):
     elapsed_ms: int
     skipped_count: int
     unsupported_count: int
+    duplicate_count: int
     failures: list[RepositoryIngestionFailureResponse]
     skipped_paths: list[RepositorySkippedPathResponse]
     unsupported_files: list[RepositoryUnsupportedFileResponse]
+    duplicate_files: list[RepositoryDuplicateFileResponse]
     processing_jobs_by_status: ProcessingJobStatusCountsResponse

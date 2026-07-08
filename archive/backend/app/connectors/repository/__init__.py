@@ -15,6 +15,10 @@ from app.connectors.repository.discovery_report import (
     RepositorySkippedPath,
     RepositoryUnsupportedFile,
 )
+from app.connectors.repository.duplicate_detector import (
+    RepositoryDuplicateDetector,
+    RepositoryDuplicateFile,
+)
 from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
@@ -46,6 +50,8 @@ __all__ = [
     "RepositoryAllowlist",
     "RepositoryDiscoveryReport",
     "RepositoryDocumentIngestor",
+    "RepositoryDuplicateDetector",
+    "RepositoryDuplicateFile",
     "RepositoryFile",
     "RepositoryFilesystemConnector",
     "RepositoryIngestionFailure",
