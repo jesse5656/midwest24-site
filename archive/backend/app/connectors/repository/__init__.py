@@ -4,6 +4,9 @@ from app.connectors.repository.filesystem_repository_connector import (
 )
 
 __all__ = [
+    "REPOSITORY_DOCUMENT_JOB_TYPE",
+    "ArchiveRepositoryIngestor",
+    "ArchiveRepositoryIngestionResult",
     "RepositoryProcessingJobCreator",
     "RepositoryIngestionService",
     "RepositoryIngestionResult",
@@ -16,4 +19,9 @@ from app.connectors.repository.repository_ingestion_service import (
     RepositoryIngestionResult,
     RepositoryIngestionService,
     RepositoryProcessingJobCreator,
+)
+from app.connectors.repository.archive_repository_ingestor import (
+    ArchiveRepositoryIngestionResult,
+    ArchiveRepositoryIngestor,
+    REPOSITORY_DOCUMENT_JOB_TYPE,
 )

@@ -294,3 +294,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository filesystem ingestion now writes into the real Archive pipeline.
+- Supported repository files are copied into Archive document storage.
+- Repository files create real Document records tied to an entity.
+- Each repository-created Document now receives a real ProcessingJob.
+- No Git history, blame, commit graph, branch, authorship, or code intelligence was added.
+
+Completed:
+- Repository filesystem ingestion into Archive document and processing-job pipeline.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Add an API endpoint or management command that accepts an entity ID and repository path, then invokes ArchiveRepositoryIngestor.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
