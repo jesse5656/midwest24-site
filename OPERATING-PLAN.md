@@ -520,3 +520,30 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository path validation added before Archive ingestion.
+- Invalid, hidden, and non-directory paths are rejected.
+- Repository ingestion security boundary established.
+
+Completed:
+- Repository ingestion path validation.
+
+Current Objective:
+- Archive Core Development.
+
+Next Concrete Step:
+- Introduce configurable repository allowlists for production deployments.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

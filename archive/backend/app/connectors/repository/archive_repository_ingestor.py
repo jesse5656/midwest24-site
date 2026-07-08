@@ -8,6 +8,7 @@ from uuid import UUID, uuid4
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
+from app.connectors.repository.path_validator import RepositoryPathValidator
 from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
@@ -57,6 +58,7 @@ class ArchiveRepositoryIngestor:
         if self.entity_repository.get(entity_id) is None:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Entity not found")
 
+        repository_path = RepositoryPathValidator.validate(repository_path)
         connector = RepositoryFilesystemConnector(repository_path)
         discovered_files = connector.discover()
 
