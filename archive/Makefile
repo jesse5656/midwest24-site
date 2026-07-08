@@ -46,3 +46,6 @@ worker:
 
 smoke:
 	docker compose exec -e PYTHONPATH=/app archive-api python scripts/smoke_pipeline.py
+
+smoke:
+	docker compose exec -e PYTHONPATH=/app archive-api python scripts/smoke_pipeline.py
