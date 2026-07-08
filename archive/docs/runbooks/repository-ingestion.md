@@ -149,3 +149,26 @@ The API response includes:
 - duplicate_files
 
 This makes repeat ingestion idempotent at the repository-relative filename level while preserving separate ingestion for different entities.
+
+
+------------------------------------------------------------------------------
+
+## Duplicate Ingestion Observability
+
+Repository ingestion detects duplicate repository files per entity.
+
+Duplicate rule:
+
+- A repository file is duplicate when a Document already exists for the same entity with the same repository-relative filename.
+
+Duplicate behavior:
+
+- Duplicate files are not copied again.
+- Duplicate files do not create new Document records.
+- Duplicate files do not create new ProcessingJob records.
+- Duplicate files are reported in the ingestion response.
+
+The API response includes:
+
+- duplicate_count
+- duplicate_files
