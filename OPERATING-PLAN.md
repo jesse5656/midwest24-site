@@ -79,12 +79,49 @@ Deliverables
 
 ------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------
+
+# Execution Mode
+
+## Sprint-Based Execution
+
+Status:
+Active
+
+Purpose:
+Increase development velocity without abandoning architecture discipline.
+
+The prior one-objective-per-session workflow is replaced with one coherent sprint per session.
+
+A sprint may include multiple related implementation steps, multiple tests, multiple commits, and documentation updates, provided they all support one architectural capability.
+
+Rules:
+- Do not redesign architecture unless an Architecture Change Proposal is explicitly requested.
+- Do not mix unrelated capabilities in one sprint.
+- Prefer 8–15 related engineering changes per sprint when the repository state supports it.
+- Tests must pass before sprint completion.
+- The Operating Plan must be updated before sprint completion.
+- Each sprint must end with a clear next sprint objective.
+
+Sprint Completion Criteria:
+- Planned capability implemented.
+- Relevant tests added or improved.
+- Full test suite passing.
+- Documentation or runbook updated when behavior changes.
+- Changes committed.
+- Next sprint objective recorded.
+
+Velocity Rule:
+Optimize for larger coherent engineering batches instead of tiny one-test increments.
+
 # Weekly Cadence
 
-- Complete one engineering milestone
-- Improve one test
-- Reduce technical debt
+- Complete one coherent engineering sprint
+- Add or improve a meaningful test group
+- Reduce technical debt inside the sprint scope
 - Validate architecture through implementation
+- Prefer capability-level progress over isolated micro-objectives
 
 ------------------------------------------------------------------------------
 
@@ -539,6 +576,44 @@ Current Objective:
 
 Next Concrete Step:
 - Introduce configurable repository allowlists for production deployments.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Operating Plan execution mode upgraded from micro-objective execution to sprint-based execution.
+- Future sessions should complete one coherent engineering sprint instead of stopping after every small objective.
+- Sprint mode allows multiple related commits, tests, implementation steps, and documentation updates under one architectural capability.
+- Architecture discipline remains unchanged: no redesign without an explicit Architecture Change Proposal.
+
+Completed:
+- Operating Plan sprint-execution upgrade.
+
+Current Objective:
+- Archive Core Development.
+
+Next Sprint Objective:
+- Repository Ingestion Hardening Sprint.
+
+Sprint Scope:
+- Path validation.
+- Repository allowlist.
+- Configuration-driven allowed roots.
+- API validation failures.
+- Tests for rejected paths.
+- Tests for allowed paths.
+- Runbook update.
+- Full suite verification.
 
 Deferred:
 - Git history ingestion.
