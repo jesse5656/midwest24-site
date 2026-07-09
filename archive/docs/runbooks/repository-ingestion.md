@@ -611,3 +611,30 @@ Response includes:
 - operator-facing summary
 
 This endpoint gives operators a simple backend readiness check for the current Archive backend milestone.
+
+
+------------------------------------------------------------------------------
+
+## Archive Backend Milestone Scorecard API
+
+Archive now exposes a backend milestone scorecard API.
+
+Endpoint:
+
+POST /api/v1/archive-backend-milestone-scorecard
+
+Request fields:
+
+- test_count
+
+Response includes:
+
+- milestone_name
+- test_count
+- capabilities
+- capability counts
+- readiness checks
+- closeout recommendation
+- operator-facing summary
+
+This endpoint gives operators a final milestone-level readiness view for the current Archive backend milestone.

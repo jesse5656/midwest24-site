@@ -1,5 +1,24 @@
 from app.connectors.repository.allowlist import RepositoryAllowlist
 
+
+from app.connectors.repository.backend_milestone import (
+    BackendMilestoneCapability,
+    BackendMilestoneScorecard,
+    BackendMilestoneScorecardBuilder,
+)
+from app.connectors.repository.backend_milestone_closeout import (
+    BackendMilestoneCloseout,
+    BackendMilestoneCloseoutBuilder,
+)
+from app.connectors.repository.backend_milestone_readiness import (
+    BackendMilestoneReadinessCheck,
+    BackendMilestoneReadinessEvaluator,
+    BackendMilestoneReadinessReport,
+)
+from app.connectors.repository.backend_milestone_summary import (
+    BackendMilestoneOperatorSummary,
+    BackendMilestoneSummaryBuilder,
+)
 from app.connectors.repository.archive_backend_health import (
     ArchiveBackendHealthEvaluator,
     ArchiveBackendHealthInputs,
@@ -232,6 +251,16 @@ from app.connectors.repository.source_outline_summary import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "BackendMilestoneSummaryBuilder",
+    "BackendMilestoneScorecardBuilder",
+    "BackendMilestoneScorecard",
+    "BackendMilestoneReadinessReport",
+    "BackendMilestoneReadinessEvaluator",
+    "BackendMilestoneReadinessCheck",
+    "BackendMilestoneOperatorSummary",
+    "BackendMilestoneCloseoutBuilder",
+    "BackendMilestoneCloseout",
+    "BackendMilestoneCapability",
     "RepositoryHealthSummaryBuilder",
     "RepositoryHealthReportBuilder",
     "RepositoryHealthReport",

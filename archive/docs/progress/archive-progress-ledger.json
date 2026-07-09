@@ -89,6 +89,18 @@
       "notes": "Archive backend health report API, schemas, summaries, evaluator, and tests completed.",
       "status": "completed",
       "test_count": 750
+    },
+    {
+      "name": "Archive Backend Health",
+      "notes": "Archive backend health API passing at 721 tests.",
+      "status": "completed",
+      "test_count": 721
+    },
+    {
+      "name": "Archive Backend Milestone",
+      "notes": "Archive backend milestone scorecard, readiness, closeout, API, schemas, and tests completed.",
+      "status": "completed",
+      "test_count": 800
     }
   ],
   "repository": "midwest24-site"

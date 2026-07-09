@@ -819,3 +819,32 @@ Deferred:
 - Symbol persistence.
 - Cross-reference graph.
 - Code intelligence embeddings.
+
+
+---
+
+## Session Update
+
+Status:
+- Archive backend milestone scorecard primitives added.
+- Archive backend milestone readiness and closeout primitives added.
+- Archive backend milestone scorecard API added.
+- Route registered in app main.
+- Progress ledger updated from 721 passing tests and projected to 800 after this block.
+- Tests added for milestone models, builder, summary, readiness, closeout, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Archive backend milestone scorecard.
+
+Current Objective:
+- Archive Backend Health and Closeout.
+
+Next Concrete Step:
+- Prepare Session Transition Prompt and stop implementation.
+
+Deferred:
+- Full AST parsing.
+- Symbol persistence.
+- Cross-reference graph.
+- Code intelligence embeddings.
