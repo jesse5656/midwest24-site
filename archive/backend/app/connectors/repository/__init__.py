@@ -35,6 +35,15 @@ from app.connectors.repository.filesystem_repository_connector import (
 )
 from app.connectors.repository.git_branches import GitBranch, GitBranchReader
 
+from app.connectors.repository.git_branch_analysis import (
+    GitBranchAnalysis,
+    GitBranchAnalysisBuilder,
+)
+from app.connectors.repository.git_branch_analysis_summary import (
+    GitBranchAnalysisOperatorSummary,
+    GitBranchAnalysisSummaryBuilder,
+)
+
 from app.connectors.repository.git_authorship import (
     GitAuthorSummary,
     GitAuthorshipPreview,
@@ -133,6 +142,10 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "GitBranchAnalysisSummaryBuilder",
+    "GitBranchAnalysisOperatorSummary",
+    "GitBranchAnalysisBuilder",
+    "GitBranchAnalysis",
     "GitIntelligenceSummaryBuilder",
     "GitIntelligenceReportBuilder",
     "GitIntelligenceReport",

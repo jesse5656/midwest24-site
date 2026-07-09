@@ -415,3 +415,31 @@ Response includes:
 - operator-facing summary
 
 This endpoint aggregates Git intelligence without persisting Git history into Archive.
+
+
+------------------------------------------------------------------------------
+
+## Git Branch Analysis API
+
+Archive now exposes a read-only Git branch analysis API.
+
+Endpoint:
+
+POST /api/v1/repository-git-branch-analysis
+
+Request fields:
+
+- repository_path
+
+Response includes:
+
+- branch_count
+- branches
+- current_branch
+- current_branch_name
+- has_multiple_branches
+- branch_names
+- non_current_branch_names
+- operator-facing summary
+
+This endpoint previews local Git branch structure without persisting branch analysis into Archive.
