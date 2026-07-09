@@ -47,6 +47,24 @@
       "notes": "Repository code inventory preview API, schemas, summaries, and tests completed.",
       "status": "completed",
       "test_count": 550
+    },
+    {
+      "name": "Source Outline Preview",
+      "notes": "Source outline preview API passing at 594 tests.",
+      "status": "completed",
+      "test_count": 594
+    },
+    {
+      "name": "Source Outline Preview",
+      "notes": "Source outline preview API passing at 594 tests.",
+      "status": "completed",
+      "test_count": 594
+    },
+    {
+      "name": "Code Intelligence Report",
+      "notes": "Code intelligence aggregate report, readiness, closeout, API, schemas, and tests completed.",
+      "status": "completed",
+      "test_count": 650
     }
   ],
   "repository": "midwest24-site"

@@ -5,6 +5,24 @@ from app.connectors.repository.archive_repository_ingestor import (
     REPOSITORY_DOCUMENT_JOB_TYPE,
 )
 
+
+from app.connectors.repository.code_intelligence_closeout import (
+    CodeIntelligenceCloseout,
+    CodeIntelligenceCloseoutBuilder,
+)
+from app.connectors.repository.code_intelligence_readiness import (
+    CodeIntelligenceReadinessCheck,
+    CodeIntelligenceReadinessEvaluator,
+    CodeIntelligenceReadinessReport,
+)
+from app.connectors.repository.code_intelligence_report import (
+    CodeIntelligenceReport,
+    CodeIntelligenceReportBuilder,
+)
+from app.connectors.repository.code_intelligence_summary import (
+    CodeIntelligenceOperatorSummary,
+    CodeIntelligenceSummaryBuilder,
+)
 from app.connectors.repository.code_inventory import (
     CodeInventoryFile,
     CodeInventoryLanguageSummary,
@@ -190,6 +208,15 @@ from app.connectors.repository.source_outline_summary import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "CodeIntelligenceSummaryBuilder",
+    "CodeIntelligenceReportBuilder",
+    "CodeIntelligenceReport",
+    "CodeIntelligenceReadinessReport",
+    "CodeIntelligenceReadinessEvaluator",
+    "CodeIntelligenceReadinessCheck",
+    "CodeIntelligenceOperatorSummary",
+    "CodeIntelligenceCloseoutBuilder",
+    "CodeIntelligenceCloseout",
     "SourceOutlineSymbol",
     "SourceOutlineSummaryBuilder",
     "SourceOutlinePreviewBuilder",

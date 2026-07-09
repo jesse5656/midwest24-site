@@ -528,3 +528,29 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews repository language/file composition without parsing source code or persisting code intelligence.
+
+
+------------------------------------------------------------------------------
+
+## Code Intelligence Report API
+
+Archive now exposes a combined Code Intelligence report API.
+
+Endpoint:
+
+POST /api/v1/repository-code-intelligence-report
+
+Request fields:
+
+- repository_path
+
+Response includes:
+
+- inventory
+- outline
+- aggregate counts
+- readiness checks
+- closeout recommendation
+- operator-facing summary
+
+This endpoint aggregates repository inventory and lightweight source outline preview without persisting full code intelligence.

@@ -730,3 +730,33 @@ Deferred:
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Full code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Code intelligence report primitives added.
+- Code intelligence readiness and closeout primitives added.
+- Code intelligence report API added.
+- Code intelligence report schemas added.
+- Route registered in app main.
+- Progress ledger updated from 594 passing tests and projected to 650 after this block.
+- Tests added for report models, builder, summary, readiness, closeout, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Code intelligence aggregate report API.
+
+Current Objective:
+- Code Intelligence Preview.
+
+Next Concrete Step:
+- Add Code Intelligence objective scorecard and close the objective.
+
+Deferred:
+- Full AST parsing.
+- Symbol persistence.
+- Cross-reference graph.
+- Code intelligence embeddings.
