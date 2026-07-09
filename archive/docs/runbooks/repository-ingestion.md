@@ -554,3 +554,30 @@ Response includes:
 - operator-facing summary
 
 This endpoint aggregates repository inventory and lightweight source outline preview without persisting full code intelligence.
+
+
+------------------------------------------------------------------------------
+
+## Code Objective Scorecard
+
+Archive now exposes a Code Intelligence Preview objective scorecard.
+
+Endpoint:
+
+POST /api/v1/repository-code-objective-scorecard
+
+Request fields:
+
+- test_count
+
+Response includes:
+
+- objective_name
+- capabilities
+- test_count
+- capability_count
+- completed_capability_count
+- incomplete_capability_count
+- completion_ratio
+- is_complete
+- operator-facing summary

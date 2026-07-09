@@ -760,3 +760,32 @@ Deferred:
 - Symbol persistence.
 - Cross-reference graph.
 - Code intelligence embeddings.
+
+
+---
+
+## Session Update
+
+Status:
+- Code Intelligence Preview objective scorecard added.
+- Code objective summary builder added.
+- Code objective scorecard API added.
+- Route registered in app main.
+- Progress ledger updated from 645 passing tests and projected to 700 after this block.
+- Tests added for scorecard models, builder, summary, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Code Intelligence Preview objective scorecard.
+
+Current Objective:
+- Code Intelligence Preview.
+
+Next Concrete Step:
+- Close Code Intelligence Preview and promote the next Priority Queue item.
+
+Deferred:
+- Full AST parsing.
+- Symbol persistence.
+- Cross-reference graph.
+- Code intelligence embeddings.

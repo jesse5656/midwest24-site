@@ -65,6 +65,18 @@
       "notes": "Code intelligence aggregate report, readiness, closeout, API, schemas, and tests completed.",
       "status": "completed",
       "test_count": 650
+    },
+    {
+      "name": "Code Intelligence Report",
+      "notes": "Code intelligence aggregate report passing at 645 tests.",
+      "status": "completed",
+      "test_count": 645
+    },
+    {
+      "name": "Code Intelligence Preview",
+      "notes": "Code Intelligence Preview scorecard completed.",
+      "status": "completed",
+      "test_count": 700
     }
   ],
   "repository": "midwest24-site"

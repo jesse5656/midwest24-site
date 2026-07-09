@@ -22,6 +22,7 @@ from app.api.git_objective_scorecard import router as git_objective_scorecard_ro
 from app.api.code_inventory import router as code_inventory_router
 from app.api.source_outline import router as source_outline_router
 from app.api.code_intelligence_report import router as code_intelligence_report_router
+from app.api.code_objective_scorecard import router as code_objective_scorecard_router
 from app.api.semantic_search import router as semantic_search_router
 
 app = FastAPI(
@@ -50,6 +51,7 @@ app.include_router(git_objective_scorecard_router)
 app.include_router(code_inventory_router)
 app.include_router(source_outline_router)
 app.include_router(code_intelligence_report_router)
+app.include_router(code_objective_scorecard_router)
 app.include_router(semantic_search_router)
 
 

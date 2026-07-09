@@ -30,6 +30,16 @@ from app.connectors.repository.code_inventory import (
     CodeInventoryPreviewBuilder,
     LANGUAGE_BY_SUFFIX,
 )
+
+from app.connectors.repository.code_objective_scorecard import (
+    CodeObjectiveCapability,
+    CodeObjectiveScorecard,
+    CodeObjectiveScorecardBuilder,
+)
+from app.connectors.repository.code_objective_summary import (
+    CodeObjectiveOperatorSummary,
+    CodeObjectiveSummaryBuilder,
+)
 from app.connectors.repository.code_inventory_summary import (
     CodeInventoryOperatorSummary,
     CodeInventorySummaryBuilder,
@@ -208,6 +218,11 @@ from app.connectors.repository.source_outline_summary import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "CodeObjectiveSummaryBuilder",
+    "CodeObjectiveScorecardBuilder",
+    "CodeObjectiveScorecard",
+    "CodeObjectiveOperatorSummary",
+    "CodeObjectiveCapability",
     "CodeIntelligenceSummaryBuilder",
     "CodeIntelligenceReportBuilder",
     "CodeIntelligenceReport",
