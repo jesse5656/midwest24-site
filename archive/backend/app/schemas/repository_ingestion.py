@@ -2,6 +2,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
+from app.schemas.repository_operator_summary import RepositoryIngestionOperatorSummaryResponse
+
 
 class RepositoryIngestionCreate(BaseModel):
     entity_id: UUID
@@ -51,3 +53,4 @@ class RepositoryIngestionResponse(BaseModel):
     unsupported_files: list[RepositoryUnsupportedFileResponse]
     duplicate_files: list[RepositoryDuplicateFileResponse]
     processing_jobs_by_status: ProcessingJobStatusCountsResponse
+    summary: RepositoryIngestionOperatorSummaryResponse | None = None

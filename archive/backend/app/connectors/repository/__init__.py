@@ -4,6 +4,10 @@ from app.connectors.repository.archive_repository_ingestor import (
     ArchiveRepositoryIngestor,
     REPOSITORY_DOCUMENT_JOB_TYPE,
 )
+from app.connectors.repository.change_detector import (
+    RepositoryChangeDetector,
+    RepositoryChangeSet,
+)
 from app.connectors.repository.config import (
     REPOSITORY_ALLOWED_ROOTS_ENV,
     get_repository_allowed_roots,
@@ -19,10 +23,14 @@ from app.connectors.repository.duplicate_detector import (
     RepositoryDuplicateDetector,
     RepositoryDuplicateFile,
 )
+from app.connectors.repository.file_copier import RepositoryFileCopier
+from app.connectors.repository.file_fingerprint import RepositoryFileFingerprinter
 from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
 )
+from app.connectors.repository.incremental_ingestion import RepositoryIncrementalIngestor
+from app.connectors.repository.incremental_report import RepositoryIncrementalIngestionReport
 from app.connectors.repository.ingestion_report import (
     RepositoryIngestionFailure,
     RepositoryIngestionReport,
@@ -31,6 +39,17 @@ from app.connectors.repository.job_statistics import (
     ProcessingJobStatusCounts,
     RepositoryProcessingJobStatistics,
 )
+from app.connectors.repository.manifest import (
+    RepositoryManifest,
+    RepositoryManifestEntry,
+    RepositoryManifestStore,
+)
+from app.connectors.repository.operator_summary import (
+    RepositoryIncrementalOperatorSummary,
+    RepositoryIncrementalSummaryBuilder,
+    RepositoryIngestionOperatorSummary,
+    RepositoryIngestionSummaryBuilder,
+)
 from app.connectors.repository.path_validator import RepositoryPathValidator
 from app.connectors.repository.repository_ingestion_service import (
     RepositoryDocumentIngestor,
@@ -38,6 +57,7 @@ from app.connectors.repository.repository_ingestion_service import (
     RepositoryIngestionService,
     RepositoryProcessingJobCreator,
 )
+from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
     "ArchiveRepositoryIngestionResult",
@@ -48,20 +68,34 @@ __all__ = [
     "REPOSITORY_ALLOWED_ROOTS_ENV",
     "REPOSITORY_DOCUMENT_JOB_TYPE",
     "RepositoryAllowlist",
+    "RepositoryChangeDetector",
+    "RepositoryChangeSet",
     "RepositoryDiscoveryReport",
     "RepositoryDocumentIngestor",
     "RepositoryDuplicateDetector",
     "RepositoryDuplicateFile",
     "RepositoryFile",
+    "RepositoryFileCopier",
+    "RepositoryFileFingerprinter",
     "RepositoryFilesystemConnector",
+    "RepositoryIncrementalIngestionReport",
+    "RepositoryIncrementalIngestor",
+    "RepositoryIncrementalOperatorSummary",
+    "RepositoryIncrementalSummaryBuilder",
     "RepositoryIngestionFailure",
+    "RepositoryIngestionOperatorSummary",
     "RepositoryIngestionReport",
     "RepositoryIngestionResult",
     "RepositoryIngestionService",
+    "RepositoryIngestionSummaryBuilder",
+    "RepositoryManifest",
+    "RepositoryManifestEntry",
+    "RepositoryManifestStore",
     "RepositoryPathValidator",
     "RepositoryProcessingJobCreator",
     "RepositoryProcessingJobStatistics",
     "RepositorySkippedPath",
+    "RepositorySnapshotter",
     "RepositoryUnsupportedFile",
     "get_repository_allowed_roots",
 ]

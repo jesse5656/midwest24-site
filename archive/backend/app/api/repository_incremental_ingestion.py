@@ -2,65 +2,17 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.api.context import get_db
+from app.api.repository_ingestion import serialize_repository_ingestion_report
 from app.connectors.repository import RepositoryIncrementalIngestor, RepositoryManifestStore
+from app.connectors.repository.operator_summary import RepositoryIncrementalSummaryBuilder
 from app.schemas.repository_incremental_ingestion import (
     RepositoryChangeSetResponse,
     RepositoryIncrementalIngestionCreate,
     RepositoryIncrementalIngestionResponse,
 )
-from app.schemas.repository_ingestion import (
-    ProcessingJobStatusCountsResponse,
-    RepositoryDuplicateFileResponse,
-    RepositoryIngestionFailureResponse,
-    RepositoryIngestionResponse,
-    RepositorySkippedPathResponse,
-    RepositoryUnsupportedFileResponse,
-)
+from app.schemas.repository_operator_summary import RepositoryIncrementalOperatorSummaryResponse
 
 router = APIRouter()
-
-
-def serialize_ingestion_report(report):
-    if report is None:
-        return None
-
-    return RepositoryIngestionResponse(
-        discovered_count=report.discovered_count,
-        document_count=report.document_count,
-        processing_job_count=report.processing_job_count,
-        bytes_ingested=report.bytes_ingested,
-        elapsed_ms=report.elapsed_ms,
-        skipped_count=report.skipped_count,
-        unsupported_count=report.unsupported_count,
-        duplicate_count=report.duplicate_count,
-        failures=[
-            RepositoryIngestionFailureResponse(path=item.path, reason=item.reason)
-            for item in report.failures
-        ],
-        skipped_paths=[
-            RepositorySkippedPathResponse(path=item.path, reason=item.reason)
-            for item in report.skipped_paths
-        ],
-        unsupported_files=[
-            RepositoryUnsupportedFileResponse(
-                path=item.path,
-                suffix=item.suffix,
-                reason=item.reason,
-            )
-            for item in report.unsupported_files
-        ],
-        duplicate_files=[
-            RepositoryDuplicateFileResponse(path=item.path, reason=item.reason)
-            for item in report.duplicate_files
-        ],
-        processing_jobs_by_status=ProcessingJobStatusCountsResponse(
-            pending=report.processing_jobs_by_status.pending,
-            running=report.processing_jobs_by_status.running,
-            completed=report.processing_jobs_by_status.completed,
-            failed=report.processing_jobs_by_status.failed,
-            total=report.processing_jobs_by_status.total,
-        ),
-    )
 
 
 @router.post(
@@ -81,6 +33,8 @@ def create_repository_incremental_ingestion(
             repository_path=data.repository_path,
         )
 
+        summary = RepositoryIncrementalSummaryBuilder().build(result)
+
         return RepositoryIncrementalIngestionResponse(
             changes=RepositoryChangeSetResponse(
                 new_files=result.changes.new_files,
@@ -91,7 +45,9 @@ def create_repository_incremental_ingestion(
                 changed_count=result.changes.changed_count,
             ),
             manifest_updated=result.manifest_updated,
-            ingestion_report=serialize_ingestion_report(result.ingestion_report),
+            ingestion_report=serialize_repository_ingestion_report(result.ingestion_report)
+            if result.ingestion_report
+            else None,
             new_count=result.new_count,
             modified_count=result.modified_count,
             deleted_count=result.deleted_count,
@@ -99,6 +55,13 @@ def create_repository_incremental_ingestion(
             changed_count=result.changed_count,
             ingested_document_count=result.ingested_document_count,
             processing_job_count=result.processing_job_count,
+            summary=RepositoryIncrementalOperatorSummaryResponse(
+                outcome=summary.outcome,
+                message=summary.message,
+                action_required=summary.action_required,
+                changed_count=summary.changed_count,
+                ingested_document_count=summary.ingested_document_count,
+            ),
         )
     except FileNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
