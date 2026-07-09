@@ -581,3 +581,33 @@ Response includes:
 - completion_ratio
 - is_complete
 - operator-facing summary
+
+
+------------------------------------------------------------------------------
+
+## Archive Backend Health API
+
+Archive now exposes a backend health report API.
+
+Endpoint:
+
+POST /api/v1/archive-backend-health
+
+Request fields:
+
+- test_count
+- has_progress_ledger
+- has_operating_plan
+- has_runbook
+- has_git_intelligence
+- has_code_intelligence
+
+Response includes:
+
+- health checks
+- passed status
+- check counts
+- warning/error counts
+- operator-facing summary
+
+This endpoint gives operators a simple backend readiness check for the current Archive backend milestone.

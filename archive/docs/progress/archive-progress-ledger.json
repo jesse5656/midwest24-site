@@ -77,6 +77,18 @@
       "notes": "Code Intelligence Preview scorecard completed.",
       "status": "completed",
       "test_count": 700
+    },
+    {
+      "name": "Code Intelligence Preview",
+      "notes": "Code Intelligence Preview objective scorecard passing at 684 tests.",
+      "status": "completed",
+      "test_count": 684
+    },
+    {
+      "name": "Archive Backend Health",
+      "notes": "Archive backend health report API, schemas, summaries, evaluator, and tests completed.",
+      "status": "completed",
+      "test_count": 750
     }
   ],
   "repository": "midwest24-site"

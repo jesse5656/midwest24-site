@@ -1,4 +1,18 @@
 from app.connectors.repository.allowlist import RepositoryAllowlist
+
+from app.connectors.repository.archive_backend_health import (
+    ArchiveBackendHealthEvaluator,
+    ArchiveBackendHealthInputs,
+)
+from app.connectors.repository.repository_health import (
+    RepositoryHealthCheck,
+    RepositoryHealthReport,
+    RepositoryHealthReportBuilder,
+)
+from app.connectors.repository.repository_health_summary import (
+    RepositoryHealthOperatorSummary,
+    RepositoryHealthSummaryBuilder,
+)
 from app.connectors.repository.archive_repository_ingestor import (
     ArchiveRepositoryIngestionResult,
     ArchiveRepositoryIngestor,
@@ -218,6 +232,13 @@ from app.connectors.repository.source_outline_summary import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "RepositoryHealthSummaryBuilder",
+    "RepositoryHealthReportBuilder",
+    "RepositoryHealthReport",
+    "RepositoryHealthOperatorSummary",
+    "RepositoryHealthCheck",
+    "ArchiveBackendHealthInputs",
+    "ArchiveBackendHealthEvaluator",
     "CodeObjectiveSummaryBuilder",
     "CodeObjectiveScorecardBuilder",
     "CodeObjectiveScorecard",
