@@ -462,3 +462,33 @@ Deferred:
 - Branch analysis beyond local branch summary.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git Repository Intelligence API added.
+- Git repository intelligence schema added.
+- Git operator summary builder added.
+- API serialization helpers added.
+- Git intelligence route registered.
+- Tests added for summary building, schemas, serialization, endpoint behavior, error handling, exports, and route registration.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git Repository Intelligence API endpoint and operator summary.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Add commit history ingestion preview without persisting Git history.
+
+Deferred:
+- Git blame.
+- Commit graph analysis.
+- Branch analysis beyond local branch summary.
+- Authorship timelines.
+- Code intelligence and language parsing.

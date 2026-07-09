@@ -279,3 +279,26 @@ Current Git capabilities:
 - build a lightweight Git repository summary
 
 These primitives are read-only and do not ingest Git history into Archive yet.
+
+
+------------------------------------------------------------------------------
+
+## Git Repository Intelligence API
+
+Archive now exposes a read-only Git repository intelligence API.
+
+Endpoint:
+
+POST /api/v1/repository-git-intelligence
+
+Request fields:
+
+- repository_path
+- commit_limit
+
+Response includes:
+
+- Git repository intelligence
+- operator-facing summary
+
+The endpoint does not ingest Git history into Archive. It only reports repository metadata.

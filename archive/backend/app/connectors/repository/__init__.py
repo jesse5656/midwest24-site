@@ -37,6 +37,10 @@ from app.connectors.repository.git_branches import GitBranch, GitBranchReader
 from app.connectors.repository.git_command import GitCommandResult, GitCommandRunner
 from app.connectors.repository.git_commit import GitCommit, GitCommitParser
 from app.connectors.repository.git_history import GitHistoryReader
+from app.connectors.repository.git_operator_summary import (
+    GitRepositoryOperatorSummary,
+    GitRepositoryOperatorSummaryBuilder,
+)
 from app.connectors.repository.git_repository import GitRepositoryDetector
 from app.connectors.repository.git_status import GitStatusEntry, GitStatusReader, GitStatusReport
 from app.connectors.repository.git_summary import GitRepositorySummary, GitRepositorySummaryBuilder
@@ -92,6 +96,8 @@ __all__ = [
     "GitCommitParser",
     "GitHistoryReader",
     "GitRepositoryDetector",
+    "GitRepositoryOperatorSummary",
+    "GitRepositoryOperatorSummaryBuilder",
     "GitRepositorySummary",
     "GitRepositorySummaryBuilder",
     "GitStatusEntry",
