@@ -329,3 +329,33 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews recent Git history without persisting Git commits into Archive.
+
+
+------------------------------------------------------------------------------
+
+## Git File-Change Preview API
+
+Archive now exposes a read-only Git file-change preview API.
+
+Endpoint:
+
+POST /api/v1/repository-git-file-change-preview
+
+Request fields:
+
+- repository_path
+- limit
+
+Response includes:
+
+- commit_count
+- file_change_count
+- added_count
+- modified_count
+- deleted_count
+- renamed_count
+- touched_paths
+- commit-level file changes
+- operator-facing summary
+
+This endpoint previews file changes from Git history without persisting Git history into Archive.

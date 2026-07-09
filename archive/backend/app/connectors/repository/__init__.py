@@ -36,6 +36,18 @@ from app.connectors.repository.filesystem_repository_connector import (
 from app.connectors.repository.git_branches import GitBranch, GitBranchReader
 from app.connectors.repository.git_command import GitCommandResult, GitCommandRunner
 from app.connectors.repository.git_commit import GitCommit, GitCommitParser
+
+from app.connectors.repository.git_file_change import (
+    GitCommitFileChangeSet,
+    GitFileChange,
+    GitFileChangeParser,
+    GitFileChangePreview,
+    GitFileChangePreviewBuilder,
+)
+from app.connectors.repository.git_file_change_summary import (
+    GitFileChangeOperatorSummary,
+    GitFileChangeSummaryBuilder,
+)
 from app.connectors.repository.git_history import GitHistoryReader
 from app.connectors.repository.git_operator_summary import (
     GitRepositoryOperatorSummary,
@@ -93,6 +105,13 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "GitFileChangeSummaryBuilder",
+    "GitFileChangeOperatorSummary",
+    "GitFileChangePreviewBuilder",
+    "GitFileChangePreview",
+    "GitFileChangeParser",
+    "GitFileChange",
+    "GitCommitFileChangeSet",
     "ArchiveRepositoryIngestionResult",
     "ArchiveRepositoryIngestor",
     "DEFAULT_REPOSITORY_EXCLUDED_DIRS",

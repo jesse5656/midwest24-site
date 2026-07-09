@@ -522,3 +522,33 @@ Deferred:
 - Branch analysis beyond local branch summary.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git file-change preview primitives added.
+- Git file-change preview API added.
+- Git file-change schemas added.
+- Git file-change operator summary added.
+- Route registered in app main.
+- Tests added for file-change models, parser, builder, summary, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git file-change preview API.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Add Git authorship preview without persisting author timelines.
+
+Deferred:
+- Git blame.
+- Commit graph analysis.
+- Branch analysis beyond local branch summary.
+- Authorship timelines persistence.
+- Code intelligence and language parsing.
