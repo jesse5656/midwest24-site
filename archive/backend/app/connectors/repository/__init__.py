@@ -4,6 +4,18 @@ from app.connectors.repository.archive_repository_ingestor import (
     ArchiveRepositoryIngestor,
     REPOSITORY_DOCUMENT_JOB_TYPE,
 )
+
+from app.connectors.repository.code_inventory import (
+    CodeInventoryFile,
+    CodeInventoryLanguageSummary,
+    CodeInventoryPreview,
+    CodeInventoryPreviewBuilder,
+    LANGUAGE_BY_SUFFIX,
+)
+from app.connectors.repository.code_inventory_summary import (
+    CodeInventoryOperatorSummary,
+    CodeInventorySummaryBuilder,
+)
 from app.connectors.repository.change_detector import (
     RepositoryChangeDetector,
     RepositoryChangeSet,
@@ -166,6 +178,13 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "LANGUAGE_BY_SUFFIX",
+    "CodeInventorySummaryBuilder",
+    "CodeInventoryPreviewBuilder",
+    "CodeInventoryPreview",
+    "CodeInventoryOperatorSummary",
+    "CodeInventoryLanguageSummary",
+    "CodeInventoryFile",
     "GitObjectiveSummaryBuilder",
     "GitObjectiveScorecardBuilder",
     "GitObjectiveScorecard",

@@ -670,3 +670,33 @@ Deferred:
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Code inventory preview primitives added.
+- Code inventory preview API added.
+- Code inventory schemas added.
+- Code inventory operator summary added.
+- Route registered in app main.
+- Progress ledger updated from 509 passing tests and projected to 550 after this block.
+- Tests added for inventory models, builder, summary, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Code inventory preview API.
+
+Current Objective:
+- Code Intelligence Preview.
+
+Next Concrete Step:
+- Add source-file outline preview without full language parsing.
+
+Deferred:
+- Git blame.
+- Commit graph persistence.
+- Authorship timelines persistence.
+- Full code intelligence and language parsing.

@@ -17,6 +17,18 @@
       "notes": "Git intelligence APIs, previews, branch analysis, report, progress tracking, and objective scorecard completed.",
       "status": "completed",
       "test_count": 520
+    },
+    {
+      "name": "Git Repository Intelligence",
+      "notes": "Git Repository Intelligence scorecard block passing at 509 tests.",
+      "status": "in_progress",
+      "test_count": 509
+    },
+    {
+      "name": "Code Inventory Preview",
+      "notes": "Repository code inventory preview API, schemas, summaries, and tests completed.",
+      "status": "completed",
+      "test_count": 550
     }
   ],
   "repository": "midwest24-site"
