@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import shutil
 import time
 from pathlib import Path
 from uuid import UUID, uuid4
@@ -12,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.connectors.repository.allowlist import RepositoryAllowlist
 from app.connectors.repository.config import get_repository_allowed_roots
 from app.connectors.repository.duplicate_detector import RepositoryDuplicateDetector
+from app.connectors.repository.file_copier import RepositoryFileCopier
 from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
@@ -35,31 +35,12 @@ logger = logging.getLogger(__name__)
 
 
 class ArchiveRepositoryIngestor:
-    """
-    Ingests supported files from a local repository into the existing Archive pipeline.
-
-    Scope:
-    - Discover repository files.
-    - Validate the repository path.
-    - Enforce configured allowed roots.
-    - Report skipped paths, unsupported files, duplicates, failures, bytes, elapsed time, and job status counts.
-    - Copy new supported files into Archive document storage.
-    - Create Document rows tied to the provided entity.
-    - Create ProcessingJob rows for each new document.
-
-    Explicitly deferred:
-    - Git history.
-    - Git blame.
-    - Commit graph analysis.
-    - Branch analysis.
-    - Code intelligence.
-    """
-
-    def __init__(self, db: Session):
+    def __init__(self, db: Session, file_copier: RepositoryFileCopier | None = None):
         self.db = db
         self.entity_repository = EntityRepository(db)
         self.document_repository = DocumentRepository(db)
         self.processing_job_service = ProcessingJobService(db)
+        self.file_copier = file_copier or RepositoryFileCopier()
 
     def ingest_repository(
         self,
@@ -118,6 +99,7 @@ class ArchiveRepositoryIngestor:
                 processing_job_count += 1
 
             except Exception as exc:
+                self.db.rollback()
                 failures.append(
                     RepositoryIngestionFailure(
                         path=repository_file.relative_path,
@@ -184,7 +166,7 @@ class ArchiveRepositoryIngestor:
         storage_name = f"{uuid4()}-{safe_name}"
         storage_path = storage_root / storage_name
 
-        shutil.copyfile(repository_file.path, storage_path)
+        self.file_copier.copy(repository_file.path, storage_path)
 
         return self.document_repository.create(
             entity_id=entity_id,

@@ -101,6 +101,24 @@
       "notes": "Archive backend milestone scorecard, readiness, closeout, API, schemas, and tests completed.",
       "status": "completed",
       "test_count": 800
+    },
+    {
+      "name": "Archive Backend Milestone",
+      "notes": "Archive backend milestone scorecard passing at 773 tests.",
+      "status": "completed",
+      "test_count": 773
+    },
+    {
+      "name": "Archive Backend Milestone",
+      "notes": "Archive backend milestone scorecard passing at 773 tests.",
+      "status": "completed",
+      "test_count": 773
+    },
+    {
+      "name": "Session Transition Prompt",
+      "notes": "Session transition prompt API passing at 825 tests.",
+      "status": "completed",
+      "test_count": 825
     }
   ],
   "repository": "midwest24-site"

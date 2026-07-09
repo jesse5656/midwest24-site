@@ -25,6 +25,12 @@ from app.api.code_intelligence_report import router as code_intelligence_report_
 from app.api.code_objective_scorecard import router as code_objective_scorecard_router
 from app.api.repository_health import router as repository_health_router
 from app.api.backend_milestone import router as backend_milestone_router
+from app.api.session_transition import router as session_transition_router
+from app.api.operator_execution_rule import router as operator_execution_rule_router
+from app.api.operator_execution_checklist import router as operator_execution_checklist_router
+from app.api.operator_session_guard import router as operator_session_guard_router
+from app.api.operator_progress_target import router as operator_progress_target_router
+from app.api.milestone_closeout_package import router as milestone_closeout_package_router
 from app.api.semantic_search import router as semantic_search_router
 
 app = FastAPI(
@@ -56,6 +62,12 @@ app.include_router(code_intelligence_report_router)
 app.include_router(code_objective_scorecard_router)
 app.include_router(repository_health_router)
 app.include_router(backend_milestone_router)
+app.include_router(session_transition_router)
+app.include_router(operator_execution_rule_router)
+app.include_router(operator_execution_checklist_router)
+app.include_router(operator_session_guard_router)
+app.include_router(operator_progress_target_router)
+app.include_router(milestone_closeout_package_router)
 app.include_router(semantic_search_router)
 
 
