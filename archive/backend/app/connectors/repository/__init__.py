@@ -8,6 +8,10 @@ from app.connectors.repository.change_detector import (
     RepositoryChangeDetector,
     RepositoryChangeSet,
 )
+from app.connectors.repository.closeout import (
+    RepositoryObjectiveCloseout,
+    RepositoryObjectiveCloseoutBuilder,
+)
 from app.connectors.repository.config import (
     REPOSITORY_ALLOWED_ROOTS_ENV,
     get_repository_allowed_roots,
@@ -55,6 +59,11 @@ from app.connectors.repository.operator_summary import (
     RepositoryIngestionSummaryBuilder,
 )
 from app.connectors.repository.path_validator import RepositoryPathValidator
+from app.connectors.repository.readiness import (
+    RepositoryObjectiveReadinessEvaluator,
+    RepositoryReadinessCheck,
+    RepositoryReadinessReport,
+)
 from app.connectors.repository.repository_ingestion_service import (
     RepositoryDocumentIngestor,
     RepositoryIngestionResult,
@@ -95,11 +104,16 @@ __all__ = [
     "RepositoryManifest",
     "RepositoryManifestEntry",
     "RepositoryManifestStore",
+    "RepositoryObjectiveCloseout",
+    "RepositoryObjectiveCloseoutBuilder",
+    "RepositoryObjectiveReadinessEvaluator",
     "RepositoryObjectiveSummary",
     "RepositoryObjectiveSummaryBuilder",
     "RepositoryPathValidator",
     "RepositoryProcessingJobCreator",
     "RepositoryProcessingJobStatistics",
+    "RepositoryReadinessCheck",
+    "RepositoryReadinessReport",
     "RepositorySkippedPath",
     "RepositorySnapshotter",
     "RepositoryUnsupportedFile",

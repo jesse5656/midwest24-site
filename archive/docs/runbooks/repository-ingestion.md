@@ -235,3 +235,27 @@ Objective summaries aggregate repository ingestion reports and expose:
 - is_complete
 
 This provides a final operator-facing rollup for closing the Repository Ingestion Observability objective.
+
+
+------------------------------------------------------------------------------
+
+## Repository Objective Readiness and Closeout
+
+Repository ingestion now includes objective readiness and closeout primitives.
+
+Readiness checks:
+
+- no_failures
+- documents_created
+- jobs_created
+- no_action_required
+
+Closeout reports expose:
+
+- objective_name
+- status
+- can_close
+- readiness
+- next_action
+
+A repository ingestion objective can close only when summary completion and readiness checks both pass.

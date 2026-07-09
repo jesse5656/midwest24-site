@@ -400,3 +400,32 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository objective readiness primitives added.
+- Repository objective closeout primitives added.
+- Readiness schemas added.
+- Tests added for readiness reports, readiness evaluator, closeout builder, schemas, integration behavior, exports, and operator-readable messages.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository objective readiness and closeout primitives.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Mark Repository Ingestion Observability complete and promote Git Repository Intelligence from the Priority Queue.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.
