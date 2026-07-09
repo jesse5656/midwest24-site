@@ -33,6 +33,13 @@ from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFile,
     RepositoryFilesystemConnector,
 )
+from app.connectors.repository.git_branches import GitBranch, GitBranchReader
+from app.connectors.repository.git_command import GitCommandResult, GitCommandRunner
+from app.connectors.repository.git_commit import GitCommit, GitCommitParser
+from app.connectors.repository.git_history import GitHistoryReader
+from app.connectors.repository.git_repository import GitRepositoryDetector
+from app.connectors.repository.git_status import GitStatusEntry, GitStatusReader, GitStatusReport
+from app.connectors.repository.git_summary import GitRepositorySummary, GitRepositorySummaryBuilder
 from app.connectors.repository.incremental_ingestion import RepositoryIncrementalIngestor
 from app.connectors.repository.incremental_report import RepositoryIncrementalIngestionReport
 from app.connectors.repository.ingestion_report import (
@@ -77,6 +84,19 @@ __all__ = [
     "ArchiveRepositoryIngestor",
     "DEFAULT_REPOSITORY_EXCLUDED_DIRS",
     "DEFAULT_REPOSITORY_INCLUDED_SUFFIXES",
+    "GitBranch",
+    "GitBranchReader",
+    "GitCommandResult",
+    "GitCommandRunner",
+    "GitCommit",
+    "GitCommitParser",
+    "GitHistoryReader",
+    "GitRepositoryDetector",
+    "GitRepositorySummary",
+    "GitRepositorySummaryBuilder",
+    "GitStatusEntry",
+    "GitStatusReader",
+    "GitStatusReport",
     "ProcessingJobStatusCounts",
     "REPOSITORY_ALLOWED_ROOTS_ENV",
     "REPOSITORY_DOCUMENT_JOB_TYPE",

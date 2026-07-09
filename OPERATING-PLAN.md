@@ -429,3 +429,36 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git Repository Intelligence primitives added.
+- Git command runner added.
+- Git repository detector added.
+- Git commit parser added.
+- Git history reader added.
+- Git status reader added.
+- Git branch reader added.
+- Git repository summary builder added.
+- Tests added for command results, commit parsing, history reader, status reader, branch reader, repository detector, and summary builder.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git Repository Intelligence primitives.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Add Git intelligence API endpoint and operator-facing summary schema.
+
+Deferred:
+- Git blame.
+- Commit graph analysis.
+- Branch analysis beyond local branch summary.
+- Authorship timelines.
+- Code intelligence and language parsing.

@@ -259,3 +259,23 @@ Closeout reports expose:
 - next_action
 
 A repository ingestion objective can close only when summary completion and readiness checks both pass.
+
+
+------------------------------------------------------------------------------
+
+## Git Repository Intelligence Primitives
+
+Archive now includes read-only Git repository intelligence primitives.
+
+Current Git capabilities:
+
+- detect whether a local path is a Git work tree
+- resolve repository root
+- read current branch
+- parse commit log output
+- read recent commits
+- read short status
+- read local branches
+- build a lightweight Git repository summary
+
+These primitives are read-only and do not ingest Git history into Archive yet.
