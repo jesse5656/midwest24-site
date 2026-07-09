@@ -18,6 +18,7 @@ from app.api.git_file_change_preview import router as git_file_change_preview_ro
 from app.api.git_authorship_preview import router as git_authorship_preview_router
 from app.api.git_intelligence_report import router as git_intelligence_report_router
 from app.api.git_branch_analysis import router as git_branch_analysis_router
+from app.api.git_objective_scorecard import router as git_objective_scorecard_router
 from app.api.semantic_search import router as semantic_search_router
 
 app = FastAPI(
@@ -42,6 +43,7 @@ app.include_router(git_file_change_preview_router)
 app.include_router(git_authorship_preview_router)
 app.include_router(git_intelligence_report_router)
 app.include_router(git_branch_analysis_router)
+app.include_router(git_objective_scorecard_router)
 app.include_router(semantic_search_router)
 
 

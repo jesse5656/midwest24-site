@@ -1,0 +1,23 @@
+{
+  "checkpoints": [
+    {
+      "name": "Repository Ingestion Observability",
+      "notes": "Repository ingestion observability, incremental ingestion, summaries, and closeout primitives completed.",
+      "status": "completed",
+      "test_count": 177
+    },
+    {
+      "name": "Git Repository Intelligence",
+      "notes": "Git intelligence primitives, APIs, previews, report, and branch analysis completed.",
+      "status": "in_progress",
+      "test_count": 443
+    },
+    {
+      "name": "Git Repository Intelligence",
+      "notes": "Git intelligence APIs, previews, branch analysis, report, progress tracking, and objective scorecard completed.",
+      "status": "completed",
+      "test_count": 520
+    }
+  ],
+  "repository": "midwest24-site"
+}

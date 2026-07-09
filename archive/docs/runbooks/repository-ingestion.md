@@ -443,3 +443,32 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews local Git branch structure without persisting branch analysis into Archive.
+
+
+------------------------------------------------------------------------------
+
+## Git Objective Scorecard
+
+Archive now exposes a Git Repository Intelligence objective scorecard.
+
+Endpoint:
+
+POST /api/v1/repository-git-objective-scorecard
+
+Request fields:
+
+- test_count
+
+Response includes:
+
+- objective_name
+- capabilities
+- test_count
+- capability_count
+- completed_capability_count
+- incomplete_capability_count
+- completion_ratio
+- is_complete
+- operator-facing summary
+
+This gives operators a direct way to evaluate whether the Git Repository Intelligence objective is complete.

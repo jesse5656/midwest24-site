@@ -641,3 +641,32 @@ Deferred:
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git Repository Intelligence objective scorecard added.
+- Git objective summary builder added.
+- Git objective scorecard API added.
+- Route registered in app main.
+- Progress ledger updated with Git Repository Intelligence completion checkpoint.
+- Tests added for scorecard models, builder, summary, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git Repository Intelligence objective scorecard.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Close Git Repository Intelligence and promote the next Priority Queue item.
+
+Deferred:
+- Git blame.
+- Commit graph persistence.
+- Authorship timelines persistence.
+- Code intelligence and language parsing.

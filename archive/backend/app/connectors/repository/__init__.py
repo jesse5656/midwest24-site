@@ -78,6 +78,20 @@ from app.connectors.repository.git_intelligence_readiness import (
     GitIntelligenceReadinessEvaluator,
     GitIntelligenceReadinessReport,
 )
+
+from app.connectors.repository.git_intelligence_progress import (
+    GitIntelligenceProgress,
+    GitIntelligenceProgressBuilder,
+)
+from app.connectors.repository.progress_ledger import (
+    RepositoryProgressCheckpoint,
+    RepositoryProgressLedger,
+    RepositoryProgressLedgerStore,
+)
+from app.connectors.repository.progress_summary import (
+    RepositoryProgressSummary,
+    RepositoryProgressSummaryBuilder,
+)
 from app.connectors.repository.git_intelligence_report import (
     GitIntelligenceReport,
     GitIntelligenceReportBuilder,
@@ -85,6 +99,16 @@ from app.connectors.repository.git_intelligence_report import (
 from app.connectors.repository.git_intelligence_summary import (
     GitIntelligenceOperatorSummary,
     GitIntelligenceSummaryBuilder,
+)
+
+from app.connectors.repository.git_objective_scorecard import (
+    GitObjectiveCapability,
+    GitObjectiveScorecard,
+    GitObjectiveScorecardBuilder,
+)
+from app.connectors.repository.git_objective_summary import (
+    GitObjectiveOperatorSummary,
+    GitObjectiveSummaryBuilder,
 )
 from app.connectors.repository.git_operator_summary import (
     GitRepositoryOperatorSummary,
@@ -142,6 +166,18 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "GitObjectiveSummaryBuilder",
+    "GitObjectiveScorecardBuilder",
+    "GitObjectiveScorecard",
+    "GitObjectiveOperatorSummary",
+    "GitObjectiveCapability",
+    "RepositoryProgressSummaryBuilder",
+    "RepositoryProgressSummary",
+    "RepositoryProgressLedgerStore",
+    "RepositoryProgressLedger",
+    "RepositoryProgressCheckpoint",
+    "GitIntelligenceProgressBuilder",
+    "GitIntelligenceProgress",
     "GitBranchAnalysisSummaryBuilder",
     "GitBranchAnalysisOperatorSummary",
     "GitBranchAnalysisBuilder",
