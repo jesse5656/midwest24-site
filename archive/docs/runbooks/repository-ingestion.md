@@ -359,3 +359,31 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews file changes from Git history without persisting Git history into Archive.
+
+
+------------------------------------------------------------------------------
+
+## Git Authorship Preview API
+
+Archive now exposes a read-only Git authorship preview API.
+
+Endpoint:
+
+POST /api/v1/repository-git-authorship-preview
+
+Request fields:
+
+- repository_path
+- limit
+
+Response includes:
+
+- commit_count
+- author_count
+- authors
+- top_author
+- first_authored_at
+- last_authored_at
+- operator-facing summary
+
+This endpoint previews authorship from recent Git history without persisting author timelines into Archive.

@@ -34,6 +34,16 @@ from app.connectors.repository.filesystem_repository_connector import (
     RepositoryFilesystemConnector,
 )
 from app.connectors.repository.git_branches import GitBranch, GitBranchReader
+
+from app.connectors.repository.git_authorship import (
+    GitAuthorSummary,
+    GitAuthorshipPreview,
+    GitAuthorshipPreviewBuilder,
+)
+from app.connectors.repository.git_authorship_summary import (
+    GitAuthorshipOperatorSummary,
+    GitAuthorshipSummaryBuilder,
+)
 from app.connectors.repository.git_command import GitCommandResult, GitCommandRunner
 from app.connectors.repository.git_commit import GitCommit, GitCommitParser
 
@@ -105,6 +115,11 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "GitAuthorshipSummaryBuilder",
+    "GitAuthorshipOperatorSummary",
+    "GitAuthorshipPreviewBuilder",
+    "GitAuthorshipPreview",
+    "GitAuthorSummary",
     "GitFileChangeSummaryBuilder",
     "GitFileChangeOperatorSummary",
     "GitFileChangePreviewBuilder",

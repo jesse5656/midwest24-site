@@ -552,3 +552,33 @@ Deferred:
 - Branch analysis beyond local branch summary.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git authorship preview primitives added.
+- Git authorship preview API added.
+- Git authorship schemas added.
+- Git authorship operator summary added.
+- Route registered in app main.
+- Tests added for authorship models, builder, summary, schemas, serialization, API behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git authorship preview API.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Add Git repository intelligence closeout summary and prepare objective completion.
+
+Deferred:
+- Git blame.
+- Commit graph analysis.
+- Branch analysis beyond local branch summary.
+- Authorship timelines persistence.
+- Code intelligence and language parsing.
