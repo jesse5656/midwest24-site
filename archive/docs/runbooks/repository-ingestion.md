@@ -213,3 +213,25 @@ Failure behavior:
 The incremental ingestion API serializes nested repository ingestion reports into the public response schema.
 
 This keeps internal dataclass reports separate from API response models while preserving operator-facing metadata.
+
+
+------------------------------------------------------------------------------
+
+## Repository Objective Summary
+
+Repository ingestion now includes objective-level summary primitives.
+
+Objective summaries aggregate repository ingestion reports and expose:
+
+- objective_name
+- status
+- total_documents
+- total_processing_jobs
+- total_failures
+- total_duplicates
+- total_unsupported
+- total_skipped
+- action_required
+- is_complete
+
+This provides a final operator-facing rollup for closing the Repository Ingestion Observability objective.

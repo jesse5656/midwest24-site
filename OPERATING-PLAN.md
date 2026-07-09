@@ -370,3 +370,33 @@ Deferred:
 - Branch analysis.
 - Authorship timelines.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Repository objective summary primitives added.
+- Objective summary builder can aggregate normal ingestion reports.
+- Objective summary builder can aggregate incremental ingestion reports.
+- Objective summary schema added.
+- Tests added for totals, failures, duplicates, empty report lists, incremental reports, and schema serialization.
+- Repository ingestion runbook updated.
+
+Completed:
+- Repository objective summary primitives.
+
+Current Objective:
+- Repository Ingestion Observability.
+
+Next Concrete Step:
+- Close Repository Ingestion Observability objective and promote the next Priority Queue item.
+
+Deferred:
+- Git history ingestion.
+- Git blame.
+- Commit graph analysis.
+- Branch analysis.
+- Authorship timelines.
+- Code intelligence and language parsing.

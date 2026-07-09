@@ -44,6 +44,10 @@ from app.connectors.repository.manifest import (
     RepositoryManifestEntry,
     RepositoryManifestStore,
 )
+from app.connectors.repository.objective_summary import (
+    RepositoryObjectiveSummary,
+    RepositoryObjectiveSummaryBuilder,
+)
 from app.connectors.repository.operator_summary import (
     RepositoryIncrementalOperatorSummary,
     RepositoryIncrementalSummaryBuilder,
@@ -91,6 +95,8 @@ __all__ = [
     "RepositoryManifest",
     "RepositoryManifestEntry",
     "RepositoryManifestStore",
+    "RepositoryObjectiveSummary",
+    "RepositoryObjectiveSummaryBuilder",
     "RepositoryPathValidator",
     "RepositoryProcessingJobCreator",
     "RepositoryProcessingJobStatistics",
