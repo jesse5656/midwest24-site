@@ -16,6 +16,7 @@ from app.api.git_repository_intelligence import router as git_repository_intelli
 from app.api.git_commit_preview import router as git_commit_preview_router
 from app.api.git_file_change_preview import router as git_file_change_preview_router
 from app.api.git_authorship_preview import router as git_authorship_preview_router
+from app.api.git_intelligence_report import router as git_intelligence_report_router
 from app.api.semantic_search import router as semantic_search_router
 
 app = FastAPI(
@@ -38,6 +39,7 @@ app.include_router(git_repository_intelligence_router)
 app.include_router(git_commit_preview_router)
 app.include_router(git_file_change_preview_router)
 app.include_router(git_authorship_preview_router)
+app.include_router(git_intelligence_report_router)
 app.include_router(semantic_search_router)
 
 

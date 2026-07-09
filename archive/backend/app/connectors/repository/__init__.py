@@ -59,6 +59,24 @@ from app.connectors.repository.git_file_change_summary import (
     GitFileChangeSummaryBuilder,
 )
 from app.connectors.repository.git_history import GitHistoryReader
+
+from app.connectors.repository.git_intelligence_closeout import (
+    GitIntelligenceCloseout,
+    GitIntelligenceCloseoutBuilder,
+)
+from app.connectors.repository.git_intelligence_readiness import (
+    GitIntelligenceReadinessCheck,
+    GitIntelligenceReadinessEvaluator,
+    GitIntelligenceReadinessReport,
+)
+from app.connectors.repository.git_intelligence_report import (
+    GitIntelligenceReport,
+    GitIntelligenceReportBuilder,
+)
+from app.connectors.repository.git_intelligence_summary import (
+    GitIntelligenceOperatorSummary,
+    GitIntelligenceSummaryBuilder,
+)
 from app.connectors.repository.git_operator_summary import (
     GitRepositoryOperatorSummary,
     GitRepositoryOperatorSummaryBuilder,
@@ -115,6 +133,15 @@ from app.connectors.repository.repository_ingestion_service import (
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "GitIntelligenceSummaryBuilder",
+    "GitIntelligenceReportBuilder",
+    "GitIntelligenceReport",
+    "GitIntelligenceReadinessReport",
+    "GitIntelligenceReadinessEvaluator",
+    "GitIntelligenceReadinessCheck",
+    "GitIntelligenceOperatorSummary",
+    "GitIntelligenceCloseoutBuilder",
+    "GitIntelligenceCloseout",
     "GitAuthorshipSummaryBuilder",
     "GitAuthorshipOperatorSummary",
     "GitAuthorshipPreviewBuilder",

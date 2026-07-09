@@ -387,3 +387,31 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews authorship from recent Git history without persisting author timelines into Archive.
+
+
+------------------------------------------------------------------------------
+
+## Git Intelligence Report API
+
+Archive now exposes a combined read-only Git intelligence report API.
+
+Endpoint:
+
+POST /api/v1/repository-git-intelligence-report
+
+Request fields:
+
+- repository_path
+- limit
+
+Response includes:
+
+- repository intelligence
+- commit preview
+- file-change preview
+- authorship preview
+- readiness checks
+- closeout recommendation
+- operator-facing summary
+
+This endpoint aggregates Git intelligence without persisting Git history into Archive.

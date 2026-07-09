@@ -582,3 +582,33 @@ Deferred:
 - Branch analysis beyond local branch summary.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
+
+
+---
+
+## Session Update
+
+Status:
+- Git intelligence report primitives added.
+- Git intelligence readiness and closeout primitives added.
+- Combined Git intelligence report API added.
+- Git intelligence report schemas added.
+- Route registered in app main.
+- Tests added for report models, builder, summary, readiness, closeout, schemas, API serialization, endpoint behavior, route registration, and exports.
+- Repository ingestion runbook updated.
+
+Completed:
+- Git intelligence report API and closeout primitives.
+
+Current Objective:
+- Git Repository Intelligence.
+
+Next Concrete Step:
+- Mark Git Repository Intelligence complete and promote the next Priority Queue item.
+
+Deferred:
+- Git blame.
+- Commit graph analysis.
+- Branch analysis beyond local branch summary.
+- Authorship timelines persistence.
+- Code intelligence and language parsing.
