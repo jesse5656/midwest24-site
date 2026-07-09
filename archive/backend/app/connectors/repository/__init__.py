@@ -41,6 +41,15 @@ from app.connectors.repository.git_operator_summary import (
     GitRepositoryOperatorSummary,
     GitRepositoryOperatorSummaryBuilder,
 )
+from app.connectors.repository.git_preview import (
+    GitAuthorContribution,
+    GitCommitPreview,
+    GitCommitPreviewBuilder,
+)
+from app.connectors.repository.git_preview_summary import (
+    GitCommitPreviewOperatorSummary,
+    GitCommitPreviewSummaryBuilder,
+)
 from app.connectors.repository.git_repository import GitRepositoryDetector
 from app.connectors.repository.git_status import GitStatusEntry, GitStatusReader, GitStatusReport
 from app.connectors.repository.git_summary import GitRepositorySummary, GitRepositorySummaryBuilder
@@ -88,12 +97,17 @@ __all__ = [
     "ArchiveRepositoryIngestor",
     "DEFAULT_REPOSITORY_EXCLUDED_DIRS",
     "DEFAULT_REPOSITORY_INCLUDED_SUFFIXES",
+    "GitAuthorContribution",
     "GitBranch",
     "GitBranchReader",
     "GitCommandResult",
     "GitCommandRunner",
     "GitCommit",
     "GitCommitParser",
+    "GitCommitPreview",
+    "GitCommitPreviewBuilder",
+    "GitCommitPreviewOperatorSummary",
+    "GitCommitPreviewSummaryBuilder",
     "GitHistoryReader",
     "GitRepositoryDetector",
     "GitRepositoryOperatorSummary",

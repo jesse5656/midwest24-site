@@ -302,3 +302,30 @@ Response includes:
 - operator-facing summary
 
 The endpoint does not ingest Git history into Archive. It only reports repository metadata.
+
+
+------------------------------------------------------------------------------
+
+## Git Commit Preview API
+
+Archive now exposes a read-only Git commit preview API.
+
+Endpoint:
+
+POST /api/v1/repository-git-commit-preview
+
+Request fields:
+
+- repository_path
+- limit
+
+Response includes:
+
+- commit_count
+- commits
+- authors
+- latest_commit
+- oldest_commit
+- operator-facing summary
+
+This endpoint previews recent Git history without persisting Git commits into Archive.

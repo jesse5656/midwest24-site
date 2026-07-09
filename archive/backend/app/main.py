@@ -13,6 +13,7 @@ from app.api.processing_jobs import router as processing_jobs_router
 from app.api.repository_ingestion import router as repository_ingestion_router
 from app.api.repository_incremental_ingestion import router as repository_incremental_ingestion_router
 from app.api.git_repository_intelligence import router as git_repository_intelligence_router
+from app.api.git_commit_preview import router as git_commit_preview_router
 from app.api.semantic_search import router as semantic_search_router
 
 app = FastAPI(
@@ -32,6 +33,7 @@ app.include_router(processing_jobs_router)
 app.include_router(repository_ingestion_router)
 app.include_router(repository_incremental_ingestion_router)
 app.include_router(git_repository_intelligence_router)
+app.include_router(git_commit_preview_router)
 app.include_router(semantic_search_router)
 
 
