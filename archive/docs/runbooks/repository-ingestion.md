@@ -500,3 +500,31 @@ Response includes:
 - operator-facing summary
 
 This endpoint previews repository language/file composition without parsing source code or persisting code intelligence.
+
+
+------------------------------------------------------------------------------
+
+## Code Inventory Preview API
+
+Archive now exposes a repository code inventory preview API.
+
+Endpoint:
+
+POST /api/v1/repository-code-inventory
+
+Request fields:
+
+- repository_path
+
+Response includes:
+
+- file_count
+- total_size_bytes
+- language_count
+- languages
+- largest_file
+- language_summaries
+- files
+- operator-facing summary
+
+This endpoint previews repository language/file composition without parsing source code or persisting code intelligence.

@@ -175,9 +175,28 @@ from app.connectors.repository.repository_ingestion_service import (
     RepositoryIngestionService,
     RepositoryProcessingJobCreator,
 )
+
+from app.connectors.repository.source_outline import (
+    SourceOutlineFile,
+    SourceOutlineParser,
+    SourceOutlinePreview,
+    SourceOutlinePreviewBuilder,
+    SourceOutlineSymbol,
+)
+from app.connectors.repository.source_outline_summary import (
+    SourceOutlineOperatorSummary,
+    SourceOutlineSummaryBuilder,
+)
 from app.connectors.repository.snapshot import RepositorySnapshotter
 
 __all__ = [
+    "SourceOutlineSymbol",
+    "SourceOutlineSummaryBuilder",
+    "SourceOutlinePreviewBuilder",
+    "SourceOutlinePreview",
+    "SourceOutlineParser",
+    "SourceOutlineOperatorSummary",
+    "SourceOutlineFile",
     "LANGUAGE_BY_SUFFIX",
     "CodeInventorySummaryBuilder",
     "CodeInventoryPreviewBuilder",
