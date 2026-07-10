@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from app.api.repository_cross_reference_graph import router as repository_cross_reference_graph_router
+from app.api.repository_symbol_index import router as repository_symbol_index_router
+from app.api.repository_import_graph import router as repository_import_graph_router
 from app.api.repository_dependency_map import router as repository_dependency_map_router
 from sqlalchemy import text
 
@@ -91,3 +94,9 @@ app.include_router(repository_structure_router)
 app.include_router(repository_package_map_router)
 
 app.include_router(repository_dependency_map_router)
+
+app.include_router(repository_import_graph_router)
+
+app.include_router(repository_symbol_index_router)
+
+app.include_router(repository_cross_reference_graph_router)
