@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from app.api.repository_search_index import router as repository_search_index_router
+from app.api.repository_semantic_search import router as repository_semantic_search_router
 from app.api.repository_architecture_report import router as repository_architecture_report_router
 from app.api.repository_summary import router as repository_summary_router
 from app.api.repository_knowledge_graph import router as repository_knowledge_graph_router
@@ -112,3 +114,7 @@ app.include_router(repository_knowledge_graph_router)
 app.include_router(repository_summary_router)
 
 app.include_router(repository_architecture_report_router)
+
+app.include_router(repository_semantic_search_router)
+
+app.include_router(repository_search_index_router)
