@@ -62,7 +62,6 @@ class RepositoryIntelligenceSnapshot:
 
     def canonical_payload(self) -> dict[str, Any]:
         return {
-            "repository_name": self.repository_name,
             "metrics": [
                 {
                     "name": metric.name,
