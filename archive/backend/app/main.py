@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from app.api.repository_intelligence_report import router as repository_intelligence_report_router
+from app.api.repository_intelligence_dashboard import router as repository_intelligence_dashboard_router
 from app.api.repository_drift_detection import router as repository_drift_detection_router
 from app.api.repository_search_index import router as repository_search_index_router
 from app.api.repository_semantic_search import router as repository_semantic_search_router
@@ -121,3 +123,7 @@ app.include_router(repository_semantic_search_router)
 app.include_router(repository_search_index_router)
 
 app.include_router(repository_drift_detection_router)
+
+app.include_router(repository_intelligence_dashboard_router)
+
+app.include_router(repository_intelligence_report_router)
