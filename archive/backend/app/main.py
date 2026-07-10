@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from app.api.repository_summary import router as repository_summary_router
+from app.api.repository_knowledge_graph import router as repository_knowledge_graph_router
+from app.api.engineering_progress import router as engineering_progress_router
 from app.api.repository_cross_reference_graph import router as repository_cross_reference_graph_router
 from app.api.repository_symbol_index import router as repository_symbol_index_router
 from app.api.repository_import_graph import router as repository_import_graph_router
@@ -100,3 +103,9 @@ app.include_router(repository_import_graph_router)
 app.include_router(repository_symbol_index_router)
 
 app.include_router(repository_cross_reference_graph_router)
+
+app.include_router(engineering_progress_router)
+
+app.include_router(repository_knowledge_graph_router)
+
+app.include_router(repository_summary_router)
