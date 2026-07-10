@@ -119,6 +119,18 @@
       "notes": "Session transition prompt API passing at 825 tests.",
       "status": "completed",
       "test_count": 825
+    },
+    {
+      "name": "Repository Intelligence Graph APIs",
+      "test_count": 3208,
+      "status": "completed",
+      "notes": "Repository structure, package map, dependency map, import graph, symbol index, and cross-reference graph completed."
+    },
+    {
+      "name": "Engineering Progress API",
+      "test_count": 3208,
+      "status": "in_progress",
+      "notes": "Current engineering progress reporting endpoint started."
     }
   ],
   "repository": "midwest24-site"
