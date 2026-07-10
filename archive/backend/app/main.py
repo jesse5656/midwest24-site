@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.repository_intelligence_snapshot import router as repository_intelligence_snapshot_router
 from app.api.repository_intelligence_report import router as repository_intelligence_report_router
 from app.api.repository_intelligence_dashboard import router as repository_intelligence_dashboard_router
 from app.api.repository_drift_detection import router as repository_drift_detection_router
@@ -127,3 +128,5 @@ app.include_router(repository_drift_detection_router)
 app.include_router(repository_intelligence_dashboard_router)
 
 app.include_router(repository_intelligence_report_router)
+
+app.include_router(repository_intelligence_snapshot_router)
