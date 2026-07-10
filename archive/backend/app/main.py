@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.repository_snapshot_policy import router as repository_snapshot_policy_router
 from app.api.repository_snapshot_baseline import router as repository_snapshot_baseline_router
 from app.api.repository_snapshot_comparison import router as repository_snapshot_comparison_router
 from app.api.repository_intelligence_snapshot import router as repository_intelligence_snapshot_router
@@ -136,3 +137,5 @@ app.include_router(repository_intelligence_snapshot_router)
 app.include_router(repository_snapshot_comparison_router)
 
 app.include_router(repository_snapshot_baseline_router)
+
+app.include_router(repository_snapshot_policy_router)
