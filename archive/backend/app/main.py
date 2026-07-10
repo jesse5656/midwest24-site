@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.repository_dependency_map import router as repository_dependency_map_router
 from sqlalchemy import text
 
 from app.db.session import engine
@@ -32,6 +33,8 @@ from app.api.operator_session_guard import router as operator_session_guard_rout
 from app.api.operator_progress_target import router as operator_progress_target_router
 from app.api.milestone_closeout_package import router as milestone_closeout_package_router
 from app.api.semantic_search import router as semantic_search_router
+from app.api.repository_structure import router as repository_structure_router
+from app.api.repository_package_map import router as repository_package_map_router
 
 app = FastAPI(
     title="Midwest24 Archive API",
@@ -82,3 +85,9 @@ def database_health_check() -> dict[str, str]:
         connection.execute(text("SELECT 1"))
 
     return {"status": "ok", "database": "connected"}
+
+app.include_router(repository_structure_router)
+
+app.include_router(repository_package_map_router)
+
+app.include_router(repository_dependency_map_router)
