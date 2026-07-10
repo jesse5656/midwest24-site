@@ -5,13 +5,47 @@ Version: 1.1.0
 Status:
 Active
 
-------------------------------------------------------------------------------
+---
 
 ## Purpose
 
 This document defines current execution for the Midwest24 Platform.
 
-------------------------------------------------------------------------------
+---
+
+# Engineering Execution Rules
+
+These rules apply to every engineering objective unless explicitly overridden.
+
+1. Repository First
+   - The repository is the source of truth.
+   - Do not rely on chat history to determine implementation state.
+
+2. Pre-Implementation Audit (Required)
+   - Before generating implementation code, audit the repository to determine whether the requested capability:
+     - already exists,
+     - is partially implemented, or
+     - is missing.
+   - Do not implement a capability that already exists.
+   - If partially implemented, extend the existing implementation instead of creating a duplicate.
+
+3. Single Implementation Block
+   - Generate implementation as one copy/paste-safe bash block.
+   - Use Python file writers when creating or modifying files.
+   - Avoid nested heredocs.
+   - Validate the implementation before generating any commit commands.
+
+4. Validation
+   - Execute targeted validation first.
+   - Execute the full test suite after targeted validation succeeds.
+   - Do not generate commit commands until all validation passes.
+
+5. Architecture Stability
+   - Existing architecture is assumed correct.
+   - Do not redesign architecture unless the Current Objective explicitly requires it.
+   - Architectural changes require an approved Architecture Change Proposal (ACP) or Operational Change Proposal (OCP).
+
+---
 
 # Current Objective
 
@@ -28,6 +62,7 @@ Objective:
 Improve operational visibility into repository ingestion without changing the ingestion architecture.
 
 Scope:
+
 - Ingestion logging
 - Result metadata
 - Failure diagnostics
@@ -37,6 +72,7 @@ Scope:
 - Runbook updates
 
 Success Criteria:
+
 - Repository ingestion behavior is easier to observe and troubleshoot
 - Tests pass
 - Documentation or runbook updated if behavior changed
@@ -50,7 +86,7 @@ Definition of Done:
 □ OPERATING-PLAN.md updated
 □ Git commit completed if repository changes occurred
 
-------------------------------------------------------------------------------
+---
 
 # Priority Queue
 
@@ -61,7 +97,7 @@ Definition of Done:
 5. Entity Resolution Improvements
 6. AI-Assisted Repository Summarization
 
-------------------------------------------------------------------------------
+---
 
 # Session Management
 
@@ -72,7 +108,6 @@ When Current Objective is complete:
 3. Promote Priority Queue item #1 if appropriate.
 4. Commit changes.
 5. Stop.
-
 
 ---
 
@@ -91,6 +126,7 @@ Objective:
 Make repository ingestion observable and diagnosable without changing the ingestion architecture.
 
 Scope:
+
 - Expanded ingestion result metadata
 - Elapsed time tracking
 - Bytes ingested tracking
@@ -102,6 +138,7 @@ Scope:
 - Runbook update
 
 Success Criteria:
+
 - Repository ingestion reports documents, jobs, bytes, elapsed time, skipped files, unsupported files, and failures.
 - API exposes expanded ingestion metadata.
 - Tests pass.
@@ -121,7 +158,7 @@ Definition of Done:
 
 □ Git commit completed
 
-------------------------------------------------------------------------------
+---
 
 # Priority Queue
 
@@ -132,12 +169,12 @@ Definition of Done:
 5. Entity Resolution Improvements
 6. AI Repository Summarization
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository Ingestion Observability Sprint completed.
 - Ingestion report model added.
 - Failure report model added.
@@ -148,15 +185,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository Ingestion Observability.
 
 Current Objective:
+
 - Archive Core Development.
 
 Next Objective:
+
 - Promote the next item from Priority Queue into Current Objective.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -164,12 +205,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion observability expanded with processing-job status statistics.
 - Repository ingestion response now reports pending, running, completed, failed, and total processing-job counts.
 - Job-statistics tests added.
@@ -177,15 +218,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion processing-job observability.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add skipped-file and unsupported-extension observability.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -193,12 +238,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion observability expanded with skipped-path and unsupported-file reporting.
 - Filesystem connector now supports discover_with_report while preserving legacy discover behavior.
 - Discovery report model added.
@@ -207,15 +252,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion skipped-file and unsupported-extension observability.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add duplicate-ingestion detection and observable duplicate reporting.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -223,12 +272,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion duplicate detection added.
 - Duplicate repository files are now detected per entity by repository-relative filename.
 - Duplicate files are reported instead of copied again.
@@ -238,15 +287,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion duplicate detection and observable duplicate reporting.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add failure injection and copy-failure observability coverage.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -254,12 +307,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion duplicate detection added.
 - Duplicate repository files are detected per entity by repository-relative filename.
 - Duplicate files are reported instead of copied again.
@@ -269,15 +322,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion duplicate detection and observable duplicate reporting.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add failure injection and copy-failure observability coverage.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -285,12 +342,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion failure observability stabilized.
 - Failure tests now scope database assertions to the entity under test.
 - Logging tests now explicitly capture INFO-level ingestion start and finish logs.
@@ -298,15 +355,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion failure observability stabilization.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add operator-facing summary fields and finalize Repository Ingestion Observability objective.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -314,12 +375,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository ingestion failure observability stabilized.
 - Failure tests now scope database assertions to the entity under test.
 - Logging tests now explicitly capture INFO-level ingestion start and finish logs.
@@ -327,15 +388,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository ingestion failure observability stabilization.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Add operator-facing summary fields and finalize Repository Ingestion Observability objective.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -343,27 +408,31 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Incremental repository ingestion API serialization fixed.
 - Nested ingestion reports are now converted into RepositoryIngestionResponse.
 - Incremental API tests restored from debug instrumentation.
 - Incremental API now exposes nested document count and processing-job status metadata.
 
 Completed:
+
 - Incremental repository ingestion API serialization.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Finalize operator-facing summary fields and close Repository Ingestion Observability objective.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -371,12 +440,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository objective summary primitives added.
 - Objective summary builder can aggregate normal ingestion reports.
 - Objective summary builder can aggregate incremental ingestion reports.
@@ -385,15 +454,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository objective summary primitives.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Close Repository Ingestion Observability objective and promote the next Priority Queue item.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -401,12 +474,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Repository objective readiness primitives added.
 - Repository objective closeout primitives added.
 - Readiness schemas added.
@@ -414,15 +487,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Repository objective readiness and closeout primitives.
 
 Current Objective:
+
 - Repository Ingestion Observability.
 
 Next Concrete Step:
+
 - Mark Repository Ingestion Observability complete and promote Git Repository Intelligence from the Priority Queue.
 
 Deferred:
+
 - Git history ingestion.
 - Git blame.
 - Commit graph analysis.
@@ -430,12 +507,12 @@ Deferred:
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git Repository Intelligence primitives added.
 - Git command runner added.
 - Git repository detector added.
@@ -448,27 +525,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git Repository Intelligence primitives.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add Git intelligence API endpoint and operator-facing summary schema.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git Repository Intelligence API added.
 - Git repository intelligence schema added.
 - Git operator summary builder added.
@@ -478,27 +559,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git Repository Intelligence API endpoint and operator summary.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add commit history ingestion preview without persisting Git history.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git commit preview primitives added.
 - Git commit preview API added.
 - Git commit preview schemas added.
@@ -508,27 +593,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git commit preview API.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add Git file-change preview from commit history without persisting Git history.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git file-change preview primitives added.
 - Git file-change preview API added.
 - Git file-change schemas added.
@@ -538,27 +627,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git file-change preview API.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add Git authorship preview without persisting author timelines.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git authorship preview primitives added.
 - Git authorship preview API added.
 - Git authorship schemas added.
@@ -568,27 +661,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git authorship preview API.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add Git repository intelligence closeout summary and prepare objective completion.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git intelligence report primitives added.
 - Git intelligence readiness and closeout primitives added.
 - Combined Git intelligence report API added.
@@ -598,27 +695,31 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git intelligence report API and closeout primitives.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Mark Git Repository Intelligence complete and promote the next Priority Queue item.
 
 Deferred:
+
 - Git blame.
 - Commit graph analysis.
 - Branch analysis beyond local branch summary.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Git branch analysis primitives added.
 - Git branch analysis API added.
 - Git branch analysis schemas added.
@@ -628,26 +729,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git branch analysis API.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Add final Git Repository Intelligence objective closeout and promote the next Priority Queue item.
 
 Deferred:
+
 - Git blame.
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Git Repository Intelligence objective scorecard added.
 - Git objective summary builder added.
 - Git objective scorecard API added.
@@ -657,26 +762,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Git Repository Intelligence objective scorecard.
 
 Current Objective:
+
 - Git Repository Intelligence.
 
 Next Concrete Step:
+
 - Close Git Repository Intelligence and promote the next Priority Queue item.
 
 Deferred:
+
 - Git blame.
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Code intelligence and language parsing.
 
-
 ---
 
 ## Session Update
 
 Status:
+
 - Code inventory preview primitives added.
 - Code inventory preview API added.
 - Code inventory schemas added.
@@ -687,26 +796,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Code inventory preview API.
 
 Current Objective:
+
 - Code Intelligence Preview.
 
 Next Concrete Step:
+
 - Add source-file outline preview without full language parsing.
 
 Deferred:
+
 - Git blame.
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Full code intelligence and language parsing.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Code inventory preview primitives added.
 - Code inventory preview API added.
 - Code inventory schemas added.
@@ -717,26 +830,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Code inventory preview API.
 
 Current Objective:
+
 - Code Intelligence Preview.
 
 Next Concrete Step:
+
 - Add source-file outline preview without full language parsing.
 
 Deferred:
+
 - Git blame.
 - Commit graph persistence.
 - Authorship timelines persistence.
 - Full code intelligence and language parsing.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Code intelligence report primitives added.
 - Code intelligence readiness and closeout primitives added.
 - Code intelligence report API added.
@@ -747,26 +864,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Code intelligence aggregate report API.
 
 Current Objective:
+
 - Code Intelligence Preview.
 
 Next Concrete Step:
+
 - Add Code Intelligence objective scorecard and close the objective.
 
 Deferred:
+
 - Full AST parsing.
 - Symbol persistence.
 - Cross-reference graph.
 - Code intelligence embeddings.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Code Intelligence Preview objective scorecard added.
 - Code objective summary builder added.
 - Code objective scorecard API added.
@@ -776,26 +897,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Code Intelligence Preview objective scorecard.
 
 Current Objective:
+
 - Code Intelligence Preview.
 
 Next Concrete Step:
+
 - Close Code Intelligence Preview and promote the next Priority Queue item.
 
 Deferred:
+
 - Full AST parsing.
 - Symbol persistence.
 - Cross-reference graph.
 - Code intelligence embeddings.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Archive backend health primitives added.
 - Archive backend health evaluator added.
 - Repository health summary builder added.
@@ -806,26 +931,30 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Archive backend health API.
 
 Current Objective:
+
 - Archive Backend Health and Closeout.
 
 Next Concrete Step:
+
 - Add final backend milestone scorecard and prepare session transition.
 
 Deferred:
+
 - Full AST parsing.
 - Symbol persistence.
 - Cross-reference graph.
 - Code intelligence embeddings.
-
 
 ---
 
 ## Session Update
 
 Status:
+
 - Archive backend milestone scorecard primitives added.
 - Archive backend milestone readiness and closeout primitives added.
 - Archive backend milestone scorecard API added.
@@ -835,15 +964,19 @@ Status:
 - Repository ingestion runbook updated.
 
 Completed:
+
 - Archive backend milestone scorecard.
 
 Current Objective:
+
 - Archive Backend Health and Closeout.
 
 Next Concrete Step:
+
 - Prepare Session Transition Prompt and stop implementation.
 
 Deferred:
+
 - Full AST parsing.
 - Symbol persistence.
 - Cross-reference graph.

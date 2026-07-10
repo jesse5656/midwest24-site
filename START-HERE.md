@@ -5,7 +5,7 @@ Version: 1.0.0
 Status:
 Active
 
-------------------------------------------------------------------------------
+---
 
 ## Purpose
 
@@ -15,7 +15,7 @@ The repository—not ChatGPT—is the authoritative source of product knowledge.
 
 Every contributor should follow this workflow before beginning work.
 
-------------------------------------------------------------------------------
+---
 
 ## Read in Order
 
@@ -29,7 +29,7 @@ Every contributor should follow this workflow before beginning work.
 
 5. Current Sprint / Current Feature
 
-------------------------------------------------------------------------------
+---
 
 ## Operating Mode
 
@@ -47,7 +47,7 @@ Maximum three active objectives.
 
 Reality should justify architecture.
 
-------------------------------------------------------------------------------
+---
 
 ## Session Workflow
 
@@ -71,7 +71,17 @@ Next Concrete Step
 
 Deferred
 
-------------------------------------------------------------------------------
+## Pre-Implementation Audit Rule
+
+Before generating any new feature, first audit the repository to determine whether the capability already exists, is partially implemented, or is missing.
+
+Do not generate implementation code until the audit confirms the capability is missing or incomplete.
+
+Use one copy/paste-safe bash block with Python file readers/writers where needed.
+Avoid nested heredocs.
+Include validation commands.
+
+---
 
 ## Repository Philosophy
 
@@ -81,9 +91,7 @@ START-HERE.md explains how to begin work.
 
 OPERATING-PLAN.md explains what Midwest24 Platform is building now.
 
-
-
-------------------------------------------------------------------------------
+---
 
 ## Chat Session Archival Standard
 

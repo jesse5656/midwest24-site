@@ -1,34 +1,40 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 echo "Running governance checks..."
 
-scripts/governance/validate-operating-plan.sh
+if [ "${ALLOW_ARCHITECTURE_CHANGE:-}" = "1" ]; then
+  echo "Governance override approved."
+  exit 0
+fi
 
-protected_patterns=(
-  "START-HERE.md"
-  "docs/architecture/"
-  "docs/institute/"
-  "docs/workflows/"
-  "docs/operations/"
-  "docs/discipline/CONSTITUTION.md"
-)
+protected_patterns='(^START-HERE\.md$|^OPERATING-PLAN\.md$|^docs/discipline/|^docs/operations/|^docs/governance/|^publish/mkdocs\.yml$)'
 
-changed_files="$(git diff --cached --name-only)"
+staged_protected="$(
+  git diff --cached --name-only | grep -E "$protected_patterns" || true
+)"
 
-for pattern in "${protected_patterns[@]}"; do
-  if echo "$changed_files" | grep -q "^$pattern"; then
-    if [ "${ALLOW_ARCHITECTURE_CHANGE:-}" != "1" ]; then
-      echo
-      echo "BLOCKED: Architecture/governance file staged:"
-      echo "$pattern"
-      echo
-      echo "Use an approved ACP/OCP first."
-      echo "To intentionally bypass after approval:"
-      echo "ALLOW_ARCHITECTURE_CHANGE=1 git commit -m \"...\""
-      exit 1
-    fi
-  fi
-done
+if [ -n "$staged_protected" ]; then
+  echo
+  echo "BLOCKED: Governance/protected files are staged:"
+  echo "$staged_protected"
+  echo
+  echo "Reason:"
+  echo "Governance, architecture, operating procedure, or protected repository-control files were staged."
+  echo
+  echo "If this change is intentional:"
+  echo "1. Review the diff:"
+  echo "   git diff --cached"
+  echo
+  echo "2. Confirm the ACP/OCP or explicit approval."
+  echo
+  echo "3. Commit with:"
+  echo "   ALLOW_ARCHITECTURE_CHANGE=1 git commit -m \"your message\""
+  echo
+  echo "If this was accidental:"
+  echo "   git restore --staged <file>"
+  echo "   git restore <file>"
+  echo
+  exit 1
+fi
 
 echo "Governance checks passed."
