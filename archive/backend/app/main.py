@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.repository_release_audit_bundle_verification import router as repository_release_audit_bundle_verification_router
 from app.api.repository_release_audit_bundle import router as repository_release_audit_bundle_router
 from app.api.repository_release_audit_report_verification import router as repository_release_audit_report_verification_router
 from app.api.repository_release_audit_report import router as repository_release_audit_report_router
@@ -172,3 +173,5 @@ app.include_router(repository_release_audit_report_router)
 app.include_router(repository_release_audit_report_verification_router)
 
 app.include_router(repository_release_audit_bundle_router)
+
+app.include_router(repository_release_audit_bundle_verification_router)
