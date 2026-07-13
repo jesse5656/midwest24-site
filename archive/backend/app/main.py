@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.repository_release_attestation_verification import router as repository_release_attestation_verification_router
 from app.api.repository_release_attestation import router as repository_release_attestation_router
 from app.api.repository_release_certificate_verification import router as repository_release_certificate_verification_router
 from app.api.repository_release_certification import router as repository_release_certification_router
@@ -154,3 +155,5 @@ app.include_router(repository_release_certification_router)
 app.include_router(repository_release_certificate_verification_router)
 
 app.include_router(repository_release_attestation_router)
+
+app.include_router(repository_release_attestation_verification_router)
