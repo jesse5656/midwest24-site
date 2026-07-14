@@ -1,0 +1,65 @@
+{
+  "approvals": {
+    "approved_statuses": [
+      "Approved",
+      "Accepted"
+    ],
+    "proposal_patterns": [
+      "docs/**/*ACP*.md",
+      "docs/**/*OCP*.md"
+    ]
+  },
+  "classification": {
+    "ai_collaboration": [],
+    "engineering_standards": [],
+    "implementation_guides": [],
+    "operational_procedures": [
+      "docs/REPOSITORY-CHANGE-WORKFLOW.md"
+    ]
+  },
+  "governance": {
+    "may_modify_governance": false,
+    "normative_sources": [
+      "START-HERE.md",
+      "OPERATING-PLAN.md"
+    ],
+    "role": "executable-enforcement"
+  },
+  "metadata": {
+    "paths": [
+      "docs/standards/",
+      "docs/operations/",
+      "docs/governance/"
+    ],
+    "required_fields": [
+      "Version",
+      "Status"
+    ]
+  },
+  "operating_plan": {
+    "candidates": [
+      "OPERATING-PLAN.md",
+      "docs/discipline/OPERATING-PLAN.md"
+    ]
+  },
+  "policy_version": "1.0.0",
+  "protected_assets": [
+    "START-HERE.md",
+    "OPERATING-PLAN.md",
+    "REPOSITORY-CONSTITUTION.md",
+    "docs/discipline/",
+    "docs/institute/",
+    "docs/handbook/",
+    "docs/governance/",
+    "docs/operations/",
+    "docs/standards/",
+    ".governance/",
+    ".githooks/",
+    ".github/workflows/"
+  ],
+  "repository": {
+    "authority": "downstream",
+    "name": "Midwest24 Product Engineering"
+  },
+  "schema_version": "1.0.0"
+}

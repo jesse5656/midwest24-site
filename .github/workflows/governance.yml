@@ -1,0 +1,55 @@
+name: Governance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate governance policy
+        run: python3 scripts/governance/validate_governance_policy.py
+
+      - name: Run governance tests
+        run: |
+          python3 -m unittest discover \
+            -s tests/governance \
+            -p 'test_*.py'
+
+      - name: Resolve repository context
+        run: |
+          python3 scripts/platform/repository_context.py \
+            --format json
+
+      - name: Determine governance base
+        id: governance-base
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo \
+              "base=${{ github.event.pull_request.base.sha }}" \
+              >> "$GITHUB_OUTPUT"
+          else
+            echo \
+              "base=${{ github.event.before }}" \
+              >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enforce governance
+        run: |
+          python3 scripts/governance/governance_engine.py \
+            --base "${{ steps.governance-base.outputs.base }}"

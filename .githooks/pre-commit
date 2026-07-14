@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# BEGIN REPOSITORY GOVERNANCE ENTRY
+REPOSITORY_ROOT="$(git rev-parse --show-toplevel)"
+python3 "$REPOSITORY_ROOT/scripts/governance/governance_engine.py" --staged
+# END REPOSITORY GOVERNANCE ENTRY
+
+
 echo "Running governance checks..."
 
 if [ "${ALLOW_ARCHITECTURE_CHANGE:-}" = "1" ]; then
