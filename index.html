@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Midwest24 Core | Contractor Modernization Platform</title>
+    <title>
+      Midwest24 Core | Contractor Modernization, Secure Systems & AI Knowledge
+    </title>
+
     <meta
       name="description"
-      content="Midwest24 Core helps contractors, service companies, and skilled-trade organizations modernize operations through secure systems, documentation, workflow improvement, AI-assisted knowledge, and workforce development."
+      content="Midwest24 Core helps contractors and skilled-trade businesses modernize operations with secure systems, AI-assisted knowledge, workflow improvement, documentation, workforce development, and resilient infrastructure."
     />
+
+    <meta
+      name="keywords"
+      content="Midwest24 Core, contractor modernization, contractor software, secure business systems, AI knowledge management, workflow modernization, workforce development, contractor operations, skilled trades technology, business resilience"
+    />
+
     <meta name="author" content="Midwest24 Core" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#031a36" />
 
     <link rel="canonical" href="https://midwest24.com/" />
 
@@ -34,10 +44,13 @@
     />
     <link
       rel="apple-touch-icon"
+      sizes="180x180"
       href="/assets/branding/products/apple-touch-icon.png"
     />
 
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Midwest24 Core" />
     <meta property="og:url" content="https://midwest24.com/" />
     <meta
       property="og:title"
@@ -45,13 +58,16 @@
     />
     <meta
       property="og:description"
-      content="A contractor modernization platform focused on secure systems, knowledge preservation, workforce development, and operational resilience."
+      content="A contractor modernization platform for secure systems, operational knowledge, workflow improvement, workforce development, and resilient growth."
     />
     <meta
       property="og:image"
       content="https://midwest24.com/assets/branding/products/midwest24-core-logo-light.png"
     />
-    <meta property="og:site_name" content="Midwest24 Core" />
+    <meta
+      property="og:image:alt"
+      content="Midwest24 Core — Manage. Secure. Grow."
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -60,11 +76,15 @@
     />
     <meta
       name="twitter:description"
-      content="Modern systems for contractors and skilled-trade businesses that need better operations without surrendering control."
+      content="Modern systems for contractors and skilled-trade businesses that need stronger operations without surrendering control."
     />
     <meta
       name="twitter:image"
       content="https://midwest24.com/assets/branding/products/midwest24-core-logo-light.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Midwest24 Core — Manage. Secure. Grow."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,18 +99,55 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Midwest24 Core",
-        "url": "https://midwest24.com",
-        "logo": "https://midwest24.com/assets/branding/products/midwest24-core-logo-light.png",
-        "description": "Midwest24 Core helps contractors and skilled-trade organizations modernize operations through secure systems, workflow improvement, documentation, AI-assisted knowledge, and workforce development.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Joplin",
-          "addressRegion": "MO",
-          "addressCountry": "US"
-        },
-        "sameAs": ["https://midwestguard.net", "https://jryanrussow.com"]
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://midwest24.com/#organization",
+            "name": "Midwest24 Core",
+            "url": "https://midwest24.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://midwest24.com/assets/branding/products/midwest24-core-logo-light.png"
+            },
+            "description": "Midwest24 Core helps contractors and skilled-trade organizations modernize operations through secure systems, workflow improvement, documentation, AI-assisted knowledge, workforce development, and resilient infrastructure.",
+            "founder": {
+              "@type": "Person",
+              "name": "J Ryan Russow",
+              "url": "https://jryanrussow.com/"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Joplin",
+              "addressRegion": "MO",
+              "addressCountry": "US"
+            },
+            "sameAs": ["https://midwestguard.net/", "https://jryanrussow.com/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://midwest24.com/#website",
+            "url": "https://midwest24.com/",
+            "name": "Midwest24 Core",
+            "publisher": {
+              "@id": "https://midwest24.com/#organization"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://midwest24.com/#webpage",
+            "url": "https://midwest24.com/",
+            "name": "Midwest24 Core | Contractor Modernization, Secure Systems & AI Knowledge",
+            "isPartOf": {
+              "@id": "https://midwest24.com/#website"
+            },
+            "about": {
+              "@id": "https://midwest24.com/#organization"
+            },
+            "description": "Midwest24 Core helps contractors and skilled-trade businesses modernize operations with secure systems, AI-assisted knowledge, workflow improvement, documentation, workforce development, and resilient infrastructure.",
+            "inLanguage": "en-US"
+          }
+        ]
       }
     </script>
   </head>
@@ -99,41 +156,52 @@
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <header class="site-header">
-  <div class="container header-inner">
-    <a href="/" class="brand" aria-label="Midwest24 Core home">
-      <img
-         src="https://raw.githubusercontent.com/jesse5656/midwest24-site/main/assets/branding/products/midwest24-logo-light.png"
-         alt="Midwest24 Core"
-         class="header-logo"
-      />
-    </a>
+      <div class="container header-inner">
+        <a href="/" class="brand" aria-label="Midwest24 Core home">
+          <img
+            src="/assets/branding/products/midwest24-logo-light.png"
+            alt="Midwest24 Core"
+            class="header-logo"
+            width="300"
+            height="201"
+          />
+        </a>
 
-    <button
-      class="nav-toggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-    <nav class="main-nav" aria-label="Primary navigation">
-      <a href="#problem">Problem</a>
-      <a href="#platform">Platform</a>
-      <a href="#workforce">Workforce</a>
-      <a href="#founder">Founder</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </nav>
-  </div>
+        <nav
+          id="primary-navigation"
+          class="main-nav"
+          aria-label="Primary navigation"
+        >
+          <a href="#problem">Problem</a>
+          <a href="#platform">Platform</a>
+          <a href="#principles">Principles</a>
+          <a href="#workforce">Workforce</a>
+          <a href="#founder">Founder</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <main id="main-content">
-      <section class="hero">
+      <section class="hero" aria-labelledby="hero-heading">
         <div class="container hero-grid">
           <div class="hero-copy">
             <span class="eyebrow">Contractor Modernization Platform</span>
-            <h1>Modernize the business behind the trade.</h1>
+
+            <h1 id="hero-heading">Modernize the business behind the trade.</h1>
+
             <p class="hero-sub">
               Midwest24 Core helps contractors, service companies, and
               skilled-trade organizations build stronger operations through
@@ -142,19 +210,22 @@
             </p>
 
             <div class="hero-actions">
-              <a href="#platform" class="btn btn-primary"
-                >Explore the Platform</a
-              >
-              <a href="#contact" class="btn btn-secondary"
-                >Start a Conversation</a
-              >
+              <a href="#platform" class="btn btn-primary">
+                Explore the Platform
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                Start a Conversation
+              </a>
             </div>
           </div>
 
           <div class="hero-visual">
             <img
               src="/assets/branding/products/midwest24-core-logo-light-glow.png"
-              alt="Midwest24 Core - Manage. Secure. Grow."
+              alt="Midwest24 Core — Manage. Secure. Grow."
+              width="1200"
+              height="1200"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -166,10 +237,12 @@
             <strong>Operational Systems</strong>
             <span>From scattered workflows to repeatable structure.</span>
           </div>
+
           <div>
             <strong>Knowledge Preservation</strong>
-            <span>Turning field-tested experience into teachable assets.</span>
+            <span>Turning field-tested experience into durable assets.</span>
           </div>
+
           <div>
             <strong>Secure Growth</strong>
             <span>Modernization without unnecessary loss of control.</span>
@@ -177,53 +250,64 @@
         </div>
       </section>
 
-      <section class="section" id="problem">
+      <section class="section" id="problem" aria-labelledby="problem-heading">
         <div class="container-narrow text-center">
           <span class="badge">The Problem</span>
-          <h2>
+
+          <h2 id="problem-heading">
             Contractors are not short on skill. They are short on systems.
           </h2>
+
           <p>
             Roofing, restoration, construction, and service companies carry
-            serious operational demands: estimates, scheduling, production,
+            serious operational demands: estimating, scheduling, production,
             documentation, customer follow-up, staff training, compliance, cash
             flow, and reputation management.
           </p>
+
           <p>
             Too often, those responsibilities are managed through disconnected
-            apps, inboxes, spreadsheets, text threads, paper files, and
+            applications, inboxes, spreadsheets, text threads, paper files, and
             knowledge trapped inside the owner’s head. Midwest24 Core exists to
-            change that.
+            replace that fragmentation with structure.
           </p>
         </div>
       </section>
 
-      <section class="section bg-light" id="platform">
+      <section
+        class="section bg-light"
+        id="platform"
+        aria-labelledby="platform-heading"
+      >
         <div class="container">
           <div class="section-intro text-center">
             <span class="badge">The Platform</span>
-            <h2>A practical operating layer for modern trade businesses.</h2>
+
+            <h2 id="platform-heading">
+              A practical operating layer for modern trade businesses.
+            </h2>
+
             <p>
               Midwest24 Core is not another generic software subscription. It is
-              a modernization framework built around real contractor operations,
-              secure business systems, documentation, training, and
-              implementation support.
+              a contractor modernization framework built around real operating
+              conditions, secure business systems, documented knowledge,
+              workforce capability, and implementation discipline.
             </p>
           </div>
 
           <div class="card-grid">
             <article class="content-card">
-              <div class="card-icon">01</div>
+              <div class="card-icon" aria-hidden="true">01</div>
               <h3>Workflow Modernization</h3>
               <p>
                 Build clearer systems for sales, production, administration,
-                follow-up, documentation, training, and management
+                customer follow-up, documentation, training, and management
                 accountability.
               </p>
             </article>
 
             <article class="content-card">
-              <div class="card-icon">02</div>
+              <div class="card-icon" aria-hidden="true">02</div>
               <h3>Knowledge Systems</h3>
               <p>
                 Convert operating experience, checklists, scripts, procedures,
@@ -233,59 +317,68 @@
             </article>
 
             <article class="content-card">
-              <div class="card-icon">03</div>
+              <div class="card-icon" aria-hidden="true">03</div>
               <h3>Secure Collaboration</h3>
               <p>
                 Help teams work from a more controlled foundation for documents,
-                internal resources, access, onboarding, and operational
+                access, internal resources, onboarding, and operational
                 continuity.
               </p>
             </article>
 
             <article class="content-card">
-              <div class="card-icon">04</div>
+              <div class="card-icon" aria-hidden="true">04</div>
               <h3>AI-Assisted Operations</h3>
               <p>
-                Use AI responsibly to support documentation, training,
-                estimating support, internal search, customer communication, and
+                Apply AI responsibly to documentation, internal search,
+                training, estimating support, customer communication, and
                 administrative efficiency.
               </p>
             </article>
 
             <article class="content-card">
-              <div class="card-icon">05</div>
-              <h3>Contractor Coaching</h3>
+              <div class="card-icon" aria-hidden="true">05</div>
+              <h3>Implementation Support</h3>
               <p>
-                Support owners and managers with practical implementation, not
-                theory. Systems are only valuable when the team can actually use
-                them.
+                Help owners and managers convert strategy into working systems.
+                Technology creates value only when the organization can use it
+                consistently.
               </p>
             </article>
 
             <article class="content-card">
-              <div class="card-icon">06</div>
+              <div class="card-icon" aria-hidden="true">06</div>
               <h3>Business Resilience</h3>
               <p>
                 Reduce owner dependence, improve documentation, preserve
                 institutional knowledge, and build companies that can operate
-                with more consistency.
+                with greater continuity.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section dark-section">
+      <section
+        class="section dark-section"
+        id="principles"
+        aria-labelledby="principles-heading"
+      >
         <div class="container split-grid">
           <div>
             <span class="badge badge-dark">Platform Philosophy</span>
-            <h2>Modernization should create control, not dependency.</h2>
+
+            <h2 id="principles-heading">
+              Modernization should create control, not dependency.
+            </h2>
+
             <p>
               Many businesses adopt technology only to become more fragmented.
-              Midwest24 Core is built around the opposite goal: clearer
-              operations, better documentation, stronger training, and more
-              resilient business systems.
+              Midwest24 Core is built around the opposite objective: clearer
+              operations, better documentation, stronger training, secure
+              access, and more resilient business systems.
             </p>
+
             <p>
               The platform is designed for contractors who want to modernize
               without losing sight of the real work: serving customers, managing
@@ -306,11 +399,19 @@
         </div>
       </section>
 
-      <section class="section" id="workforce">
+      <section
+        class="section"
+        id="workforce"
+        aria-labelledby="workforce-heading"
+      >
         <div class="container">
           <div class="section-intro text-center">
             <span class="badge">Workforce Development</span>
-            <h2>Training the people who keep local businesses moving.</h2>
+
+            <h2 id="workforce-heading">
+              Training the people who keep local businesses moving.
+            </h2>
+
             <p>
               Midwest24 Core supports workforce development by helping
               contractors and staff learn the systems behind professional
@@ -331,21 +432,28 @@
         </div>
       </section>
 
-      <section class="section bg-light" id="founder">
+      <section
+        class="section bg-light"
+        id="founder"
+        aria-labelledby="founder-heading"
+      >
         <div class="container feature-card">
           <div>
             <span class="badge">Founder-Led</span>
-            <h2>Built from real operating experience.</h2>
+
+            <h2 id="founder-heading">Built from real operating experience.</h2>
+
             <p>
               Midwest24 Core is being developed from decades of contractor,
               roofing, restoration, sales, production, customer service, and
-              business systems experience.
+              business-systems experience.
             </p>
+
             <p>
-              The platform is rooted in a proven belief: when trade businesses
-              combine operational discipline with modern systems, they can
-              become more efficient, more resilient, and less dependent on
-              constant owner intervention.
+              The platform is rooted in a practical belief: when trade
+              businesses combine operational discipline with modern systems,
+              they can become more efficient, more resilient, and less dependent
+              on constant owner intervention.
             </p>
           </div>
 
@@ -354,50 +462,70 @@
               <strong>25+</strong>
               <span>Years of field-tested trade and business knowledge</span>
             </div>
+
             <div>
               <strong>2008</strong>
               <span>Early paperless operations and workflow modernization</span>
             </div>
+
             <div>
               <strong>Regional</strong>
-              <span
-                >Designed for contractors and service companies across the
-                Midwest</span
-              >
+              <span>
+                Designed for contractors and service companies across the
+                Midwest
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" aria-labelledby="ecosystem-heading">
         <div class="container split-card">
           <div>
             <span class="badge">Connected Ecosystem</span>
-            <h2>Built beside real brands and real operations.</h2>
+
+            <h2 id="ecosystem-heading">
+              Built beside real brands and real operations.
+            </h2>
+
             <p>
               Midwest24 Core is connected to operating experience in roofing,
-              restoration, contractor systems, entrepreneurship, and
-              performance-based business development.
+              restoration, contractor systems, entrepreneurship, institutional
+              knowledge, and performance-based business development.
             </p>
           </div>
 
           <div class="link-stack">
-            <a href="https://midwestguard.net" target="_blank" rel="noopener">
+            <a
+              href="https://midwestguard.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               MIDWESTGuard LLC
-              <span>Roofing, storm restoration, and service operations.</span>
+              <span>
+                Roofing, storm restoration, and contractor operations.
+              </span>
             </a>
 
-            <a href="https://jryanrussow.com" target="_blank" rel="noopener">
+            <a
+              href="https://jryanrussow.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               J Ryan Russow
-              <span
-                >Entrepreneurship, discipline, systems, and performance.</span
-              >
+              <span>
+                Systems, entrepreneurship, discipline, and performance.
+              </span>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="section contact-section" id="contact">
+      <section
+        class="section contact-section"
+        id="contact"
+        aria-labelledby="contact-heading"
+      >
         <div class="container">
           <div class="cta-block">
             <img
@@ -405,17 +533,27 @@
               alt=""
               aria-hidden="true"
               class="cta-logo"
+              width="1200"
+              height="1200"
+              loading="lazy"
+              decoding="async"
             />
+
             <span class="badge badge-dark">Midwest24 Core</span>
-            <h2>Build stronger systems before growth exposes the weak ones.</h2>
+
+            <h2 id="contact-heading">
+              Build stronger systems before growth exposes the weak ones.
+            </h2>
+
             <p>
               For platform inquiries, contractor modernization discussions,
-              workforce development partnerships, grant conversations, or
+              workforce-development partnerships, grant conversations, or
               business development, contact Midwest24 Core.
             </p>
-            <a href="mailto:info@midwest24.com" class="btn btn-primary"
-              >info@midwest24.com</a
-            >
+
+            <a href="mailto:info@midwest24.com" class="btn btn-primary">
+              info@midwest24.com
+            </a>
           </div>
         </div>
       </section>
@@ -424,11 +562,18 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
-          <img
-            src="/assets/branding/products/midwest24-core-logo-light-glow-footer.png"
-            alt="Midwest24 Core"
-            class="footer-logo"
-          />
+          <a href="/" aria-label="Midwest24 Core home">
+            <img
+              src="/assets/branding/products/midwest24-core-logo-light-glow-footer.png"
+              alt="Midwest24 Core"
+              class="footer-logo"
+              width="1200"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+
           <p>
             Contractor modernization, workforce development, knowledge
             preservation, and secure business systems.
@@ -436,26 +581,35 @@
         </div>
 
         <div>
-          <h4>Platform</h4>
+          <h3>Platform</h3>
           <a href="#problem">Problem</a>
           <a href="#platform">Platform</a>
+          <a href="#principles">Principles</a>
           <a href="#workforce">Workforce</a>
           <a href="#founder">Founder</a>
         </div>
 
         <div>
-          <h4>Ecosystem</h4>
-          <a href="https://midwestguard.net" target="_blank" rel="noopener"
-            >MIDWESTGuard</a
+          <h3>Ecosystem</h3>
+          <a
+            href="https://midwestguard.net/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-          <a href="https://jryanrussow.com" target="_blank" rel="noopener"
-            >J Ryan Russow</a
+            MIDWESTGuard
+          </a>
+          <a
+            href="https://jryanrussow.com/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
+            J Ryan Russow
+          </a>
           <a href="mailto:info@midwest24.com">Contact</a>
         </div>
 
         <div>
-          <h4>Legal</h4>
+          <h3>Legal</h3>
           <a href="/legal/privacy.html">Privacy Policy</a>
           <a href="/legal/terms.html">Terms</a>
           <a href="/legal/security-policy.html">Security Policy</a>
