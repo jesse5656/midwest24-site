@@ -160,11 +160,10 @@ h3 {
 .brand img {
   display: block;
   width: 360px;
-  max-width: none;
+  max-width: 42vw;
   height: auto;
   object-fit: contain;
-  transform: scale(245);
-  transform-origin: center center;
+  transform: none;
   filter: none;
 }
 
