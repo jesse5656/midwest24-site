@@ -6,9 +6,18 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
+
+from scripts.platform.parsers.operating_plan import parse_operating_plan
 
 
 SCHEMA_VERSION = "1.0.0"
@@ -78,40 +87,6 @@ def find_operating_plan(
     return None
 
 
-def extract_section(text: str, names: list[str]) -> str | None:
-    lines = text.splitlines()
-
-    for index, line in enumerate(lines):
-        cleaned = line.strip().strip("#").strip().lower()
-
-        if cleaned not in {name.lower() for name in names}:
-            continue
-
-        collected: list[str] = []
-
-        for following in lines[index + 1:]:
-            if following.strip().startswith("#"):
-                break
-
-            if re.fullmatch(r"-{10,}", following.strip()):
-                if collected:
-                    break
-                continue
-
-            if following.strip():
-                collected.append(following.strip())
-
-            if len(collected) >= 8:
-                break
-
-        value = "\n".join(collected).strip()
-
-        if value:
-            return value
-
-    return None
-
-
 def existing_paths(root: Path, values: list[str]) -> list[str]:
     return [
         value
@@ -160,24 +135,28 @@ def build_context(root: Path) -> dict[str, Any]:
     operating_plan: dict[str, Any] = {
         "path": None,
         "current_objective": None,
-        "active_sprint": None,
+        "objective_type": None,
         "status": None,
+        "objective": None,
+        "scope": None,
+        "success_criteria": None,
+        "active_sprint": None,
+        "next_concrete_step": None,
     }
 
     if operating_plan_path:
-        text = operating_plan_path.read_text(errors="replace")
+        parsed = parse_operating_plan(operating_plan_path)
 
         operating_plan = {
             "path": str(operating_plan_path.relative_to(root)),
-            "current_objective": extract_section(
-                text,
-                ["Current Objective", "Highest-Priority Objective"],
-            ),
-            "active_sprint": extract_section(
-                text,
-                ["Active Sprint", "Current Sprint"],
-            ),
-            "status": extract_section(text, ["Status"]),
+            "current_objective": parsed["name"],
+            "objective_type": parsed["type"],
+            "status": parsed["status"],
+            "objective": parsed["objective"],
+            "scope": parsed["scope"],
+            "success_criteria": parsed["success_criteria"],
+            "active_sprint": parsed["active_sprint"],
+            "next_concrete_step": parsed["next_concrete_step"],
         }
 
     governance = policy.get("governance", {})
@@ -277,7 +256,10 @@ def render_text(context: dict[str, Any]) -> str:
         "-" * 80,
         f"Path: {operating['path'] or '(not found)'}",
         f"Current Objective: {operating['current_objective'] or '(not resolved)'}",
+        f"Objective Type: {operating['objective_type'] or '(not resolved)'}",
+        f"Status: {operating['status'] or '(not resolved)'}",
         f"Active Sprint: {operating['active_sprint'] or '(not resolved)'}",
+        f"Next Concrete Step: {operating['next_concrete_step'] or '(not resolved)'}",
         "",
         "Applicable Governance",
         "-" * 80,

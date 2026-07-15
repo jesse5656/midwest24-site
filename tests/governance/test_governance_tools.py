@@ -33,27 +33,62 @@ ENGINE = load_module(
 
 
 class RepositoryContextTests(unittest.TestCase):
-    def test_extract_current_objective(self):
-        text = """
-# Operating Plan
+    def test_parse_authoritative_current_objective(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "OPERATING-PLAN.md"
 
-## Current Objective
+            path.write_text(
+                """# Current Objective
 
-Implement governance automation.
+Type:
+Engineering Sprint
+Name:
+Repository Ingestion Observability
+Status:
+In Progress
+Objective:
+Improve operational visibility.
 
-## Deferred
+## Session Update
 
-Other work.
-"""
+Status:
 
-        value = CONTEXT.extract_section(
-            text,
-            ["Current Objective"],
-        )
+- Historical status.
+
+Current Objective:
+
+- Git Repository Intelligence.
+
+Next Concrete Step:
+
+- Historical next step.
+""",
+                encoding="utf-8",
+            )
+
+            parsed = CONTEXT.parse_operating_plan(path)
 
         self.assertEqual(
-            value,
-            "Implement governance automation.",
+            parsed["type"],
+            "Engineering Sprint",
+        )
+        self.assertEqual(
+            parsed["name"],
+            "Repository Ingestion Observability",
+        )
+        self.assertEqual(
+            parsed["status"],
+            "In Progress",
+        )
+        self.assertEqual(
+            parsed["objective"],
+            "Improve operational visibility.",
+        )
+        self.assertIsNone(
+            parsed["active_sprint"],
+        )
+        self.assertIsNone(
+            parsed["next_concrete_step"],
         )
 
     def test_policy_is_json_compatible_yaml(self):
