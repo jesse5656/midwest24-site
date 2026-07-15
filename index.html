@@ -81,6 +81,48 @@
       rel="stylesheet"
     />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!-- ============================================ -->
+    <!-- INLINE CSS OVERRIDE TO FIX BROKEN LOGO -->
+    <!-- ============================================ -->
+    <style>
+      /* Neutralize the broken width/height/overflow/scale from styles.css */
+      .brand {
+        width: auto !important;
+        height: auto !important;
+        max-width: 45vw !important;
+        overflow: visible !important;
+        flex: 0 1 auto !important;
+      }
+      .header-logo,
+      .brand img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: 72px !important; /* Adjust this number to make logo bigger/smaller */
+        transform: none !important;
+        transform-origin: unset !important;
+        object-fit: contain !important;
+      }
+
+      /* Tablet fix */
+      @media (max-width: 940px) {
+        .header-logo,
+        .brand img {
+          height: 60px !important;
+        }
+      }
+
+      /* Mobile fix */
+      @media (max-width: 560px) {
+        .header-logo,
+        .brand img {
+          height: 50px !important;
+        }
+      }
+    </style>
+
     <!-- JSON-LD SCHEMA -->
     <script type="application/ld+json">
       {
