@@ -159,11 +159,11 @@ h3 {
 .header-logo,
 .brand img {
   display: block;
-  width: 430px;
+  width: 360px;
   max-width: none;
   height: auto;
   object-fit: contain;
-  transform: scale(2.65);
+  transform: scale(245);
   transform-origin: center center;
   filter: none;
 }
