@@ -163,8 +163,6 @@ h3 {
   max-width: none;
   height: auto;
   object-fit: contain;
-  transform: scale(2.45);
-  transform-origin: center center;
   filter: none;
 }
 
