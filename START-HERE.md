@@ -108,3 +108,23 @@ YYYY-MM-DD — Repository — Sprint Name
 Example:
 
 2026-07-08 — Midwest24 Archive — Relationship Engine Sprint
+
+---
+
+## Branding Asset Standards
+
+Canonical Midwest24 branding assets are managed under:
+
+```text
+assets/branding/
+```
+
+The authoritative branding standards are documented in:
+
+```text
+assets/branding/README.md
+```
+
+That document governs canonical editable logo sources, approved exports, production assets, product-specific assets, archived materials, logo update procedures, and branding governance requirements.
+
+Repository work that creates, modifies, deploys, replaces, or archives branding assets must follow `assets/branding/README.md`.
