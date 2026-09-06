@@ -1,7 +1,6 @@
 # START HERE
 
-Version: 1.0.0
-
+Version: 1.0.1
 Status:
 Active
 
@@ -48,6 +47,64 @@ Maximum three active objectives.
 Reality should justify architecture.
 
 ---
+
+## Automatic Governed Chat Transition Rule
+
+This rule is mandatory for this workstream and is read from repository
+authority during normal session startup.
+
+It does **not** depend on Espanso, a startup alias, conversational memory, or
+the user remembering a skill name or special command.
+
+When the user clearly indicates that active work should move to a new, fresh,
+replacement, continuation, or otherwise different chat, the assistant shall
+automatically execute governed HANDOFF behavior before the transition.
+
+Examples of semantic HANDOFF intent include, but are not limited to:
+
+- start a new chat;
+- move this to a new chat;
+- move this to a fresh chat;
+- hand this off;
+- continue this in another chat;
+- this chat is getting too long or slow;
+- create the continuation for the replacement chat.
+
+The user is **not required** to type `HANDOFF`, `RESUME`,
+`$handoff-governed-work`, `:startjr`, `:startarchive`, `:startops`, or any other
+trigger token.
+
+HANDOFF shall preserve only the minimum sufficient continuation state,
+including as applicable:
+
+- exact workstream identity and scope;
+- every materially relevant repository;
+- branch, HEAD, upstream, ahead/behind, synchronization, staged, unstaged, and
+  untracked state;
+- materially relevant governance with exact status;
+- current work state;
+- the narrowest exact next action, or explicitly `UNRESOLVED`;
+- required artifacts and hashes when material;
+- material conflicts and unresolved facts;
+- security boundaries and secret exclusion.
+
+If the active runtime exposes the validated `handoff-governed-work` skill, use
+its HANDOFF mode. If it does not, execute the equivalent governed HANDOFF
+procedure directly.
+
+When a replacement chat receives a governed handoff, or the user clearly asks
+to continue from one, the assistant shall automatically execute RESUME:
+
+1. treat the handoff as continuation evidence, not repository authority;
+2. re-resolve current repository state;
+3. reconcile drift, stale claims, and conflicts;
+4. determine the exact current next action;
+5. continue from the resolved state without restarting broad discovery.
+
+This `START-HERE.md` rule is the workstream activation authority. Text-expansion
+aliases may repeat it for convenience but are not required for it to apply.
+
+------------------------------------------------------------------------------
 
 ## Session Workflow
 
