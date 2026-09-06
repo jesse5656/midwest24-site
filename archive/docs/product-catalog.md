@@ -19,6 +19,11 @@ It defines official Midwest24 product names and maps them to current implementat
 | Midwest24 Core Drive | Nextcloud | Active |
 | Midwest24 Core Documents | OnlyOffice Docs | Active |
 | Midwest24 Core Photos | Immich | Active |
+| Midwest24 Core Board | Implementation documentation pending | Active |
+| Midwest24 Core Vault | Implementation documentation pending | Active |
+| Midwest24 Core Institute | Implementation documentation pending | Active |
+| Midwest24 Core Command | Implementation documentation pending | Active |
+| Midwest24 Core Convert | ConvertX | Active |
 | Midwest24 Core Dashboard | Native development | Planned |
 | Midwest24 Core AI | Open WebUI + Ollama | Planned |
 | Midwest24 Core Automation | n8n candidate | Evaluation |

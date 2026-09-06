@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "brand_family": "Midwest24 Core",
+  "scope": "Current public applications on midwest24.com",
+  "products": [
+    {
+      "key": "drive",
+      "product_name": "Midwest24 Core Drive",
+      "hostname": "drive.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-drive-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-drive-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/drive"
+    },
+    {
+      "key": "board",
+      "product_name": "Midwest24 Core Board",
+      "hostname": "board.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-board-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-board-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/board"
+    },
+    {
+      "key": "identity",
+      "product_name": "Midwest24 Core Identity",
+      "hostname": "auth.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-identity-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-identity-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/identity"
+    },
+    {
+      "key": "documents",
+      "product_name": "Midwest24 Core Documents",
+      "hostname": "office.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-documents-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-documents-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/documents"
+    },
+    {
+      "key": "vault",
+      "product_name": "Midwest24 Core Vault",
+      "hostname": "vault.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-vault-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-vault-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/vault"
+    },
+    {
+      "key": "institute",
+      "product_name": "Midwest24 Core Institute",
+      "hostname": "institute.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-institute-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-institute-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/institute"
+    },
+    {
+      "key": "command",
+      "product_name": "Midwest24 Core Command",
+      "hostname": "command.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-command-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-command-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/command"
+    },
+    {
+      "key": "convert",
+      "product_name": "Midwest24 Core Convert",
+      "hostname": "convert.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-convert-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-convert-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/convert"
+    }
+  ]
+}

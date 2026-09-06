@@ -31,6 +31,7 @@ assets/branding/
 │           ├── midwest24-logo-1024.png
 │           ├── midwest24-logo-512.png
 │           └── midwest24-logo-256.png
+├── favicons/
 ├── icons/
 ├── products/
 ├── source/
@@ -120,6 +121,89 @@ assets/branding/icons/
 ```
 
 Icons are separate production assets and must not be treated as substitutes for the canonical primary logo.
+
+---
+
+## Approved Midwest24 Core Product Family Visual Reference
+
+The approved visual reference for the current Midwest24 Core product family is:
+
+```text
+assets/branding/reference/midwest24-core-product-family-approved-reference.png
+```
+
+This reference governs the visual appearance of the current product-specific
+icons and logo lockups for:
+
+- Midwest24 Core Drive
+- Midwest24 Core Board
+- Midwest24 Core Identity
+- Midwest24 Core Documents
+- Midwest24 Core Vault
+- Midwest24 Core Institute
+- Midwest24 Core Command
+- Midwest24 Core Convert
+
+Production exports must visually correspond to this approved reference.
+Filename, dimension, registry, and hash validation do not replace visual
+comparison against the approved reference.
+
+The reference image is an approval artifact, not an editable master source.
+
+---
+
+## Public Midwest24 Core Product Branding
+
+The canonical registry for currently published `midwest24.com` Core
+products is:
+
+```text
+assets/branding/products/midwest24-core-products.json
+```
+
+The registry maps each public hostname to its official Midwest24 Core
+product identity, approved logo, approved icon, and generated favicon
+directory.
+
+Current public product scope:
+
+```text
+drive.midwest24.com      -> Midwest24 Core Drive
+board.midwest24.com      -> Midwest24 Core Board
+auth.midwest24.com       -> Midwest24 Core Identity
+office.midwest24.com     -> Midwest24 Core Documents
+vault.midwest24.com      -> Midwest24 Core Vault
+institute.midwest24.com  -> Midwest24 Core Institute
+command.midwest24.com    -> Midwest24 Core Command
+convert.midwest24.com    -> Midwest24 Core Convert
+```
+
+This registry intentionally excludes `midwestguard.net` services.
+
+A Core product may inherit the canonical Midwest24 Core logo or icon
+until distinct product artwork has been explicitly approved. Shared
+artwork must be recorded as `shared-core`; product-specific artwork must
+be recorded as `product-specific`. Do not fabricate distinct artwork
+merely to create unique filenames.
+
+Each registered product must have a generated favicon set containing:
+
+```text
+favicon.ico
+favicon-16x16.png
+favicon-32x32.png
+apple-touch-icon.png
+android-chrome-192x192.png
+android-chrome-512x512.png
+site.webmanifest
+```
+
+Rebuild and validate these assets with:
+
+```bash
+python3 scripts/branding/build_core_product_favicons.py
+python3 scripts/branding/validate_core_product_branding.py
+```
 
 ---
 
