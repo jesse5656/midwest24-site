@@ -152,6 +152,25 @@ The reference image is an approval artifact, not an editable master source.
 
 ---
 
+## Governed Product Identities
+
+[ACP-011](https://github.com/jesse5656/jryanrussow-site/blob/main/docs/architecture/acp/ACP-011-MIDWEST24-CORE-PRODUCT-IDENTITY-AND-SYSTEM-NAMING.md), approved 2026-09-11, defines durable product identities
+independently of implementation software.
+
+| Product identity | Functional boundary | Implementation / adoption state | Hostname |
+| --- | --- | --- | --- |
+| Midwest24 Core Command | CRM and front office | EspoCRM; bounded by ACP-005 | `command.midwest24.com` |
+| Midwest24 Core Enterprise | ERP and enterprise execution | Apache OFBiz candidate; no final selection | `enterprise.midwest24.com` |
+| Midwest24 Core Nexus | Future Midwest24-owned custom platform | Reserved for future adoption; repository reconciliation required | `nexus.midwest24.com` |
+| Midwest24 Operations | Potential SOP, training, and operating knowledge | Reserved, not adopted | `operations.midwest24.com` |
+
+The naming decision does not activate hostnames or authorize deployment.
+`mwg-platform` is not automatically Nexus, and `mwg-ops-manual` is not renamed
+Operations. The public-product registry below remains limited to current public
+applications; approved identities and reserved names do not automatically enter it.
+
+---
+
 ## Public Midwest24 Core Product Branding
 
 The canonical registry for currently published `midwest24.com` Core
