@@ -381,3 +381,15 @@ Jesse Russow
 ```
 
 All approved logos, graphics, trademarks, source files, exports, and branding materials in this repository are proprietary Midwest24 assets.
+
+## Approved Enterprise Artwork — Activation Pending
+
+Midwest24 Core Enterprise artwork was approved on 2026-09-11. Its separate
+1600 x 500 RGBA wordmark, 1024 x 1024 RGBA icon, and seven-file favicon
+package are stored under the standard products, icons, and favicons/enterprise
+paths. Approval evidence and rebuild notes are in source/enterprise/README.md
+and reference/midwest24-core-enterprise-approved-reference.png.
+
+These assets do not activate Enterprise publicly. Enterprise is intentionally
+absent from midwest24-core-products.json until public activation is authorized.
+The current eight-product registry and validator remain unchanged.

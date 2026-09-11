@@ -1,0 +1,14 @@
+{
+  "products": [
+    {
+      "key": "enterprise",
+      "product_name": "Midwest24 Core Enterprise",
+      "hostname": "enterprise.midwest24.com",
+      "logo": "assets/branding/products/midwest24-core-enterprise-logo-light.png",
+      "logo_scope": "product-specific",
+      "icon": "assets/branding/icons/midwest24-core-enterprise-icon.png",
+      "icon_scope": "product-specific",
+      "favicon_dir": "assets/branding/favicons/enterprise"
+    }
+  ]
+}
