@@ -33,3 +33,5 @@ resampling was used for both. No production asset was used as an editable master
 
 Validation: V2 wordmark dimensions 1600 x 500, RGBA alpha extrema 0/255, all seven favicon
 files, ICO embedded sizes 16/32/48, and visual review of 16/32/48/180 px icons.
+
+Web delivery: `products/midwest24-core-enterprise-logo-light-v2.png` is the cache-versioned V2 copy of the canonical horizontal export. It has identical bytes and digest.
