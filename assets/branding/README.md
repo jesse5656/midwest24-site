@@ -137,10 +137,8 @@ The Authentik application library has eight internal application marks:
 
 Their editable source SVGs live in `assets/branding/source/launcher-icons/`
 and their PNG exports live in `assets/branding/icons/`. They use the same blue
-shield construction as the Core product family. Each mark must remain visually
-distinct and legible at launcher size: use a strong filled glyph, avoid thin
-open line art, and keep the glyph clear of the shield's lower border. Review
-the generated sheet before publication. They are launcher artwork only: they
+shield construction as the Core product family, with grid-aligned SVG marks so
+the library stays crisp at small sizes. They are launcher artwork only: they
 do not create public product identities, hostnames, wordmarks, or registry
 entries. Do not use the Identity or Enterprise mark as a placeholder.
 

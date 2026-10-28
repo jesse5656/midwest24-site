@@ -8,6 +8,6 @@
   <path d="M256 24 448 104v148c0 121-74 194-192 236C138 446 64 373 64 252V104Z" fill="#001f4d"/>
   <path d="M256 49 424 119v133c0 104-61 166-168 207-107-41-168-103-168-207V119Z" fill="#fff"/>
   <path d="M256 73 400 133v119c0 87-48 141-144 180-96-39-144-93-144-180V133Z" fill="url(#core)"/>
-  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="26">
-      <path d="m206 176-88 80 88 80M306 176l88 80-88 80M278 150l-44 212"/></g>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
+      <path d="m211 186-92 70 92 70M301 186l92 70-92 70M281 158l-50 196"/></g>
 </svg>
