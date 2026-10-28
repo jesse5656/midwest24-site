@@ -2,6 +2,7 @@
 # Python cache
 __pycache__/
 *.py[cod]
+.wrangler/
 
 # Archive local document storage
 archive/backend/storage/
