@@ -8,11 +8,8 @@
   <path d="M256 24 448 104v148c0 121-74 194-192 236C138 446 64 373 64 252V104Z" fill="#001f4d"/>
   <path d="M256 49 424 119v133c0 104-61 166-168 207-107-41-168-103-168-207V119Z" fill="#fff"/>
   <path d="M256 73 400 133v119c0 87-48 141-144 180-96-39-144-93-144-180V133Z" fill="url(#core)"/>
-  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
-      <path d="M142 356V280m114 76V218m114 138V164"/>
-      <path d="m126 222 86-54 72 40 102-86"/>
-      <circle cx="126" cy="222" r="8" fill="#fff"/>
-      <circle cx="212" cy="168" r="8" fill="#fff"/>
-      <circle cx="284" cy="208" r="8" fill="#fff"/>
-      <circle cx="386" cy="122" r="8" fill="#fff"/></g>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="26">
+      <rect x="126" y="270" width="66" height="70" rx="12" fill="#fff" stroke="none"/>
+      <rect x="223" y="216" width="66" height="124" rx="12" fill="#fff" stroke="none"/>
+      <rect x="320" y="162" width="66" height="178" rx="12" fill="#fff" stroke="none"/></g>
 </svg>

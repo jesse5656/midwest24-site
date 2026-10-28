@@ -30,44 +30,46 @@ def svg(glyph: str) -> str:
   <path d="M256 24 448 104v148c0 121-74 194-192 236C138 446 64 373 64 252V104Z" fill="#001f4d"/>
   <path d="M256 49 424 119v133c0 104-61 166-168 207-107-41-168-103-168-207V119Z" fill="#fff"/>
   <path d="M256 73 400 133v119c0 87-48 141-144 180-96-39-144-93-144-180V133Z" fill="url(#core)"/>
-  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">{glyph}</g>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="26">{glyph}</g>
 </svg>'''
 
 
 GLYPHS = {
     "automation": '''
-      <path d="M148 256h92m32 0h92m-92 0v92"/>
-      <circle cx="124" cy="256" r="25"/>
-      <circle cx="256" cy="256" r="25"/>
-      <circle cx="388" cy="256" r="25"/>
-      <circle cx="256" cy="380" r="25"/>''',
+      <path d="M156 220h92m16 0h92M256 236v82"/>
+      <circle cx="140" cy="220" r="28" fill="#fff" stroke="none"/>
+      <circle cx="256" cy="220" r="28" fill="#fff" stroke="none"/>
+      <circle cx="372" cy="220" r="28" fill="#fff" stroke="none"/>
+      <circle cx="256" cy="320" r="28" fill="#fff" stroke="none"/>''',
     "cameras": '''
-      <path d="M152 214h208l28 34h54v150H70V248h54Z"/>
-      <path d="M182 214v-42h94v42"/>
-      <circle cx="256" cy="323" r="58"/>''',
+      <path d="M118 220h72l22-34h88l22 34h72v154H118Z" fill="#fff" stroke="none"/>
+      <circle cx="256" cy="297" r="60" fill="#0878e8" stroke="none"/>
+      <circle cx="256" cy="297" r="34" fill="#fff" stroke="none"/>
+      <circle cx="354" cy="252" r="13" fill="#001f4d" stroke="none"/>''',
     "code": '''
-      <path d="m211 186-92 70 92 70M301 186l92 70-92 70M281 158l-50 196"/>''',
+      <path d="m206 176-88 80 88 80M306 176l88 80-88 80M278 150l-44 212"/>''',
     "dashboard": '''
-      <path d="M142 356V280m114 76V218m114 138V164"/>
-      <path d="m126 222 86-54 72 40 102-86"/>
-      <circle cx="126" cy="222" r="8" fill="#fff"/>
-      <circle cx="212" cy="168" r="8" fill="#fff"/>
-      <circle cx="284" cy="208" r="8" fill="#fff"/>
-      <circle cx="386" cy="122" r="8" fill="#fff"/>''',
+      <rect x="126" y="270" width="66" height="70" rx="12" fill="#fff" stroke="none"/>
+      <rect x="223" y="216" width="66" height="124" rx="12" fill="#fff" stroke="none"/>
+      <rect x="320" y="162" width="66" height="178" rx="12" fill="#fff" stroke="none"/>''',
     "documents": '''
-      <path d="M160 140h132l76 76v176H160Z"/>
-      <path d="M292 140v76h76M204 266h116m-116 48h116m-116 48h82"/>''',
+      <path d="M152 132h142l74 74v184H152Z" fill="#fff" stroke="none"/>
+      <path d="M294 132v74h74" stroke="#0878e8"/>
+      <path d="M196 264h128m-128 50h128m-128 50h86" stroke="#0878e8"/>''',
     "photos": '''
-      <path d="M132 162h248v188H132Z"/>
-      <circle cx="306" cy="218" r="20"/>
-      <path d="m160 322 64-66 48 46 36-34 44 54"/>''',
+      <rect x="118" y="164" width="276" height="194" rx="18" fill="#fff" stroke="none"/>
+      <circle cx="326" cy="220" r="25" fill="#0878e8" stroke="none"/>
+      <path d="m148 330 72-74 52 48 38-38 72 64" stroke="#0878e8"/>''',
     "sign": '''
-      <path d="M154 138h150l54 54v182H154Z"/>
-      <path d="M304 138v54h54M198 256h116m-116 46h72M250 370l112-112m-94 130 20-20m74-110 26 26"/>''',
+      <path d="M144 140h148l72 72v146H144Z" fill="#fff" stroke="none"/>
+      <path d="M292 140v72h72M188 260h116m-116 46h80" stroke="#0878e8"/>
+      <path d="m238 350 94-94 30 30-94 94-44 14Z" fill="#001f4d" stroke="none"/>
+      <path d="m348 264 30 30" stroke="#fff"/>''',
     "vault": '''
-      <rect x="148" y="218" width="216" height="158" rx="20"/>
-      <path d="M194 218v-34a62 62 0 0 1 124 0v34M256 278v42"/>
-      <circle cx="256" cy="278" r="12"/>''',
+      <rect x="132" y="222" width="248" height="132" rx="24" fill="#fff" stroke="none"/>
+      <path d="M184 232v-42a72 72 0 0 1 144 0v42"/>
+      <circle cx="256" cy="300" r="18" fill="#0878e8" stroke="none"/>
+      <path d="M256 318v24" stroke="#0878e8"/>''',
 }
 
 
