@@ -1,168 +1,89 @@
 #!/usr/bin/env python3
-"""Build distinct Midwest24 Core launcher icons for internal applications.
+"""Build crisp, grid-aligned Midwest24 application-library icons.
 
-These icons intentionally use the same blue shield construction as the
-approved Core product family.  They are launcher artwork, not public product
-identities or replacements for the governed product registry.
+The editable SVGs are retained under assets/branding/source/launcher-icons/.
+PNG files are exported at 1024px for Authentik's application library.
 """
 
 from __future__ import annotations
 
 import argparse
+import subprocess
 from pathlib import Path
 
 from PIL import Image, ImageDraw
 
 
 ROOT = Path(__file__).resolve().parents[2]
-OUTPUT = ROOT / "assets" / "branding" / "icons"
+ICON_DIR = ROOT / "assets" / "branding" / "icons"
+SOURCE_DIR = ROOT / "assets" / "branding" / "source" / "launcher-icons"
 
-SIZE = 1024
-SCALE = 4
 
-ICONS = {
-    "automation": "flow",
-    "cameras": "camera",
-    "code": "code",
-    "dashboard": "dashboard",
-    "sign": "sign",
+def svg(glyph: str) -> str:
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#0878e8"/>
+    </linearGradient>
+  </defs>
+  <path d="M256 24 448 104v148c0 121-74 194-192 236C138 446 64 373 64 252V104Z" fill="#001f4d"/>
+  <path d="M256 49 424 119v133c0 104-61 166-168 207-107-41-168-103-168-207V119Z" fill="#fff"/>
+  <path d="M256 73 400 133v119c0 87-48 141-144 180-96-39-144-93-144-180V133Z" fill="url(#core)"/>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">{glyph}</g>
+</svg>'''
+
+
+GLYPHS = {
+    "automation": '''
+      <path d="M148 256h92m32 0h92m-92 0v92"/>
+      <circle cx="124" cy="256" r="25"/>
+      <circle cx="256" cy="256" r="25"/>
+      <circle cx="388" cy="256" r="25"/>
+      <circle cx="256" cy="380" r="25"/>''',
+    "cameras": '''
+      <path d="M152 214h208l28 34h54v150H70V248h54Z"/>
+      <path d="M182 214v-42h94v42"/>
+      <circle cx="256" cy="323" r="58"/>''',
+    "code": '''
+      <path d="m211 186-92 70 92 70M301 186l92 70-92 70M281 158l-50 196"/>''',
+    "dashboard": '''
+      <path d="M142 356V280m114 76V218m114 138V164"/>
+      <path d="m126 222 86-54 72 40 102-86"/>
+      <circle cx="126" cy="222" r="8" fill="#fff"/>
+      <circle cx="212" cy="168" r="8" fill="#fff"/>
+      <circle cx="284" cy="208" r="8" fill="#fff"/>
+      <circle cx="386" cy="122" r="8" fill="#fff"/>''',
+    "documents": '''
+      <path d="M160 140h132l76 76v176H160Z"/>
+      <path d="M292 140v76h76M204 266h116m-116 48h116m-116 48h82"/>''',
+    "photos": '''
+      <path d="M132 162h248v188H132Z"/>
+      <circle cx="306" cy="218" r="20"/>
+      <path d="m160 322 64-66 48 46 36-34 44 54"/>''',
+    "sign": '''
+      <path d="M154 138h150l54 54v182H154Z"/>
+      <path d="M304 138v54h54M198 256h116m-116 46h72M250 370l112-112m-94 130 20-20m74-110 26 26"/>''',
+    "vault": '''
+      <rect x="148" y="218" width="216" height="158" rx="20"/>
+      <path d="M194 218v-34a62 62 0 0 1 124 0v34M256 278v42"/>
+      <circle cx="256" cy="278" r="12"/>''',
 }
 
 
-def points(items: list[tuple[int, int]]) -> list[tuple[int, int]]:
-    return [(x * SCALE, y * SCALE) for x, y in items]
-
-
-def rect(box: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
-    return tuple(value * SCALE for value in box)
-
-
-def gradient(
-    size: tuple[int, int],
-    start: tuple[int, int, int],
-    end: tuple[int, int, int],
-    *,
-    diagonal: bool = False,
-) -> Image.Image:
-    # Pillow performs this natively.  The original pixel-by-pixel version made
-    # a high-resolution icon review unnecessarily slow.
-    alpha = Image.linear_gradient("L").resize(size, Image.Resampling.BILINEAR)
-    if diagonal:
-        alpha = alpha.rotate(45, resample=Image.Resampling.BICUBIC)
-    return Image.composite(
-        Image.new("RGBA", size, end + (255,)),
-        Image.new("RGBA", size, start + (255,)),
-        alpha,
-    )
-
-
-def polygon_fill(
-    canvas: Image.Image,
-    shape: list[tuple[int, int]],
-    start: tuple[int, int, int],
-    end: tuple[int, int, int],
-    *,
-    diagonal: bool = False,
-) -> None:
-    mask = Image.new("L", canvas.size, 0)
-    ImageDraw.Draw(mask).polygon(shape, fill=255)
-    canvas.alpha_composite(Image.composite(gradient(canvas.size, start, end, diagonal=diagonal), Image.new("RGBA", canvas.size), mask))
-
-
-def shield() -> Image.Image:
-    canvas = Image.new("RGBA", (SIZE * SCALE, SIZE * SCALE), (0, 0, 0, 0))
-    outer = points([(512, 55), (878, 220), (842, 560), (770, 755), (512, 945), (254, 755), (182, 560), (146, 220)])
-    white = points([(512, 108), (824, 250), (790, 547), (728, 720), (512, 880), (296, 720), (234, 547), (200, 250)])
-    inner = points([(512, 155), (782, 276), (750, 532), (691, 686), (512, 817), (333, 686), (274, 532), (242, 276)])
-    polygon_fill(canvas, outer, (0, 26, 81), (0, 57, 141), diagonal=True)
-    polygon_fill(canvas, white, (255, 255, 255), (229, 242, 255))
-    polygon_fill(canvas, inner, (27, 221, 246), (0, 82, 202), diagonal=True)
-    overlay = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(overlay)
-    draw.polygon(points([(512, 155), (782, 276), (750, 532), (691, 686), (512, 817)]), fill=(0, 40, 128, 80))
-    canvas.alpha_composite(overlay)
-    return canvas
-
-
-def line(draw: ImageDraw.ImageDraw, xy: list[tuple[int, int]], *, width: int = 38) -> None:
-    scaled = points(xy)
-    draw.line(scaled, fill=(0, 34, 99, 255), width=(width + 24) * SCALE, joint="curve")
-    draw.line(scaled, fill=(255, 255, 255, 255), width=width * SCALE, joint="curve")
-
-
-def rounded(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], radius: int, *, fill: tuple[int, int, int, int], outline: tuple[int, int, int, int] | None = None, width: int = 0) -> None:
-    draw.rounded_rectangle(rect(box), radius=radius * SCALE, fill=fill, outline=outline, width=width * SCALE)
-
-
-def glyph_flow(draw: ImageDraw.ImageDraw) -> None:
-    line(draw, [(325, 475), (512, 475), (675, 360)], width=28)
-    line(draw, [(512, 475), (675, 590)], width=28)
-    for x, y in ((285, 475), (512, 475), (715, 360), (715, 590)):
-        draw.ellipse(rect((x - 56, y - 56, x + 56, y + 56)), fill=(0, 34, 99, 255))
-        draw.ellipse(rect((x - 35, y - 35, x + 35, y + 35)), fill=(255, 255, 255, 255))
-
-
-def glyph_camera(draw: ImageDraw.ImageDraw) -> None:
-    rounded(draw, (265, 380, 759, 650), 46, fill=(0, 34, 99, 255))
-    rounded(draw, (286, 401, 738, 629), 28, fill=(255, 255, 255, 255))
-    rounded(draw, (360, 326, 520, 401), 24, fill=(0, 34, 99, 255))
-    rounded(draw, (379, 344, 501, 401), 18, fill=(255, 255, 255, 255))
-    draw.ellipse(rect((430, 438, 646, 654)), fill=(0, 34, 99, 255))
-    draw.ellipse(rect((462, 470, 614, 622)), fill=(38, 201, 244, 255))
-    draw.ellipse(rect((500, 502, 554, 556)), fill=(255, 255, 255, 210))
-
-
-def glyph_code(draw: ImageDraw.ImageDraw) -> None:
-    line(draw, [(435, 360), (315, 510), (435, 660)], width=42)
-    line(draw, [(589, 360), (709, 510), (589, 660)], width=42)
-    line(draw, [(558, 330), (466, 690)], width=38)
-
-
-def glyph_dashboard(draw: ImageDraw.ImageDraw) -> None:
-    rounded(draw, (278, 346, 746, 670), 38, fill=(0, 34, 99, 255))
-    rounded(draw, (300, 368, 724, 648), 22, fill=(255, 255, 255, 255))
-    for x, y, width, height in ((334, 522, 66, 92), (453, 454, 66, 160), (572, 400, 66, 214)):
-        rounded(draw, (x, y, x + width, y + height), 12, fill=(0, 86, 201, 255))
-    draw.line(points([(336, 462), (438, 430), (531, 482), (652, 396)]), fill=(0, 34, 99, 255), width=18 * SCALE, joint="curve")
-    for x, y in ((336, 462), (438, 430), (531, 482), (652, 396)):
-        draw.ellipse(rect((x - 16, y - 16, x + 16, y + 16)), fill=(0, 34, 99, 255))
-
-
-def glyph_sign(draw: ImageDraw.ImageDraw) -> None:
-    rounded(draw, (320, 318, 620, 682), 24, fill=(0, 34, 99, 255))
-    rounded(draw, (343, 341, 597, 659), 12, fill=(255, 255, 255, 255))
-    draw.polygon(points([(525, 341), (597, 341), (597, 413)]), fill=(183, 224, 251, 255))
-    for y, width in ((445, 150), (500, 138), (555, 115)):
-        draw.rounded_rectangle(rect((385, y, 385 + width, y + 20)), radius=10 * SCALE, fill=(0, 86, 201, 255))
-    draw.line(points([(510, 650), (715, 445)]), fill=(0, 34, 99, 255), width=72 * SCALE)
-    draw.line(points([(510, 650), (715, 445)]), fill=(255, 255, 255, 255), width=40 * SCALE)
-    draw.polygon(points([(493, 670), (526, 642), (514, 631)]), fill=(0, 34, 99, 255))
-    draw.polygon(points([(724, 434), (747, 457), (716, 473)]), fill=(41, 196, 244, 255))
-
-
-def build_icon(kind: str) -> Image.Image:
-    canvas = shield()
+def build_review(images: dict[str, Path], destination: Path) -> None:
+    labels = list(images)
+    card = 330
+    canvas = Image.new("RGB", (card * 4, 900), "white")
     draw = ImageDraw.Draw(canvas)
-    {
-        "flow": glyph_flow,
-        "camera": glyph_camera,
-        "code": glyph_code,
-        "dashboard": glyph_dashboard,
-        "sign": glyph_sign,
-    }[kind](draw)
-    return canvas.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
-
-
-def build_review(images: dict[str, Image.Image], destination: Path) -> None:
-    card = 420
-    canvas = Image.new("RGB", (card * len(images), 500), "white")
-    draw = ImageDraw.Draw(canvas)
-    for index, (name, icon) in enumerate(images.items()):
-        preview = icon.copy()
-        preview.thumbnail((330, 330), Image.Resampling.LANCZOS)
-        x = index * card + (card - preview.width) // 2
-        canvas.paste(preview, (x, 30), preview)
-        draw.text((index * card + 30, 390), name.title(), fill="#001f4d")
+    for index, label in enumerate(labels):
+        source = Image.open(images[label]).convert("RGBA")
+        source.thumbnail((250, 250), Image.Resampling.LANCZOS)
+        column, row = index % 4, index // 4
+        x = column * card + (card - source.width) // 2
+        y = row * 430 + 28
+        canvas.paste(source, (x, y), source)
+        draw.text((column * card + 24, row * 430 + 320), label.title(), fill="#001f4d")
     destination.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(destination)
 
@@ -171,18 +92,23 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--review", type=Path)
     args = parser.parse_args()
-
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    images: dict[str, Image.Image] = {}
-    for name, kind in ICONS.items():
-        icon = build_icon(kind)
-        destination = OUTPUT / f"midwest24-core-{name}-icon.png"
-        icon.save(destination, optimize=True)
-        images[name] = icon
-        print(f"BUILT: {destination.relative_to(ROOT)}")
-
+    ICON_DIR.mkdir(parents=True, exist_ok=True)
+    SOURCE_DIR.mkdir(parents=True, exist_ok=True)
+    generated: dict[str, Path] = {}
+    for name, glyph in GLYPHS.items():
+        source = SOURCE_DIR / f"midwest24-core-{name}-icon.svg"
+        output = ICON_DIR / f"midwest24-core-{name}-icon.png"
+        source.write_text(svg(glyph), encoding="utf-8")
+        subprocess.run(
+            ["inkscape", str(source), "--export-type=png", f"--export-filename={output}", "--export-width=1024", "--export-height=1024"],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        generated[name] = output
+        print(f"BUILT: {output.relative_to(ROOT)}")
     if args.review:
-        build_review(images, args.review)
+        build_review(generated, args.review)
         print(f"REVIEW: {args.review}")
 
 
