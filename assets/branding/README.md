@@ -136,25 +136,32 @@ The Authentik application library also has eight internal application marks:
 - Coaching — coach and learner
 
 They live in `assets/branding/icons/` as `midwest24-core-<name>-icon.png` and
-use the approved Core-family shield construction: dimensional navy edge, white
-inset, cyan field, and a distinct white pictogram. They are launcher artwork
+use the approved Core-family shield construction: dimensional navy edge, smooth
+white inset, shaded royal-blue/navy field with an upper-left cyan highlight,
+and a distinct white pictogram. They are launcher artwork
 only: they do not create public product identities, hostnames, wordmarks, or
 registry entries. Do not use the Identity or Enterprise mark as a placeholder
 for any of them.
 
-The builder preserves the approved Enterprise shield substrate and replaces
-only its Core field and pictogram. The internal launcher field is the approved
-historical clean cyan Core field: no diagonal seams, split facets, or soft
-gradient overlays. Do not redraw it as a flat outline, a generic substitute,
-or a different product icon. The complete icon review sheet is required before
-release.
+The latest approved launcher appearance is the
+[15-icon sheet approved October 29, 2026](reference/midwest24-core-launcher-family-approved-2026-10-29.png).
+Read its [approval and reuse record](reference/launcher-family-approval-2026-10-29.md)
+before preparing individual assets. This sheet supersedes the flat-cyan
+launcher treatment, not the primary wordmark or historical product identities.
 
-Rebuild the eight icons and a complete visual review sheet with:
+`scripts/branding/build_launcher_icons.py` is retained for provenance but its
+flat-cyan output is not approved for a new release. It does not reproduce the
+newly approved sheet. Do not run it as the current production rebuild process.
+Individual production exports and live application remapping remain separate
+work; filing the sheet does not replace the live icons.
 
-```bash
-python3 scripts/branding/build_launcher_icons.py \
-  --review /tmp/midwest24-launcher-icons-review.png
-```
+Reusable branding source belongs in the established dedicated repository:
+`/home/jesse/Documents/Projects/mwg-ai-skills/skills/`.
+Use `midwest24-midwestguard-branding` for shared branding and
+`midwest24-core-icon-design` for Core launcher work. Website-repository copies
+are superseded filing copies, not the maintained skill source. Personal copies
+exist under `/home/jesse/.codex/skills/`; this source filing does not constitute
+a registered governed release or verified adapter deployment.
 
 ---
 
