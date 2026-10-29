@@ -124,21 +124,30 @@ Icons are separate production assets and must not be treated as substitutes for 
 
 ### Internal application launcher icons
 
-The Authentik application library also has five internal application marks:
+The Authentik application library also has eight internal application marks:
 
 - Automation — connected workflow nodes
 - Cameras — camera lens
 - Code — code brackets
 - Dashboard — reporting chart
 - Sign — signed document
+- Photos — camera shutter
+- Edge — strength training
+- Coaching — coach and learner
 
-They live in `assets/branding/icons/` as `midwest24-core-<name>-icon.png`
-and use the same blue shield construction as the Core product family. They
-are launcher artwork only: they do not create public product identities,
-hostnames, wordmarks, or registry entries. Do not use the Identity or
-Enterprise mark as a placeholder for any of them.
+They live in `assets/branding/icons/` as `midwest24-core-<name>-icon.png` and
+use the approved Core-family shield construction: dimensional navy edge, white
+inset, cyan field, and a distinct white pictogram. They are launcher artwork
+only: they do not create public product identities, hostnames, wordmarks, or
+registry entries. Do not use the Identity or Enterprise mark as a placeholder
+for any of them.
 
-Rebuild the five icons and an optional visual review sheet with:
+The builder preserves the approved Enterprise shield substrate and replaces
+only its Core field and pictogram. This is intentional: do not redraw a flat,
+monochrome, or generic substitute. The complete icon review sheet is required
+before release.
+
+Rebuild the eight icons and a complete visual review sheet with:
 
 ```bash
 python3 scripts/branding/build_launcher_icons.py \
