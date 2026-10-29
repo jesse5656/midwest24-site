@@ -80,5 +80,7 @@ The pre-change mapping record is retained on TrueNAS at
 `/mnt/FastPool/AppData/m24-camera-tls-backup-20261029/branding-before.json`.
 Rollback means restoring only each
 recorded `meta_icon` and the recorded `branding_logo`. Previous public asset
-paths were preserved. Repository commit/push is still pending separately from
-this verified asset publication.
+paths were preserved. Release sources were committed and pushed to Forgejo main
+on October 29 (`e3ecc2f`). All sixteen live files were hash-verified again after
+the push. Canonical branding skill sources were pushed in `mwg-ai-skills`
+at `22f0410`; this does not claim an immutable governed skill-registry release.
