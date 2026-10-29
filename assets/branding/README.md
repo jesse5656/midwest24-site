@@ -143,9 +143,10 @@ registry entries. Do not use the Identity or Enterprise mark as a placeholder
 for any of them.
 
 The builder preserves the approved Enterprise shield substrate and replaces
-only its Core field and pictogram. This is intentional: do not redraw a flat,
-monochrome, or generic substitute. The complete icon review sheet is required
-before release.
+only its Core field and pictogram. The field is a continuous cyan-to-blue
+gradient with soft light and depth, never visible hard polygon seams. This is
+intentional: do not redraw a flat, monochrome, or generic substitute. The
+complete icon review sheet is required before release.
 
 Rebuild the eight icons and a complete visual review sheet with:
 
