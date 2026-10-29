@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[2]
 ICONS = ROOT / "assets" / "branding" / "icons"
@@ -28,26 +28,13 @@ def rounded(draw, values, radius, fill=WHITE): draw.rounded_rectangle(box(values
 def circle(draw, x, y, radius, fill=WHITE): draw.ellipse(box((x-radius, y-radius, x+radius, y+radius)), fill=fill)
 
 def approved_shield() -> Image.Image:
-    """Retain the approved border while rebuilding a seamless Core field."""
+    """Retain the approved shell and restore the historical Core field."""
     image = Image.open(ICONS / "midwest24-core-enterprise-icon.png").convert("RGBA")
     image = image.resize((q(SIZE), q(SIZE)), Image.Resampling.LANCZOS)
-    # The original reconstruction split the Core field into hard polygons.  At
-    # launcher size those seams looked accidental.  The approved family is
-    # dimensional, so use a continuous cyan-to-blue field with only blurred
-    # light and depth overlays; the navy shell and white inset remain intact.
-    gradient = Image.linear_gradient("L").resize(image.size, Image.Resampling.LANCZOS)
-    gradient = gradient.rotate(45, resample=Image.Resampling.BICUBIC)
-    field = Image.composite(
-        Image.new("RGBA", image.size, (0, 67, 177, 255)),
-        Image.new("RGBA", image.size, CYAN),
-        gradient,
-    )
-    highlight = Image.new("RGBA", image.size)
-    ImageDraw.Draw(highlight).ellipse(box((195, 145, 670, 610)), fill=(255, 255, 255, 42))
-    field.alpha_composite(highlight.filter(ImageFilter.GaussianBlur(q(72))))
-    depth = Image.new("RGBA", image.size)
-    ImageDraw.Draw(depth).ellipse(box((270, 480, 875, 970)), fill=(0, 24, 104, 62))
-    field.alpha_composite(depth.filter(ImageFilter.GaussianBlur(q(88))))
+    # The historical launcher family uses one clean cyan Core field. It is
+    # intentionally free of the accidental diagonal seams and soft overlays
+    # introduced by the later generated variants.
+    field = Image.new("RGBA", image.size, CYAN)
     mask = Image.new("L", image.size, 0)
     ImageDraw.Draw(mask).polygon(points([(512,163), (812,289), (805,520), (746,677), (650,785), (512,862), (374,785), (278,677), (219,520), (212,289)]), fill=255)
     image.alpha_composite(Image.composite(field, Image.new("RGBA", image.size), mask))
