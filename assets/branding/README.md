@@ -436,6 +436,22 @@ python3 scripts/governance/governance_engine.py
 
 Only commit branding changes after governance validation passes.
 
+## Workspace and Files launcher release — 2026-11-04
+
+`releases/workspace-files-20261104/` contains the versioned 240 × 240 PNG
+exports used by Authentik for **Midwest24 Core Workspace** and **Midwest24
+Files**. The Workspace export is the approved Core Workspace icon. The Files
+export adds a distinct folder-and-document pictogram in the approved Core
+shield family after the Files Quantum upgrade left its Authentik tile without a
+`meta_icon` value.
+
+The complete seventeen-icon visual review is retained at
+`reference/midwest24-core-launcher-family-workspace-files-review-20261104.png`.
+The generated Files source and prompt are recorded in
+`source/midwest24-files-icon-generation-20261104.md`. These repository assets
+must be deployed to the existing `midwest24.com` static asset location before
+their Authentik mappings are changed.
+
 ---
 
 ## Ownership
