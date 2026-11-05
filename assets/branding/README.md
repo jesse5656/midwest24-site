@@ -452,6 +452,20 @@ The generated Files source and prompt are recorded in
 must be deployed to the existing `midwest24.com` static asset location before
 their Authentik mappings are changed.
 
+## Records launcher release — 2026-11-05
+
+`releases/records-20261105/midwest24-core-records.png` is the versioned 240 ×
+240 launcher export for **Midwest24 Core Records**. It uses a distinct
+two-drawer records-cabinet pictogram for the financial-records and evidence
+workspace implemented with Paperless-ngx. The full visual review is retained
+at `reference/midwest24-core-launcher-family-records-review-20261105.png`; its
+generation and review record is
+`source/midwest24-core-records-icon-generation-20261105.md`.
+
+The approved asset must be published to the existing static asset location
+before its Authentik mapping is changed. The application route and access
+controls remain separate deployment steps.
+
 ---
 
 ## Ownership
