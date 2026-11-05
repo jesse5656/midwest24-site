@@ -134,6 +134,8 @@ The Authentik application library also has eight internal application marks:
 - Photos — camera shutter
 - Edge — strength training
 - Coaching — coach and learner
+- Workspace — four coordinated work tiles; used by the internal unified PWA at
+  `app.midwest24.com`
 
 They live in `assets/branding/icons/` as `midwest24-core-<name>-icon.png` and
 use the approved Core-family shield construction: dimensional navy edge, smooth
@@ -154,6 +156,16 @@ flat-cyan output is not approved for a new release. It does not reproduce the
 newly approved sheet. Do not run it as the current production rebuild process.
 Individual production exports and live application remapping remain separate
 work; filing the sheet does not replace the live icons.
+
+## Midwest24 Core Workspace icon
+
+The internal PWA at `app.midwest24.com` is named **Midwest24 Core Workspace**.
+Its distinct shield-and-four-tile icon is stored at
+`assets/branding/icons/midwest24-core-workspace-icon.png`. The generation
+record and review contact sheet are stored with the branding sources. This
+asset is not an Enterprise icon, a MIDWESTGuard public-site mark, or an
+Authentik application mapping. It must be deliberately added to the PWA build
+and verified at the served hostname before it is described as live.
 
 Reusable branding source belongs in the established dedicated repository:
 `/home/jesse/Documents/Projects/mwg-ai-skills/skills/`.
