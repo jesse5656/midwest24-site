@@ -463,8 +463,10 @@ generation and review record is
 `source/midwest24-core-records-icon-generation-20261105.md`.
 
 The approved asset must be published to the existing static asset location
-before its Authentik mapping is changed. The application route and access
-controls remain separate deployment steps.
+before its Authentik mapping is changed. The canonical application icon is
+`icons/midwest24-core-records-icon.png`; it is copied from the dated release
+asset and is the source for both Authentik and the Records application logo.
+The application route and access controls remain separate deployment steps.
 
 ---
 
