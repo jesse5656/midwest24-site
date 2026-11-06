@@ -108,6 +108,17 @@ Actively used product assets are stored in:
 assets/branding/products/
 ```
 
+### Midwest24 Core Coaching
+
+The Coaching product lockups are derived from the approved Coaching shield;
+the shield artwork is not redrawn or substituted. The editable light-background
+source is `source/midwest24-core-coaching-logo.svg`, with the matching
+production export at `products/midwest24-core-coaching-logo.png`. A transparent
+light-on-dark export is retained at
+`products/midwest24-core-coaching-logo-light.png`. Use the light-background
+logo in email and documents; use the light-on-dark export only on a navy or
+dark-blue surface.
+
 Assets that are no longer approved or actively used must be moved to the appropriate archive directory.
 
 ---

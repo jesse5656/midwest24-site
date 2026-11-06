@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Midwest24 Core Coaching product logo source for light backgrounds.
+  Uses the approved Coaching shield production asset without alteration.
+  Export target: ../products/midwest24-core-coaching-logo.png
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="500" viewBox="0 0 1600 500" role="img" aria-label="Midwest24 Core Coaching">
+  <image x="54" y="54" width="392" height="392" preserveAspectRatio="xMidYMid meet" xlink:href="../icons/midwest24-core-coaching-icon.png" href="../icons/midwest24-core-coaching-icon.png"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="500" y="192" font-size="38" font-weight="700" letter-spacing="7" fill="#001F4D">MIDWEST24 CORE</text>
+    <rect x="500" y="222" width="570" height="7" fill="#0EA5FF"/>
+    <text x="500" y="346" font-size="122" font-weight="700" letter-spacing="-2" fill="#001F4D">Coaching</text>
+  </g>
+</svg>
