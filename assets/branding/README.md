@@ -110,14 +110,16 @@ assets/branding/products/
 
 ### Midwest24 Core Coaching
 
-The Coaching product lockups are derived from the approved Coaching shield;
-the shield artwork is not redrawn or substituted. The editable light-background
-source is `source/midwest24-core-coaching-logo.svg`, with the matching
+The Coaching product lockups use the dedicated Coaching whistle mark; it is a
+coaching symbol, not a person/learner pictogram. The editable icon source is
+`source/midwest24-core-coaching-icon.svg`. The editable light-background
+lockup source is `source/midwest24-core-coaching-logo.svg`, with the matching
 production export at `products/midwest24-core-coaching-logo.png`. A transparent
 light-on-dark export is retained at
 `products/midwest24-core-coaching-logo-light.png`. Use the light-background
 logo in email and documents; use the light-on-dark export only on a navy or
-dark-blue surface.
+dark-blue surface. The product lockup intentionally has no fine horizontal
+rule: thin lines do not render reliably in mobile email clients.
 
 Assets that are no longer approved or actively used must be moved to the appropriate archive directory.
 
