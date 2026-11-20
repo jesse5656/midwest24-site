@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Editable source: Midwest24 Core Curriculum launcher icon. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Midwest24 Core Curriculum">
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#20D7FF"/><stop offset=".32" stop-color="#0879EA"/><stop offset=".72" stop-color="#063A98"/><stop offset="1" stop-color="#001F4D"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0A4CA7"/><stop offset="1" stop-color="#001638"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="17"/><feOffset dy="16"/><feComponentTransfer><feFuncA type="linear" slope=".23"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1024" height="1024" fill="#fff"/>
+  <g transform="translate(512 512) scale(1.22) translate(-512 -512)" filter="url(#shadow)">
+    <path d="M512 96 824 228v270c0 212-122 344-312 430C322 842 200 710 200 498V228z" fill="url(#rim)"/>
+    <path d="M512 128 792 247v251c0 188-105 302-280 384-175-82-280-196-280-384V247z" fill="#fff"/>
+    <path d="M512 158 760 263v235c0 165-89 269-248 346-159-77-248-181-248-346V263z" fill="url(#field)"/>
+    <path d="M512 158v686c159-77 248-181 248-346V263z" fill="#001F4D" opacity=".34"/>
+    <path d="M276 286 512 186v52L314 322c-16 7-31-9-38-36z" fill="#fff" opacity=".35"/>
+    <path d="M512 158 760 263v235c0 165-89 269-248 346" fill="none" stroke="#4EE7FF" stroke-opacity=".35" stroke-width="12"/>
+
+    <!-- Open curriculum book with a three-stage learning path. -->
+    <g stroke="#003A8E" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M512 472c-50-44-112-61-193-48v249c78-13 143 4 193 48z" fill="#fff" stroke-width="22"/>
+      <path d="M512 472c50-44 112-61 193-48v249c-78-13-143 4-193 48z" fill="#fff" stroke-width="22"/>
+      <path d="M512 472v249" fill="none" stroke-width="18"/>
+      <path d="M365 606c52-7 99 7 147 43 48-36 95-50 147-43" fill="none" stroke="#0EA5FF" stroke-width="24"/>
+      <circle cx="378" cy="604" r="24" fill="#fff" stroke-width="16"/>
+      <circle cx="512" cy="646" r="24" fill="#fff" stroke-width="16"/>
+      <circle cx="646" cy="604" r="24" fill="#fff" stroke-width="16"/>
+      <path d="m630 521 45-45 45 45" fill="none" stroke="#fff" stroke-width="27"/>
+      <path d="M675 477v86" fill="none" stroke="#fff" stroke-width="27"/>
+    </g>
+  </g>
+</svg>

@@ -137,7 +137,7 @@ Icons are separate production assets and must not be treated as substitutes for 
 
 ### Internal application launcher icons
 
-The Authentik application library also has eight internal application marks:
+The Authentik application library also has ten internal application marks:
 
 - Automation — connected workflow nodes
 - Cameras — camera lens
@@ -149,6 +149,9 @@ The Authentik application library also has eight internal application marks:
 - Coaching — coach and learner
 - Workspace — four coordinated work tiles; used by the internal unified PWA at
   `app.midwest24.com`
+- Curriculum — open book, three-stage learning path, and advancement arrow;
+  used by the protected Moodle-mirrored reading site at
+  `curriculum.midwest24.com`
 
 They live in `assets/branding/icons/` as `midwest24-core-<name>-icon.png` and
 use the approved Core-family shield construction: dimensional navy edge, smooth
@@ -480,6 +483,28 @@ before its Authentik mapping is changed. The canonical application icon is
 `icons/midwest24-core-records-icon.png`; it is copied from the dated release
 asset and is the source for both Authentik and the Records application logo.
 The application route and access controls remain separate deployment steps.
+
+## Curriculum launcher release — 2026-11-20
+
+`releases/curriculum-20261120/midwest24-core-curriculum.png` is the versioned
+240 × 240 launcher export for **Midwest24 Core Curriculum**. Its open-book and
+three-stage learning-path pictogram distinguishes the simple static reading
+copy from Coaching/Moodle, Documents, Institute, Files, and Records while
+retaining the approved dimensional Core shield.
+
+The editable source is
+`source/midwest24-core-curriculum-icon.svg`; the canonical 1024 × 1024 PNG is
+`icons/midwest24-core-curriculum-icon.png`; and the complete nineteen-icon
+visual review is
+`reference/midwest24-core-launcher-family-curriculum-review-20261120.png`.
+Rebuild and publication details are recorded in
+`source/midwest24-core-curriculum-icon-generation-20261120.md`.
+
+Publish the versioned PNG to the existing `midwest24.com` static asset path
+before assigning its public URL to Authentik. The Curriculum launcher must use
+the existing **Midwest24 Core Coaching Participants** group and direct users to
+`https://curriculum.midwest24.com/`; it must not change Moodle's Coaching tile,
+the Cloudflare Access policy, or curriculum content.
 
 ---
 
