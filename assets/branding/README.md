@@ -500,11 +500,13 @@ visual review is
 Rebuild and publication details are recorded in
 `source/midwest24-core-curriculum-icon-generation-20261120.md`.
 
-Publish the versioned PNG to the existing `midwest24.com` static asset path
-before assigning its public URL to Authentik. The Curriculum launcher must use
-the existing **Midwest24 Core Coaching Participants** group and direct users to
-`https://curriculum.midwest24.com/`; it must not change Moodle's Coaching tile,
-the Cloudflare Access policy, or curriculum content.
+The versioned PNG is published through the existing `midwest24-site` Cloudflare
+Pages project. Authentik uses the stable project URL because the separate
+`midwest24.com` Worker asset bundle did not yet contain this release. The
+Curriculum launcher must use the existing **Midwest24 Core Coaching
+Participants** group and direct users to `https://curriculum.midwest24.com/`;
+it must not change Moodle's Coaching tile, the Cloudflare Access policy, or
+curriculum content.
 
 ---
 

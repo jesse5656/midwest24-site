@@ -45,7 +45,14 @@ Curriculum mark enlarged and at 240-pixel launcher size before publishing.
 
 ## Publication boundary
 
-The icon must be available from the governed `midwest24.com` static asset path
-before Authentik's Curriculum application receives the public `meta_icon` URL.
-Changing the icon does not change the Access policy, participant group, tunnel
-route, Moodle course, or static curriculum content.
+The icon is published from the governed Cloudflare Pages project at
+`https://midwest24-site.pages.dev/assets/branding/releases/curriculum-20261120/midwest24-core-curriculum.png`.
+Production deployment `783a189f-fad0-4cfa-837e-f42958d382bf` serves source
+commit `343e7fa`; the live bytes match the reviewed release SHA-256
+`cd980ca1173d4e9d6c80bd0fb9ae0c9d6844fcfbdc2cfced25d6ca76f16ee667`.
+
+The main `midwest24.com` hostname currently uses a separate Worker asset
+bundle and did not yet serve this new file during publication. Authentik
+therefore uses the stable Pages project URL rather than an uncommitted Worker
+deployment. Changing the icon does not change the Access policy, participant
+group, tunnel route, Moodle course, or static curriculum content.
